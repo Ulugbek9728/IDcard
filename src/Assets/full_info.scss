@@ -1,0 +1,734 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Inter',sans-serif;
+  font-style: normal;
+}
+$mainColor: #24743c;
+
+.fullInfo{
+
+  padding: 10px 60px;
+  .header{
+    width: 100%;
+    height: 170px;
+    background: $mainColor;
+    border-radius: 80px 0 ;
+    background-image: url("../img/politex_img.svg");
+    background-size: 100% 95%;
+    background-repeat: no-repeat;
+    background-position:bottom;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .title{
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 44px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+    .logo{
+      width: 130px;
+      height: auto;
+      position: absolute;
+      right: 60px;
+    }
+
+  }
+  .UserNameBox{
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: -60px;
+    left: 60px;
+    .user{
+      width: 180px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: 6px solid white;
+      border: 1px solid $mainColor;
+    }
+    .NameInfo{
+      margin: 55px 0 0 30px;
+      span{
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 36px;
+        color: #484848;
+      }
+      p{
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        color: #484848;
+        margin-top: 15px;
+      }
+    }
+  }
+  .ButtonBox{
+    position: relative;
+    top: -35px;
+    button{
+      padding: 14px 26px;
+      background: #E9E9E9;
+      margin-right: 15px;
+      border: none;
+      outline: none;
+      box-shadow: 0 4px 30px 5px rgba(18, 16, 16, 0.05);
+      border-radius: 10px;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      &:nth-of-type(1){
+        background: linear-gradient(201.16deg, #11722D 13.95%, #075C21 72.55%);
+        color: white;
+      }
+      &:hover{
+        background: linear-gradient(201.16deg, #11722D 13.95%, #075C21 72.55%);
+        color: white;
+      }
+    }
+  }
+  .FISHbox{
+    margin-top: -15px;
+    &:nth-of-type(1){
+      padding-left: 0;
+    }
+    &:nth-of-type(2){
+      padding-right: 0;
+    }
+  }
+  .FISH{
+    padding: 5px 30px;
+    box-shadow: 0 4px 30px 5px rgba(18, 16, 16, 0.05);
+    border-radius: 15px;
+
+    .infoBox{
+      border-bottom: 1px solid #E9E9E9;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      &:nth-of-type(6){
+        border-bottom: none;
+      }
+      .left{
+        padding: 5px 0;
+        width: 35%;
+        border-right: 1px solid #E9E9E9;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #484848;
+        img{
+          width: 45px;
+          height: auto;
+          margin-right: 15px;
+        }
+      }
+      .righte{
+        padding: 5px 15px;
+        width: 65%;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #484848;
+      }
+    }
+  }
+  .tyuterBox{
+    padding: 5px 30px;
+    box-shadow: 0 4px 30px 5px rgba(18, 16, 16, 0.05);
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .infoBox{
+      padding: 5px 30px 5px 5px;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      height: auto;
+      &:nth-of-type(2){
+        padding: 5px 0 5px 50px;
+      }
+      .left{
+        padding: 5px 0;
+        width: 34.5%;
+        border-right: 1px solid #E9E9E9;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #484848;
+        img{
+          width: 45px;
+          height: auto;
+          margin-right: 15px;
+        }
+      }
+      .righte{
+        padding: 5px 15px;
+        width: 65%;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #484848;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 576px){
+  .fullInfo{
+    padding: 10px 15px;
+    .header{
+      height: 160px;
+      border-radius: 60px 0 ;
+      background-size: 90% 85%;
+      .title{
+        font-size: 18px;
+        line-height: 22px;
+        width: 95%;
+        margin-top: 55px;
+      }
+      .logo{
+        width: 60px;
+        right: 41.5%;
+        top: 5%;
+
+      }
+
+    }
+    .UserNameBox{
+      top: -10px;
+      left: 0;
+      flex-direction: column;
+      flex-wrap: wrap;
+      .user{
+        width: 130px!important;
+        height: 140px;
+        outline: 3px solid white;
+      }
+      .NameInfo{
+        margin: 0;
+        span{
+          font-size: 20px;
+          line-height: 25px;
+        }
+        p{
+          text-align: center;
+          font-size: 18px;
+          line-height: 24px;
+          margin-top: 5px;
+        }
+      }
+    }
+    .ButtonBox{
+      top: -15px;
+      button{
+        padding: 10px 20px;
+        margin-right: 15px;
+        border-radius: 10px;
+        font-size: 16px;
+        &:nth-of-type(2){
+          margin-right: 0;
+        }
+      }
+    }
+    .FISHbox{
+      margin-top: 0;
+      padding: 0;
+      &:nth-of-type(2){
+        margin-top: 25px;
+      }
+    }
+    .FISH{
+      padding: 5px 15px;
+      border-radius: 10px;
+      .infoBox{
+        padding: 5px 0;
+        .left{
+          padding: 5px 0;
+          width: 45%;
+          font-size: 16px;
+          line-height: 22px;
+          img{
+            width: 30px;
+            margin-right: 8px;
+          }
+        }
+        .righte{
+          padding: 5px 0 0 10px;
+          width: 55%;
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+    }
+    .tyuterBox{
+      padding: 5px 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: block;
+      .infoBox{
+        width: 100%;
+        padding: 5px 0;
+
+        &:nth-of-type(2){
+          padding: 5px 0;
+          border-top: 1px solid #E9E9E9;
+        }
+        .left{
+          padding: 5px 0;
+          width: 45%;
+          font-size: 16px;
+          line-height: 22px;
+          img{
+            width: 30px;
+            margin-right: 8px;
+          }
+        }
+        .righte{
+          padding: 5px 0 0 10px;
+          width: 55%;
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 576px) and (max-width: 768px){
+  .fullInfo{
+    padding: 10px 20px;
+    .header{
+      height: 150px;
+      border-radius: 60px 0 ;
+      background-size: 100% 85%;
+      .title{
+        font-size: 22px;
+        line-height: 30px;
+        width: 65%;
+      }
+      .logo{
+        width: 70px;
+        right: 30px;
+      }
+
+    }
+    .UserNameBox{
+      top: -50px;
+      left: 40px;
+      .user{
+        width: 125px;
+        height: 150px;
+        outline: 4px solid white;
+      }
+      .NameInfo{
+        margin: 65px 0 0 20px;
+        span{
+          font-size: 20px;
+          line-height: 25px;
+        }
+        p{
+          font-size: 18px;
+          line-height: 24px;
+          margin-top: 5px;
+        }
+      }
+    }
+    .ButtonBox{
+      top: -35px;
+      button{
+        padding: 10px 20px;
+        margin-right: 15px;
+        border-radius: 10px;
+        font-size: 17px;
+      }
+    }
+    .FISHbox{
+      margin-top: -15px;
+      padding: 0;
+      &:nth-of-type(2){
+        margin-top: 25px;
+      }
+    }
+    .FISH{
+      padding: 5px 15px;
+      border-radius: 10px;
+      .infoBox{
+        padding: 5px;
+        .left{
+          padding: 5px 0;
+          width: 40%;
+          font-size: 17px;
+          line-height: 22px;
+          img{
+            width: 40px;
+            margin-right: 10px;
+          }
+        }
+        .righte{
+          padding: 5px 0 0 10px;
+          width: 60%;
+          font-size: 17px;
+          line-height: 22px;
+        }
+      }
+    }
+    .tyuterBox{
+      padding: 5px 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: block;
+      .infoBox{
+        width: 100%;
+        padding: 5px 0;
+
+        &:nth-of-type(2){
+          padding: 5px 0;
+          border-top: 1px solid #E9E9E9;
+        }
+        .left{
+          padding: 5px 0;
+          width: 40%;
+          font-size: 17px;
+          line-height: 22px;
+          img{
+            width: 40px;
+            margin-right: 8px;
+          }
+        }
+        .righte{
+          padding: 5px 0 0 10px;
+          width: 60%;
+          font-size: 17px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 992px){
+  .fullInfo{
+    padding: 10px 30px;
+    .header{
+      height: 150px;
+      border-radius: 60px 0 ;
+      background-size: 100% 85%;
+      .title{
+        font-size: 25px;
+        line-height: 35px;
+        width: 65%;
+      }
+      .logo{
+        width: 80px;
+        right: 35px;
+      }
+
+    }
+    .UserNameBox{
+      top: -50px;
+      left: 40px;
+      .user{
+        width: 125px;
+        height: 150px;
+        outline: 4px solid white;
+      }
+      .NameInfo{
+        margin: 65px 0 0 30px;
+        span{
+          font-size: 23px;
+          line-height: 25px;
+        }
+        p{
+          font-size: 18px;
+          line-height: 24px;
+          margin-top: 10px;
+        }
+      }
+    }
+    .ButtonBox{
+      top: -35px;
+      button{
+        padding: 10px 20px;
+        margin-right: 15px;
+        border-radius: 10px;
+        font-size: 17px;
+      }
+    }
+    .FISHbox{
+      margin-top: -15px;
+      padding: 0;
+      &:nth-of-type(2){
+      margin-top: 25px;
+    }
+    }
+    .FISH{
+      padding: 5px 15px;
+      border-radius: 10px;
+      .infoBox{
+        padding: 5px;
+        .left{
+          padding: 5px 0;
+          width: 40%;
+          font-size: 17px;
+          line-height: 22px;
+          img{
+            width: 40px;
+            margin-right: 10px;
+          }
+        }
+        .righte{
+          padding: 5px 0 0 10px;
+          width: 60%;
+          font-size: 17px;
+          line-height: 22px;
+        }
+      }
+    }
+    .tyuterBox{
+      padding: 5px 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: block;
+      .infoBox{
+        width: 100%;
+        padding: 5px 0;
+
+        &:nth-of-type(2){
+          padding: 5px 0;
+          border-top: 1px solid #E9E9E9;
+        }
+        .left{
+          padding: 5px 0;
+          width: 40%;
+          font-size: 17px;
+          line-height: 22px;
+          img{
+            width: 40px;
+            margin-right: 8px;
+          }
+        }
+        .righte{
+          padding: 5px 0 0 10px;
+          width: 60%;
+          font-size: 17px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 992px) and (max-width: 1200px){
+  .fullInfo{
+    padding: 10px 40px;
+    .header{
+      height: 150px;
+      border-radius: 60px 0 ;
+      background-size: 100% 85%;
+      .title{
+        font-size: 28px;
+        line-height: 40px;
+      }
+      .logo{
+        width: 80px;
+        right: 35px;
+      }
+
+    }
+    .UserNameBox{
+      top: -50px;
+      left: 40px;
+      .user{
+        width: 125px;
+        height: 150px;
+        outline: 4px solid white;
+      }
+      .NameInfo{
+        margin: 55px 0 0 30px;
+        span{
+          font-size: 25px;
+          line-height: 30px;
+        }
+        p{
+          font-size: 18px;
+          line-height: 24px;
+          margin-top: 10px;
+        }
+      }
+    }
+    .ButtonBox{
+      top: -35px;
+      button{
+        padding: 10px 20px;
+        margin-right: 15px;
+        border-radius: 10px;
+        font-size: 17px;
+      }
+    }
+    .FISHbox{
+      margin-top: -15px;
+    }
+    .FISH{
+      padding: 5px 15px;
+      border-radius: 10px;
+      .infoBox{
+        padding: 5px;
+        .left{
+          padding: 5px 0;
+          width: 40%;
+          font-size: 17px;
+          line-height: 22px;
+          img{
+            width: 40px;
+            margin-right: 10px;
+          }
+        }
+        .righte{
+          padding: 5px 0 0 10px;
+          width: 60%;
+          font-size: 17px;
+          line-height: 22px;
+        }
+      }
+    }
+    .tyuterBox{
+      padding: 5px 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      .infoBox{
+        padding: 5px 20px 5px 5px;
+        width: 50%;
+        &:nth-of-type(2){
+          padding: 5px 0 5px 35px;
+        }
+        .left{
+          padding: 5px 0;
+          width: 39%;
+          font-size: 17px;
+          line-height: 22px;
+          img{
+            width: 40px;
+            margin-right: 8px;
+          }
+        }
+        .righte{
+          padding: 5px 0 0 10px;
+          width: 61%;
+          font-size: 17px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1200px) and (max-width: 1400px){
+  .fullInfo{
+    padding: 10px 40px;
+    .header{
+      .title{
+        font-size: 35px;
+        line-height: 40px;
+      }
+      .logo{
+        width: 100px;
+        right: 60px;
+      }
+
+    }
+    .UserNameBox{
+      top: -50px;
+      left: 40px;
+      .user{
+        width: 180px;
+        height: 200px;
+      }
+      .NameInfo{
+        margin: 55px 0 0 30px;
+        span{
+          font-size: 30px;
+          line-height: 36px;
+        }
+        p{
+          font-size: 20px;
+          line-height: 24px;
+          margin-top: 15px;
+        }
+      }
+    }
+    .ButtonBox{
+      top: -35px;
+      button{
+        padding: 14px 26px;
+        margin-right: 15px;
+        border-radius: 10px;
+
+      }
+    }
+    .FISHbox{
+      margin-top: -15px;
+    }
+    .FISH{
+      padding: 5px 20px;
+      border-radius: 15px;
+
+      .infoBox{
+        padding: 5px;
+        .left{
+          padding: 5px 0;
+          width: 37%;
+          font-size: 18px;
+          line-height: 22px;
+          img{
+            width: 45px;
+            margin-right: 15px;
+          }
+        }
+        .righte{
+          padding: 5px 15px;
+          width: 63%;
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+    }
+    .tyuterBox{
+      padding: 5px 20px;
+      border-radius: 15px;
+      margin-top: 20px;
+      .infoBox{
+        padding: 5px 20px 5px 5px;
+        width: 50%;
+        &:nth-of-type(2){
+          padding: 5px 0 5px 40px;
+        }
+        .left{
+          padding: 5px 0;
+          width: 36%;
+          font-size: 18px;
+          line-height: 22px;
+          img{
+            width: 45px;
+            margin-right: 15px;
+          }
+        }
+        .righte{
+          padding: 5px 15px;
+          width: 63%;
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
