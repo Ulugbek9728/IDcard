@@ -19,7 +19,6 @@ function App(props) {
                 <Route path={"/AdminPage/*"} element={<Admin/>}/>
                 <Route path={"/FulInfo/:id"} element={<FulInfo/>}/>
             </Routes>
-
         </div>
     );
 }
