@@ -1,15 +1,12 @@
 const MyInistialState = {
-    fulInfo: [],
-    AdminLogin:''
+    Loading: false,
+
 };
 
 export const MyRedusers = (state = MyInistialState, action) => {
     switch (action.type) {
-        case "USER_FULL_INFO" : {
-            return {...state, fulInfo: action.payload}
-        }
-        case "ADMIN" : {
-            return {...state, AdminLogin: action.payload}
+        case "LOADING" : {
+            return {...state, Loading: action.payload}
         }
         default: {
             return state

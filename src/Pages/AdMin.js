@@ -24,12 +24,13 @@ function AdMin(props) {
 
     function signOut() {
         localStorage.removeItem("token");
-        localStorage.removeItem("user_Info")
+        localStorage.removeItem("user_Info");
         navigate("/")
     }
 
     return (
         <>
+
             <Layout className='layout'
                     style={{minHeight: '100vh',}}>
                 <Sider className='sider' collapsible collapsed={collapsed}

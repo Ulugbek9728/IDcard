@@ -11,7 +11,6 @@ import FulInfo from "./Pages/Ful_Info";
 function App(props) {
     return (
         <div>
-
             <Routes>
                 <Route path={"/"} element={<SignIn/>}/>
                 <Route path={"/DekanPage"} element={<Main/>}/>
