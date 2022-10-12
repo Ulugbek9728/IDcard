@@ -73,8 +73,10 @@
         z-index: 100;
       }
     }
-    button{
+    .loginbtn{
+      cursor: pointer;
       height: 50px;
+position: relative;
       background: #FFFFFF;
       box-shadow: 0 4px 12px rgba(27, 107, 80, 0.06);
       border-radius: 40px;
@@ -83,7 +85,7 @@
       font-size: 18px;
       line-height: 21px;
       color: #1B6B50;
-     z-index: 1000;
+      z-index: 1000;
     }
   }
 
@@ -91,5 +93,6 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    z-index: 0;
   }
 }

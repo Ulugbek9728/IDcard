@@ -95,7 +95,8 @@ function SignIn(props) {
                         <img onClick={() => setPasswordBoolin(!passwordBoolin)} src="./img/show.png" alt=""/>
                     }
                 </div>
-                <button onClick={Login} type="submit" className="form-control">Log in</button>
+
+                <button onClick={Login} className="form-control loginbtn">Log in</button>
 
             </div>
             <img className="GroupImg" src="./img/Group5.svg" alt=""/>

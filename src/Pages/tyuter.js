@@ -20,8 +20,8 @@ function Tyuter(props) {
 
     const [collapsed, setCollapsed] = useState(false);
     const [edit, setedit] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [sucsessText, setSucsessText] = useState('');
-
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isModalVisible2, setIsModalVisible2] = useState(false);
@@ -258,13 +258,16 @@ function Tyuter(props) {
     },[groupID, sucsessText]);
 
     function GetGroup() {
+        setLoading(true);
         axios.post(`${ApiName}/auth/teacher/show/group/list/${groupID}`, '',{
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }
         }).then((response) => {
+            setLoading(false);
             setAllStudent(response.data);
         }).catch((error) => {
+            setLoading(false);
             if (error.response.status >= 500) {
                 setMessage("Serverda ulanishda xatolik")
             }
@@ -285,195 +288,208 @@ function Tyuter(props) {
     }
     function signOut() {
         localStorage.removeItem("token");
-        localStorage.removeItem("user_Info")
+        localStorage.removeItem("user_Info");
         navigate("/")
     }
 
     return (
-        <>
-            <Layout className='layout'
-                    style={{minHeight: '100vh',}}>
-                <ToastContainer/>
+        <div className='dekan'>
+            <ToastContainer/>
+            {
+                loading ?
+                    <div className="loding">
+                        <div className="ring">
+                            <img src="/LOGOTDTU.png" alt=""/>
+                            <span/>
+                        </div>
+                    </div>
+                    :
+                    <Layout className='layout'
+                            style={{minHeight: '100vh',}}>
 
-                <Sider className='sider' collapsible collapsed={collapsed}
-                       onCollapse={(value) => setCollapsed(value)}>
-                    <div className="logo"><img src="/LOGOTDTU.png" alt=""/></div>
-                    <Menu defaultSelectedKeys={['0']} theme="dark" mode="inline">
-                        {guruh.map((item, index)=>{
-                            return <Menu.Item key={index+1} icon={<TeamOutlined />} onClick={()=>{
-                                setGroupID(item.id)
-                            }}>
+
+                        <Sider className='sider' collapsible collapsed={collapsed}
+                               onCollapse={(value) => setCollapsed(value)}>
+                            <div className="logo"><img src="/LOGOTDTU.png" alt=""/></div>
+                            <Menu defaultSelectedKeys={['0']} theme="dark" mode="inline">
+                                {guruh.map((item, index)=>{
+                                    return <Menu.Item key={index+1} icon={<TeamOutlined />} onClick={()=>{
+                                        setGroupID(item.id)
+                                    }}>
                             <span>
                                 {item.number}
                             </span>
-                            </Menu.Item>
-                        })}
-                    </Menu>
-                </Sider>
-                <Layout className="site-layout">
-                    <Header className="site-layout-background HeaderTitle">
-                        <span>"{localStorage.getItem("faculty")}"</span>
-                        fakultet talabalari haqida ma'lumot.
-                    </Header>
-                    <div className="dropdown">
-                        <button type="button" className="btn" data-bs-toggle="dropdown">
-                            {localStorage.getItem("user_Info").slice(0,2)}
-                        </button>
-                        <ul className="dropdown-menu">
-                            <li onClick={showModal2}>
-                                <a className="dropdown-item" href="#">
-                                Parolni yangilash
-                                </a>
-                            </li>
-                            <li onClick={signOut}>
-                                <a className="dropdown-item" href="#">Chiqish<img src="./img/logout.png" alt=""/>
-                                </a>
-                            </li>
-                        </ul>
-                        <Modal title="Parolni o'zgartirish"  visible={isModalVisible2}
-                               onOk={handleOk2} onCancel={handleCancel2}>
-                            <div className="w-100">
-                                <Input placeholder="Login kiriting" allowClear value={NewPassword.login}
-                                       onChange={(e)=>{setNewPassword({...NewPassword, login: e.target.value.toUpperCase()})}}
-                                       maxLength="9"/>
-                                <Input placeholder="Yangi parol kiriting" allowClear value={NewPassword.password}
-                                       onChange={(e)=>{setNewPassword({...NewPassword, password: e.target.value,})}}/>
-                            </div>
-                        </Modal>
-                    </div>
-                    <Content>
-                        <div className="content site-layout-background"
-                             style={{padding: 24, minHeight: 360,}}>
-                            <Breadcrumb style={{ margin: '16px 0' }}>
-
-                            </Breadcrumb>
-                            <button onClick={showModal} className='btn btn-success yuklash'>
-                                Talaba qo'shish
-                            </button>
-                            <Modal title="Talaba qo'shish" className='d-flex' visible={isModalVisible}
-                                   onOk={handleOk} onCancel={handleCancel}>
-                                <div className="box px-2">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div onChange={baseImage} className="upload-image">
-                                            {
-                                                icon ? <><img className="img-in-upload" src={student.image} alt=""/></>
-                                                    : <><img className="img-in-upload1" src={image} alt=""/></>
-                                            }
-                                            <input  className="img-file-up" type="file"/>
-                                        </div>
-                                        <h4>Talaba 3x4 rasimi</h4>
+                                    </Menu.Item>
+                                })}
+                            </Menu>
+                        </Sider>
+                        <Layout className="site-layout">
+                            <Header className="site-layout-background HeaderTitle">
+                                <span>"{localStorage.getItem("faculty")}"</span>
+                                fakultet talabalari haqida ma'lumot.
+                            </Header>
+                            <div className="dropdown">
+                                <button type="button" className="btn" data-bs-toggle="dropdown">
+                                    {localStorage.getItem("user_Info").slice(0,2)}
+                                </button>
+                                <ul className="dropdown-menu">
+                                    <li onClick={showModal2}>
+                                        <a className="dropdown-item" href="#">
+                                            Parolni yangilash
+                                        </a>
+                                    </li>
+                                    <li onClick={signOut}>
+                                        <a className="dropdown-item" href="#">Chiqish<img src="./img/logout.png" alt=""/>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <Modal title="Parolni o'zgartirish"  visible={isModalVisible2}
+                                       onOk={handleOk2} onCancel={handleCancel2}>
+                                    <div className="w-100">
+                                        <Input placeholder="Login kiriting" allowClear value={NewPassword.login}
+                                               onChange={(e)=>{setNewPassword({...NewPassword, login: e.target.value.toUpperCase()})}}
+                                               maxLength="9"/>
+                                        <Input placeholder="Yangi parol kiriting" allowClear value={NewPassword.password}
+                                               onChange={(e)=>{setNewPassword({...NewPassword, password: e.target.value,})}}/>
                                     </div>
-                                    <Input placeholder="Book-ID" allowClear value={student.bookNumber}
-                                           onChange={(e)=>{setStudent({...student, bookNumber: e.target.value,})}}/>
-                                    <Input placeholder="Familya" allowClear value={student.surname}
-                                           onChange={(e)=>{setStudent({...student, surname: e.target.value,})}}/>
-                                    <Input placeholder="Ism" allowClear value={student.name}
-                                           onChange={(e)=>{setStudent({...student, name: e.target.value,})}}/>
-                                    <Input placeholder="Sharif" allowClear value={student.patronymic}
-                                           onChange={(e)=>{setStudent({...student, patronymic: e.target.value,})}}/>
-                                    <Input placeholder="Passport seriya raqami" allowClear value={student.login}
-                                           onChange={(e)=>{setStudent(
-                                               {...student, login: e.target.value.toUpperCase()})}}
-                                           maxLength="9"/>
-                                    <Input placeholder="Telefon" allowClear value={student.phone} maxLength="13"
-                                           onChange={(e)=>{setStudent({...student, phone: e.target.value,})}}/>
-                                    <input type="date" className='form-control' value={student.birthdate}
-                                           onChange={(e)=>{setStudent({...student, birthdate: e.target.value})}}/>
-
-                                    <Input placeholder="Yo'nalish" allowClear value={student.direction}
-                                           onChange={(e)=>{setStudent({...student, direction: e.target.value,})}}/>
-
-                                    <Select placeholder="Guruh"
-                                            onChange={GuruhSelect}>
-                                        {guruh && guruh.map((item) => (
-                                            <Option value={item.number} key={item.id}>{item.number}</Option>))}
-                                    </Select>
-                                </div>
-                                <div className="box px-2" style={{marginTop:"11px"}}>
-
-                                    <Input placeholder=" Viloyati / Shaxar" allowClear value={student.address_region}
-                                           onChange={(e)=>{setStudent({...student, address_region: e.target.value,})}}/>
-
-                                    <Input placeholder="Tuman" allowClear value={student.address_district}
-                                           onChange={(e)=>{setStudent(
-                                               {...student, address_district: e.target.value,})}}/>
-
-                                    <Input placeholder="Manzil" allowClear value={student.address}
-                                           onChange={(e)=>{setStudent({...student, address: e.target.value,})}}/>
-
-                                    <Input placeholder="Otasining Familyasi" allowClear value={student.fathersurname}
-                                           onChange={(e)=>{setStudent({...student, fathersurname: e.target.value,})}}/>
-
-                                    <Input placeholder="Otasining Ismi" allowClear value={student.fathername}
-                                           onChange={(e)=>{setStudent({...student, fathername: e.target.value,})}}/>
-
-                                    <Input placeholder="Otasining Sharifi" allowClear value={student.fatherpatronymic}
-                                           onChange={(e)=>{setStudent({...student, fatherpatronymic: e.target.value,})}}/>
-
-                                    <Input placeholder="Otasining Telefoni" maxLength="13" allowClear value={student.fatherphone}
-                                           onChange={(e)=>{setStudent({...student, fatherphone: e.target.value,})}}/>
-
-                                    <Input placeholder="Onasining Familyasi" allowClear value={student.mothersurname}
-                                           onChange={(e)=>{setStudent({...student, mothersurname: e.target.value,})}}/>
-
-                                    <Input placeholder="Onasining Ismi" allowClear value={student.mothername}
-                                           onChange={(e)=>{setStudent({...student, mothername: e.target.value,})}}/>
-
-                                    <Input placeholder="Onasining Sharifi" allowClear value={student.motherpatronymic}
-                                           onChange={(e)=>{setStudent({...student, motherpatronymic: e.target.value,})}}/>
-
-                                    <Input placeholder="Onasining Telefoni" maxLength="13" allowClear value={student.motherphone}
-                                           onChange={(e)=>{setStudent({...student, motherphone: e.target.value,})}}/>
-                                </div>
-                            </Modal>
-                            <div className="box mt-5">.
-
-                                <table className="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>N</th>
-                                        <th>Familya</th>
-                                        <th>Ism</th>
-                                        <th>Sharif</th>
-                                        <th>Tug'ilgan yil</th>
-                                        <th>Yashash manzil</th>
-                                        <th>tel:</th>
-                                        <th>ID</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {allstudent.map((item,index)=>{
-                                        return <tr key={index}>
-                                            <td>{index+1}</td>
-                                            <td>{item.surname}</td>
-                                            <td>{item.name}</td>
-                                            <td>{item.patronymic}</td>
-                                            <td>{item.birthdate}</td>
-                                            <td>{item.address_region} {item.address_district} {item.address}</td>
-                                            <td>{item.phone}</td>
-                                            <td>
-                                                <button className="btn btn-warning mx-1" onClick={()=>{
-                                                    showModal();
-                                                    setStudent(item);
-                                                    setedit(true);
-                                                    setIcon(true)
-                                                }}>Taxrirlash</button>
-                                                <button className="btn btn-success">
-                                                    <a href={`/FulInfo/${item.login}`} target="_blank">Ba'tafsil</a>
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                    })}
-
-                                    </tbody>
-                                </table>
+                                </Modal>
                             </div>
-                        </div>
-                    </Content>
-                </Layout>
-            </Layout>
-        </>
+                            <Content>
+                                <div className="content site-layout-background"
+                                     style={{padding: 24, minHeight: 360,}}>
+                                    <Breadcrumb style={{ margin: '16px 0' }}>
+
+                                    </Breadcrumb>
+                                    <button onClick={showModal} className='btn btn-success yuklash'>
+                                        Talaba qo'shish
+                                    </button>
+                                    <Modal title={edit ? "Tahrirlash" : "Talaba qo'shish"} className='d-flex' visible={isModalVisible}
+                                           onOk={handleOk} onCancel={handleCancel}>
+                                        <div className="box px-2">
+                                            <div className="d-flex justify-content-between align-items-center">
+                                                <div onChange={baseImage} className="upload-image">
+                                                    {
+                                                        icon ? <><img className="img-in-upload" src={student.image} alt=""/></>
+                                                            : <><img className="img-in-upload1" src={image} alt=""/></>
+                                                    }
+                                                    <input  className="img-file-up" type="file"/>
+                                                </div>
+                                                <h4>Talaba 3x4 rasimi</h4>
+                                            </div>
+                                            <Input placeholder="Book-ID" allowClear value={student.bookNumber}
+                                                   onChange={(e)=>{setStudent({...student, bookNumber: e.target.value,})}}/>
+                                            <Input placeholder="Familya" allowClear value={student.surname}
+                                                   onChange={(e)=>{setStudent({...student, surname: e.target.value,})}}/>
+                                            <Input placeholder="Ism" allowClear value={student.name}
+                                                   onChange={(e)=>{setStudent({...student, name: e.target.value,})}}/>
+                                            <Input placeholder="Sharif" allowClear value={student.patronymic}
+                                                   onChange={(e)=>{setStudent({...student, patronymic: e.target.value,})}}/>
+                                            <Input placeholder="Passport seriya raqami" allowClear value={student.login}
+                                                   onChange={(e)=>{setStudent(
+                                                       {...student, login: e.target.value.toUpperCase()})}}
+                                                   maxLength="9"/>
+                                            <Input placeholder="Telefon" allowClear value={student.phone} maxLength="13"
+                                                   onChange={(e)=>{setStudent({...student, phone: e.target.value,})}}/>
+                                            <input type="date" className='form-control' value={student.birthdate}
+                                                   onChange={(e)=>{setStudent({...student, birthdate: e.target.value})}}/>
+
+                                            <Input placeholder="Yo'nalish" allowClear value={student.direction}
+                                                   onChange={(e)=>{setStudent({...student, direction: e.target.value,})}}/>
+
+                                            <Select placeholder="Guruh"
+                                                    onChange={GuruhSelect}>
+                                                {guruh && guruh.map((item) => (
+                                                    <Option value={item.number} key={item.id}>{item.number}</Option>))}
+                                            </Select>
+                                        </div>
+                                        <div className="box px-2" style={{marginTop:"11px"}}>
+
+                                            <Input placeholder=" Viloyati / Shaxar" allowClear value={student.address_region}
+                                                   onChange={(e)=>{setStudent({...student, address_region: e.target.value,})}}/>
+
+                                            <Input placeholder="Tuman" allowClear value={student.address_district}
+                                                   onChange={(e)=>{setStudent(
+                                                       {...student, address_district: e.target.value,})}}/>
+
+                                            <Input placeholder="Manzil" allowClear value={student.address}
+                                                   onChange={(e)=>{setStudent({...student, address: e.target.value,})}}/>
+
+                                            <Input placeholder="Otasining Familyasi" allowClear value={student.fathersurname}
+                                                   onChange={(e)=>{setStudent({...student, fathersurname: e.target.value,})}}/>
+
+                                            <Input placeholder="Otasining Ismi" allowClear value={student.fathername}
+                                                   onChange={(e)=>{setStudent({...student, fathername: e.target.value,})}}/>
+
+                                            <Input placeholder="Otasining Sharifi" allowClear value={student.fatherpatronymic}
+                                                   onChange={(e)=>{setStudent({...student, fatherpatronymic: e.target.value,})}}/>
+
+                                            <Input placeholder="Otasining Telefoni" maxLength="13" allowClear value={student.fatherphone}
+                                                   onChange={(e)=>{setStudent({...student, fatherphone: e.target.value,})}}/>
+
+                                            <Input placeholder="Onasining Familyasi" allowClear value={student.mothersurname}
+                                                   onChange={(e)=>{setStudent({...student, mothersurname: e.target.value,})}}/>
+
+                                            <Input placeholder="Onasining Ismi" allowClear value={student.mothername}
+                                                   onChange={(e)=>{setStudent({...student, mothername: e.target.value,})}}/>
+
+                                            <Input placeholder="Onasining Sharifi" allowClear value={student.motherpatronymic}
+                                                   onChange={(e)=>{setStudent({...student, motherpatronymic: e.target.value,})}}/>
+
+                                            <Input placeholder="Onasining Telefoni" maxLength="13" allowClear value={student.motherphone}
+                                                   onChange={(e)=>{setStudent({...student, motherphone: e.target.value,})}}/>
+                                        </div>
+                                    </Modal>
+                                    <div className="box mt-5">.
+
+                                        <table className="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>N</th>
+                                                <th>Familya</th>
+                                                <th>Ism</th>
+                                                <th>Sharif</th>
+                                                <th>Tug'ilgan yil</th>
+                                                <th>Yashash manzil</th>
+                                                <th>tel:</th>
+                                                <th>ID</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {allstudent.map((item,index)=>{
+                                                return <tr key={index}>
+                                                    <td>{index+1}</td>
+                                                    <td>{item.surname}</td>
+                                                    <td>{item.name}</td>
+                                                    <td>{item.patronymic}</td>
+                                                    <td>{item.birthdate}</td>
+                                                    <td>{item.address_region} {item.address_district} {item.address}</td>
+                                                    <td>{item.phone}</td>
+                                                    <td>
+                                                        <button className="btn btn-warning mx-1" onClick={()=>{
+                                                            showModal();
+                                                            setStudent(item);
+                                                            setedit(true);
+                                                            setIcon(true)
+                                                        }}>Taxrirlash</button>
+                                                        <button className="btn btn-success">
+                                                            <a href={`/FulInfo/${item.login}`} target="_blank">Ba'tafsil</a>
+                                                        </button>
+
+                                                    </td>
+
+                                                </tr>
+                                            })}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </Content>
+                        </Layout>
+                    </Layout>
+            }
+
+        </div>
     );
 }
 

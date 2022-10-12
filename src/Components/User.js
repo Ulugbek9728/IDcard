@@ -332,7 +332,9 @@ function User(props) {
             {
                 loading ?
                     <div className="loding">
-                        <div className="ring">Loading
+                        <ToastContainer/>
+                        <div className="ring">
+                            <img src="/LOGOTDTU.png" alt=""/>
                             <span></span>
                         </div>
                     </div>

@@ -27,7 +27,6 @@ function AddTicher(props) {
         }
     },[DekanID, sucsessText]);
 
-
     const showModal = () => {
         setIsModalVisible(true);
     };
@@ -42,7 +41,6 @@ function AddTicher(props) {
                     setIsModalVisible(false);
                     setedit(false);
                     setCreaTyuter('');
-                    setDekanID('');
                     setSucsessText("Ma'lumotlar taxrirlandi")
                 }
             }).catch((error) => {

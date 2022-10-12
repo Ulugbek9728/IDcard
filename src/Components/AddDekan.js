@@ -33,6 +33,7 @@ function AddDekan(props) {
                 setSucsessText("Dekan ma'lumotlari taxrirlandi")
             }
         }).catch((error) => {
+            console.log(error.response);
                 if (error.response.status === 400){
                     setMessage(error.response.data.errors)
                 }
