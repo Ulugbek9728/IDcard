@@ -213,9 +213,8 @@ function Tyuter(props) {
         }).then((response)=>{
             setIsModalVisible2(false);
             setSucsessText("Parol yangilandi");
-            console.log(response)
+            setNewPassword('');
         }).catch((error) => {
-            console.log(error.response);
             if (error.response.status === 400){
                 setMessage(error.response.data.errors)
             }
@@ -325,8 +324,10 @@ function Tyuter(props) {
                         </Sider>
                         <Layout className="site-layout">
                             <Header className="site-layout-background HeaderTitle">
-                                <span>"{localStorage.getItem("faculty")}"</span>
-                                fakultet talabalari haqida ma'lumot.
+                                <span>
+                                    "{localStorage.getItem("faculty")}" fakultet talabalari haqida ma'lumot.
+                                </span>
+
                             </Header>
                             <div className="dropdown">
                                 <button type="button" className="btn" data-bs-toggle="dropdown">

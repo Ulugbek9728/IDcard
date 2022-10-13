@@ -27,6 +27,7 @@ function User(props) {
     const [DekanID, setDekanID] = useState('');
     const [tyuterID, setTyuterID] = useState('');
     const [groupID, setGroupID] = useState('');
+    const [groupName, setGroupName] = useState('');
 
     const [tyuter, setTyuter] = useState([]);
     const [guruh, setGuruh] = useState([]);
@@ -341,7 +342,6 @@ function User(props) {
                     :
                     <div className="content site-layout-background" style={{padding: 24, minHeight: 360,}}>
                         <ToastContainer/>
-
                         <div style={{margin: '50px 0',}}>
 
                             <button onClick={showModal} className='btn btn-success yuklash'>
@@ -392,7 +392,7 @@ function User(props) {
                                     <Input placeholder="Yo'nalish" allowClear value={student.direction}
                                            onChange={(e)=>{setStudent({...student, direction: e.target.value,})}}/>
 
-                                    <Select placeholder={'Tyutor'} onChange={TyuterSelect} value={tyuterID}>
+                                    <Select placeholder={'Tyutor'} onChange={TyuterSelect}>
                                         {tyuter&&tyuter.map((item,index) => (
                                             <Option key={item.id}>{item.surname} {item.name} {item.patronymic}</Option>
                                         ))}
@@ -400,10 +400,9 @@ function User(props) {
 
                                 </div>
                                 <div className="box px-2" style={{marginTop:"11px"}}>
-                                    <Select onChange={GuruhSelect}>
-                                        <Option>guruh</Option>
+                                    <Select placeholder={'Guruh'} onChange={GuruhSelect}>
                                         {guruh && guruh.map((item) => (
-                                            <Option value={item.number} key={item.id}>{item.number}</Option>))}
+                                            <Option  key={item.id}>{item.number}</Option>))}
                                     </Select>
                                     <Input placeholder=" Viloyati / Shaxar" allowClear value={student.address_region}
                                            onChange={(e)=>{setStudent({...student, address_region: e.target.value,})}}/>
@@ -473,7 +472,8 @@ function User(props) {
                                     }}>
                                 <option>Guruh</option>
                                 {guruh && guruh.map((item, index) => (
-                                    <option value={item.id} key={index}>{item.number}</option>
+                                    <option onClick={(event => setGroupName(item.number))}
+                                            value={item.id} key={index}>{item.number}</option>
                                 ))}
                             </select>
 
@@ -506,7 +506,9 @@ function User(props) {
                                         <td>{item.phone}</td>
                                         <td>{item.faculty}</td>
                                         <td><img src={"data:image/jpeg;base64,"+item.qrImage} width={80} height={80} alt=""/></td>
-                                        <td><img src={item.image} width={100} height={100} alt=""/></td>
+                                        <td>
+                                            <img src={item.image} width={100} height={100} alt=""/>
+                                        </td>
                                         <td>
                                             <button className="btn btn-warning mx-1" onClick={()=>{
                                                 showModal();
