@@ -54,7 +54,7 @@ function Main(props) {
             setAllTicher(response.data);
         }).catch((error) => {
             console.log(error.response);
-            if (error.response.status >= 500) {
+            if (error.response.status === 502) {
                 setMessage("Serverda ulanishda xatolik")
             }
             else {setMessage(error.response.statusText);}
@@ -75,7 +75,7 @@ function Main(props) {
         }).then((response) => {
             setAllGroups(response.data)
         }).catch((error) => {
-            if (error.response.status >= 500) {
+            if (error.response.status === 502) {
                 setMessage("Serverda ulanishda xatolik")
             }
             else {setMessage(error.response.statusText);}
@@ -99,7 +99,7 @@ function Main(props) {
             setAllStudent(response.data)
         }).catch((error) => {
             setLoading(false);
-            if (error.response.status >= 500) {
+            if (error.response.status === 502) {
                 setMessage("Serverda ulanishda xatolik")
             }
             else {setMessage(error.response.statusText);}
@@ -135,7 +135,7 @@ function Main(props) {
             if (error.response.status === 408){
                 setMessage2(error.response.data)
             }
-            if (error.response.status >= 500){
+            if (error.response.status === 502){
                 setMessage2('Server bilan ulanishda xatolik')
             }
         });
@@ -203,19 +203,17 @@ function Main(props) {
                             <li onClick={signOut}><a className="dropdown-item" href="#">Chiqish<img
                                 src="./img/logout.png" alt=""/></a></li>
                         </ul>
-                        <Modal title="Parolni o'zgartirish" visible={isModalVisible}
+                        <Modal className='ticherModal' title="Parolni o'zgartirish" visible={isModalVisible}
                                onOk={handleOk} onCancel={handleCancel}>
                             <div className="w-100">
-                                <Input placeholder="Login kiriting" allowClear value={NewPassword.login}
-                                       onChange={(e) => {
-                                           setNewPassword({...NewPassword, login: e.target.value.toUpperCase()})
-                                       }}
+                                <label htmlFor="editLogin">Login kiriting</label>
+                                <Input id='editLogin' placeholder="AA1234567" allowClear value={NewPassword.login}
+                                       onChange={(e)=>{setNewPassword({...NewPassword, login: e.target.value.toUpperCase()})}}
                                        maxLength="9"/>
-                                <Input placeholder="Yangi parol kiriting" allowClear
-                                       value={NewPassword.password}
-                                       onChange={(e) => {
-                                           setNewPassword({...NewPassword, password: e.target.value,})
-                                       }}/>
+                                <label htmlFor="editPassword">Yangi parol kiriting</label>
+                                <Input id='editPassword' allowClear value={NewPassword.password}
+                                       onChange={(e)=>{setNewPassword({...NewPassword, password: e.target.value,})}}/>
+
                             </div>
 
                         </Modal>

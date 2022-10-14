@@ -7,8 +7,14 @@
     }
   }
 }
+.modalUser{
+  width: 70%!important;
+}
+.ticherModal{
+  width: 40%!important;
+}
+
 .ant-modal{
-  width: 800px!important;
   .ant-modal-content{
     height: auto;
     border-radius: 5px!important;

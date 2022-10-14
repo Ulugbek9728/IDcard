@@ -50,7 +50,7 @@ function AddTicher(props) {
                 if (error.response.status === 406){
                     setMessage2(error.response.data)
                 }
-                if (error.response.status >= 500){
+                if (error.response.status === 502){
                     setMessage2('Server bilan ulanishda xatolik')
                 }
             })
@@ -72,7 +72,7 @@ function AddTicher(props) {
                 if (error.response.status === 406){
                     setMessage2(error.response.data)
                 }
-                if (error.response.status >= 500){
+                if (error.response.status === 502){
                     setMessage2('Server bilan ulanishda xatolik')
                 }
             });
@@ -92,7 +92,7 @@ function AddTicher(props) {
         }).then((response) => {
             setItems(response.data);
         }).catch((error) => {
-            if (error.response.status >= 500){
+            if (error.response.status === 502){
                 setMessage2('Server bilan ulanishda xatolik')
             }
         })
@@ -112,9 +112,7 @@ function AddTicher(props) {
             }
         }).then((response) => {
             setTyuter(response.data);
-        }).catch((error) => {
-
-        })
+        }).catch((error) => {})
     }
 
     function Delet(id) {
@@ -150,29 +148,32 @@ function AddTicher(props) {
                    O'qtuvchi qo'shish
                 </button>
 
-                <Modal title={edit ? "Tahrirlash" : "O'qtuvchi qo'shish"} visible={isModalVisible}
+                <Modal className='ticherModal' title={edit ? "Tahrirlash" : "O'qtuvchi qo'shish"} visible={isModalVisible}
                        onOk={handleOk} onCancel={handleCancel}>
                     <div>
-                        <Input value={creatTyuter.surname} placeholder="Familya" allowClear
-                               onChange={(e)=>{setCreaTyuter({...creatTyuter, surname: e.target.value,})}}/>
-                        <Input value={creatTyuter.name} placeholder="Ism" allowClear
-                               onChange={(e)=>{setCreaTyuter({...creatTyuter, name: e.target.value,})}}/>
-                        <Input value={creatTyuter.patronymic} placeholder="Sharif" allowClear
-                               onChange={(e)=>{setCreaTyuter({...creatTyuter, patronymic: e.target.value,})}}/>
+                        <label htmlFor='Familya'>Familya</label>
+                        <Input id='Familya' value={creatTyuter.surname} allowClear onChange={
+                            (e)=> {setCreaTyuter({...creatTyuter, surname: e.target.value,})}}/>
+                        <label htmlFor='Ism'>Ism</label>
+                        <Input id='Ism' value={creatTyuter.name} allowClear onChange={
+                            (e)=>{setCreaTyuter({...creatTyuter, name: e.target.value,})}}/>
+                        <label htmlFor='Sharif'>Sharif</label>
+                        <Input id='Sharif' value={creatTyuter.patronymic} allowClear onChange={
+                            (e)=>{setCreaTyuter({...creatTyuter, patronymic: e.target.value,})}}/>
                         <Input value={creatTyuter.phone} placeholder="Telefon" allowClear maxLength="13"
                                onChange={(e)=>{setCreaTyuter({...creatTyuter, phone: e.target.value,})}}/>
-
-                        <Select showSearch placeholder="Fakultet" value={creatTyuter.faculty} optionFilterProp="children"
+                        <label htmlFor='#'>Fakultet</label>
+                        <Select showSearch value={creatTyuter.faculty} optionFilterProp="children"
                                 onChange={FacultySelect}>
                             {items.map((item) => {
-                                return <Option value={item.faculty} key={item.id}/>
-                            })}
+                                return <Option value={item.faculty} key={item.id}/>})}
                         </Select>
-
-                        <Input value={creatTyuter.login} placeholder="Login" allowClear maxLength="9"
-                               onChange={(e)=>{setCreaTyuter({...creatTyuter, login: e.target.value.toUpperCase(),})}}/>
-
-                        <Input value={creatTyuter.password} placeholder="Parol" allowClear
+                        <label htmlFor="Login">Login</label>
+                        <Input id='Login' value={creatTyuter.login} allowClear maxLength="9"
+                               onChange={(e)=>{setCreaTyuter(
+                                   {...creatTyuter, login: e.target.value.toUpperCase(),})}}/>
+                        <label htmlFor="Parol">Parol</label>
+                        <Input id='Parol' value={creatTyuter.password} allowClear
                                onChange={(e)=>{setCreaTyuter({...creatTyuter, password: e.target.value,})}}/>
                     </div>
                 </Modal>

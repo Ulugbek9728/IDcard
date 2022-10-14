@@ -42,7 +42,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
         }).then((response) => {
             setItems(response.data);
         }).catch((error) => {
-            console.log(error.response)
+
         })
     }
     function Tyuter() {
@@ -53,7 +53,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
         }).then((response) => {
             setTyuter(response.data);
         }).catch((error) => {
-            console.log(error.response)
+
         })
     }
     function Group() {
@@ -64,7 +64,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
         }).then((response) => {
             setGuruh(response.data);
         }).catch((error) => {
-            console.log(error.response)
+
         })
     }
     function GetGroup() {

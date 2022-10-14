@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Assets/enter.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/Enter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/Admin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Admin.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/SignIn.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/SignIn.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddDekan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddDekan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTicher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTicher.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/ComponentPrint.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/ComponentPrint.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Ful_Info.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Ful_Info.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/SignIn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/tyuter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/tyuter.js" afterDir="false" />
     </list>
@@ -18,6 +27,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -29,6 +39,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -88,6 +99,8 @@
       <workItem from="1665483718423" duration="1965000" />
       <workItem from="1665552673242" duration="3967000" />
       <workItem from="1665579382869" duration="2020000" />
+      <workItem from="1665633543925" duration="17051000" />
+      <workItem from="1665673426188" duration="3833000" />
     </task>
     <servers />
   </component>

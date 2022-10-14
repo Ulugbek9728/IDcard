@@ -7,12 +7,15 @@ import Tyuter from "./Pages/tyuter";
 import 'react-toastify/dist/ReactToastify.css';
 
 import FulInfo from "./Pages/Ful_Info";
+import Enter from "./Pages/Enter";
 
 function App(props) {
     return (
         <div>
+            {/**/}
             <Routes>
-                <Route path={"/"} element={<SignIn/>}/>
+                <Route path={"/"} element={<Enter/>}/>
+                <Route path={"/SignIn"} element={<SignIn/>}/>
                 <Route path={"/DekanPage"} element={<Main/>}/>
                 <Route path={"/TyutorPage"} element={<Tyuter/>}/>
                 <Route path={"/AdminPage/*"} element={<Admin/>}/>

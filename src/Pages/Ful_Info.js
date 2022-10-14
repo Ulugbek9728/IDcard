@@ -42,7 +42,7 @@ function FulInfo(props) {
 
             <div className="UserNameBox">
                 {
-                  student.image != ''  ?
+                  student.image != '' && student.image != null  ?
                       <img className='user' src={student.image} alt=""/>
                       :
                       <img className='user' src="/img/user.png" alt=""/>

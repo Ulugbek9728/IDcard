@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Modal, Input, Select,} from 'antd';
+import {Modal, Input, Select, Form,} from 'antd';
 import axios from "axios";
 import * as XLSX from 'xlsx';
 import image from "../img/image.png"
@@ -122,7 +122,7 @@ function User(props) {
                 if (error.response.status === 406){
                     setMessage2(error.response.data)
                 }
-                if (error.response.status >= 500){
+                if (error.response.status === 502){
                     setMessage2('Server bilan ulanishda xatolik')
                 }
             })
@@ -168,7 +168,7 @@ function User(props) {
                 if (error.response.status === 406){
                     setMessage2(error.response.data)
                 }
-                if (error.response.status >= 500){
+                if (error.response.status === 502){
                     setMessage2('Server bilan ulanishda xatolik')
                 }
             });
@@ -347,7 +347,7 @@ function User(props) {
                             <button onClick={showModal} className='btn btn-success yuklash'>
                                 Talaba qo'shish
                             </button>
-                            <Modal title={edit ? "Tahrirlash" : "Talaba qo'shish"} visible={isModalVisible}
+                            <Modal className='modalUser' title={edit ? "Tahrirlash" : "Talaba qo'shish"} visible={isModalVisible}
                                    onOk={handleOk} onCancel={handleCancel}>
 
                                 <div className="box px-2">
@@ -361,70 +361,91 @@ function User(props) {
                                         </div>
                                         <h4>Talaba 3x4 rasimi</h4>
                                     </div>
-                                    <Input placeholder="Book-ID" allowClear value={student.bookNumber}
+                                    <label htmlFor="Card-ID" style={{marginTop:"20px"}}>Card-ID</label>
+                                    <Input id='Card-ID' allowClear value={student.bookNumber}
                                            onChange={(e)=>{
                                                setStudent(
                                                    {...student,
                                                        bookNumber: e.target.value,
                                                    })}}/>
-
-                                    <input type="date" className='form-control' value={student.birthdate}
+                                    <label htmlFor='date'>Tug'ilgan sana</label>
+                                    <input type="date" id='date' className='form-control' value={student.birthdate}
                                            onChange={(e)=>{setStudent(
                                                {...student,
                                                    birthdate: e.target.value})}}/>
-
-                                    <Input placeholder="Familya" allowClear value={student.surname}
+                                    <label htmlFor='Familya'>Familya</label>
+                                    <Input id='Familya' allowClear value={student.surname}
                                            onChange={(e)=>{setStudent({...student, surname: e.target.value,})}}/>
-                                    <Input placeholder="Ism" allowClear value={student.name}
+                                    <label htmlFor='Ism'>Ism</label>
+                                    <Input id='Ism' allowClear value={student.name}
                                            onChange={(e)=>{setStudent({...student, name: e.target.value,})}}/>
-                                    <Input placeholder="Sharif" allowClear value={student.patronymic}
+                                    <label htmlFor='Sharif'>Sharif</label>
+                                    <Input id='Sharif' allowClear value={student.patronymic}
                                            onChange={(e)=>{setStudent({...student, patronymic: e.target.value,})}}/>
-                                    <Input placeholder="Passport seriya raqami" allowClear value={student.login}
+                                    <label htmlFor='Passport'>Passport seriya raqami</label>
+                                    <Input id='Passport' allowClear value={student.login}
                                            onChange={(e)=>{setStudent({...student, login: e.target.value.toUpperCase()})}}
                                            maxLength="9"/>
-                                    <Input placeholder="Telefon" allowClear value={student.phone} maxLength="13"
+                                    <label htmlFor='Telefon'>Telefon raqam</label>
+                                    <Input id='Telefon' allowClear value={student.phone} maxLength="13"
                                            onChange={(e)=>{setStudent({...student, phone: e.target.value,})}}/>
-                                    <Select placeholder="Fakultet" value={student.faculty}
-                                            onChange={FacultySelect}>
+                                </div>
+                                <div className="box px-2" style={{marginTop:"140px"}}>
+                                    <label htmlFor='#'>Fakultet</label>
+                                    <Select  placeholder="Fakultet" value={student.faculty}
+                                             onChange={FacultySelect}>
                                         {items.map((item,index) => (
                                             <Option value={item.faculty} key={item.id}>{item.faculty}</Option>))}
                                     </Select>
-                                    <Input placeholder="Yo'nalish" allowClear value={student.direction}
+                                    <label htmlFor='yonalish'>Yo'nalish</label>
+                                    <Input id='yonalish' allowClear value={student.direction}
                                            onChange={(e)=>{setStudent({...student, direction: e.target.value,})}}/>
-
+                                    <label htmlFor="#">Tyutor</label>
                                     <Select placeholder={'Tyutor'} onChange={TyuterSelect}>
                                         {tyuter&&tyuter.map((item,index) => (
                                             <Option key={item.id}>{item.surname} {item.name} {item.patronymic}</Option>
                                         ))}
                                     </Select>
-
-                                </div>
-                                <div className="box px-2" style={{marginTop:"11px"}}>
+                                    <label htmlFor="Guruh">Guruh</label>
                                     <Select placeholder={'Guruh'} onChange={GuruhSelect}>
                                         {guruh && guruh.map((item) => (
                                             <Option  key={item.id}>{item.number}</Option>))}
                                     </Select>
-                                    <Input placeholder=" Viloyati / Shaxar" allowClear value={student.address_region}
+                                    <label htmlFor="Viloyati">Viloyati / Shaxar</label>
+                                    <Input id='Viloyati' allowClear value={student.address_region}
                                            onChange={(e)=>{setStudent({...student, address_region: e.target.value,})}}/>
-                                    <Input placeholder="Tuman" allowClear value={student.address_district}
+                                    <label htmlFor="Tuman">Tuman</label>
+                                    <Input id='Tuman' allowClear value={student.address_district}
                                            onChange={(e)=>{setStudent({...student, address_district: e.target.value,})}}/>
-                                    <Input placeholder="Manzil" allowClear value={student.address}
+                                    <label htmlFor="Manzil">Manzil</label>
+                                    <Input id='Manzil' allowClear value={student.address}
                                            onChange={(e)=>{setStudent({...student, address: e.target.value,})}}/>
-                                    <Input placeholder="Otasining Familyasi" allowClear value={student.fathersurname}
+                                </div>
+                                <div className="box px-2" style={{marginTop:"64px"}}>
+
+                                    <label htmlFor="OtasiningF">Otasining Familyasi</label>
+                                    <Input id='OtasiningF' allowClear value={student.fathersurname}
                                            onChange={(e)=>{setStudent({...student, fathersurname: e.target.value,})}}/>
-                                    <Input placeholder="Otasining Ismi" allowClear value={student.fathername}
+                                    <label htmlFor="OtasiningIsmi">Otasining Ismi</label>
+                                    <Input id='OtasiningIsmi' allowClear value={student.fathername}
                                            onChange={(e)=>{setStudent({...student, fathername: e.target.value,})}}/>
-                                    <Input placeholder="Otasining Sharifi" allowClear value={student.fatherpatronymic}
+                                    <label htmlFor="OtasiningSharifi">Otasining Sharifi</label>
+                                    <Input id='OtasiningSharifi' allowClear value={student.fatherpatronymic}
                                            onChange={(e)=>{setStudent({...student, fatherpatronymic: e.target.value,})}}/>
-                                    <Input placeholder="Otasining Telefoni" maxLength="13" allowClear value={student.fatherphone}
+                                    <label htmlFor="OtasiningTelefoni">Otasining Telefoni</label>
+                                    <Input id='OtasiningTelefoni' maxLength="13" allowClear value={student.fatherphone}
                                            onChange={(e)=>{setStudent({...student, fatherphone: e.target.value,})}}/>
-                                    <Input placeholder="Onasining Familyasi" allowClear value={student.mothersurname}
+                                    <label htmlFor="OnasiningFamilyasi">Onasining Familyasi</label>
+                                    <Input id='OnasiningFamilyasi' allowClear value={student.mothersurname}
                                            onChange={(e)=>{setStudent({...student, mothersurname: e.target.value,})}}/>
-                                    <Input placeholder="Onasining Ismi" allowClear value={student.mothername}
+                                    <label htmlFor="OnasiningIsmi">Onasining Ismi</label>
+                                    <Input id='OnasiningIsmi' allowClear value={student.mothername}
                                            onChange={(e)=>{setStudent({...student, mothername: e.target.value,})}}/>
-                                    <Input placeholder="Onasining Sharifi" allowClear value={student.motherpatronymic}
+                                    <label htmlFor="OnasiningSharifi">Onasining Sharifi</label>
+                                    <Input id='OnasiningSharifi' allowClear value={student.motherpatronymic}
                                            onChange={(e)=>{setStudent({...student, motherpatronymic: e.target.value,})}}/>
-                                    <Input placeholder="Onasining Telefoni" maxLength="13" allowClear value={student.motherphone}
+                                    <label htmlFor="OnasiningTelefoni">Onasining Telefoni</label>
+                                    <Input id='OnasiningTelefoni' maxLength="13" allowClear value={student.motherphone}
                                            onChange={(e)=>{setStudent({...student, motherphone: e.target.value,})}}/>
                                 </div>
                             </Modal>
@@ -478,8 +499,6 @@ function User(props) {
                             </select>
 
                             <button onClick={deletGroup} className='btn btn-danger deletGroup'>Guruh o'chirish</button>
-
-
 
                             <table className="table table-bordered">
                                 <thead>

@@ -53,10 +53,10 @@ function SignIn(props) {
             }
         }).catch((error) => {
             console.log(error.response);
-            if (error.response.status >= 500) {
+            if (error.response.status === 502) {
                 setMessage("Serverda ulanishda xatolik")
             }
-            if (error.response.status = 400){
+            if (error.response.status === 400){
                 setMessage(error.response.data)
             }
             else {setMessage(error.response.statusText);}

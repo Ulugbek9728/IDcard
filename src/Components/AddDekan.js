@@ -40,7 +40,7 @@ function AddDekan(props) {
                 if (error.response.status === 406){
                     setMessage2(error.response.data)
                 }
-                if (error.response.status >= 500){
+                if (error.response.status === 502){
                     setMessage2('Server bilan ulanishda xatolik')
                 }
         })
@@ -63,7 +63,7 @@ function AddDekan(props) {
             if (error.response.status === 406){
                 setMessage2(error.response.data)
             }
-            if (error.response.status >= 500){
+            if (error.response.status === 502){
                 setMessage2('Server bilan ulanishda xatolik')
             }
         });
@@ -84,7 +84,7 @@ function AddDekan(props) {
         }).then((response) => {
             setDekan(response.data);
         }).catch((error) => {
-            if (error.response.status >= 500){
+            if (error.response.status === 502){
                 setMessage2('Server bilan ulanishda xatolik')
             }
         })
@@ -101,7 +101,7 @@ function AddDekan(props) {
                 setDekan('')
             }
         }).catch((error) => {
-            if (error.response.status >= 500){
+            if (error.response.status === 502){
                 setMessage2('Server bilan ulanishda xatolik')
             }
         });
@@ -127,51 +127,36 @@ function AddDekan(props) {
                 <button onClick={showModal} className='btn btn-success yuklash'>
                     Dekan qo'shish
                 </button>
-                <Modal title={edit ? "Tahrirlash" : "Dekan qo'shish"} visible={isModalVisible}
+                <Modal className='ticherModal' title={edit ? "Tahrirlash" : "Dekan qo'shish"} visible={isModalVisible}
                        onOk={handleOk} onCancel={handleCancel}>
                     <div>
-                        <Input value={creatDecan.surname} placeholder="Familya" allowClear onChange={(e)=>{
-                            setCreatDecan({
-                                ...creatDecan,
-                                surname: e.target.value,
-                            })
-                        }}/>
-                        <Input value={creatDecan.name} placeholder="Ism" allowClear
-                               onChange={(e)=>{
-                                   setCreatDecan({
-                                       ...creatDecan,
-                                       name: e.target.value,
-                                   })
-                               }}/>
-                        <Input value={creatDecan.patronymic} placeholder="Sharif" allowClear
-                               onChange={(e)=>{
-                                   setCreatDecan({
-                                       ...creatDecan,
-                                       patronymic: e.target.value,
-                                   })
-                               }}/>
-                        <Input value={creatDecan.faculty} placeholder="Fakultet" allowClear
-                               onChange={(e)=>{
-                                   setCreatDecan({
-                                       ...creatDecan,
-                                       faculty: e.target.value,
-                                   })
-                               }}/>
-                        <Input value={creatDecan.login} placeholder="Login" allowClear maxLength="9"
-                               onChange={(e)=>{
-                                   setCreatDecan({
-                                       ...creatDecan,
-                                       login: e.target.value.toUpperCase(),
-                                   })
-                               }}/>
-                        <Input value={creatDecan.password} placeholder="Parol" allowClear  onChange={(e)=>{
+                        <label htmlFor='Familya'>Familya</label>
+                        <Input id='Familya' value={creatDecan.surname} allowClear onChange={(e)=>{
+                            setCreatDecan({...creatDecan, surname: e.target.value,})}}/>
+                        <label htmlFor='Ism'>Ism</label>
+                        <Input id='Ism' value={creatDecan.name} allowClear
+                               onChange={(e)=>{setCreatDecan({...creatDecan, name: e.target.value,})}}/>
+
+                        <label htmlFor='Sharif'>Sharif</label>
+                        <Input id='Sharif' value={creatDecan.patronymic} allowClear
+                               onChange={(e)=>{setCreatDecan({...creatDecan,
+                                   patronymic: e.target.value,})}}/>
+                        <label htmlFor='Fakultet'>Fakultet</label>
+                        <Input id='Fakultet' value={creatDecan.faculty} allowClear
+                               onChange={(e)=>{setCreatDecan({...creatDecan,
+                                   faculty: e.target.value,})}}/>
+                        <label htmlFor="Login">Login</label>
+                        <Input id='Login' value={creatDecan.login} allowClear maxLength="9"
+                               onChange={(e)=>{setCreatDecan({...creatDecan,
+                                       login: e.target.value.toUpperCase(),})}}/>
+                        <label htmlFor="Parol">Parol</label>
+                        <Input id='Parol' value={creatDecan.password} allowClear  onChange={(e)=>{
                             setCreatDecan({
                                 ...creatDecan,
                                 password: e.target.value,
                             })
                         }}/>
                     </div>
-
                 </Modal>
             </div>
             <div className="box mt-5 pt-1">
