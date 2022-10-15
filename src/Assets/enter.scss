@@ -92,6 +92,9 @@
 
     button{
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       height: 50px;
       width: 300px;
       background: #FFFFFF;
@@ -102,6 +105,16 @@
       font-size: 18px;
       line-height: 21px;
       color: #1B6B50;
+      padding: 0;
+
+      a{
+        width: 100%!important;
+        height: 100%!important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }
+
