@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assets/SignIn.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/SignIn.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Assets/enter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/enter.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Enter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Enter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Ful_Info.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Ful_Info.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/SignIn.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,6 +92,8 @@
       <workItem from="1665673426188" duration="3833000" />
       <workItem from="1665728522067" duration="3739000" />
       <workItem from="1665747507314" duration="3630000" />
+      <workItem from="1665850296880" duration="84000" />
+      <workItem from="1665979393992" duration="5820000" />
     </task>
     <servers />
   </component>

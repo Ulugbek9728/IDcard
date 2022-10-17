@@ -72,7 +72,7 @@ function Enter(props) {
                         data-aos-duration="900"
                         data-aos-easing="ease-in-sine"
                         data-aos-delay="200">
-                    Batafsils
+                    Batafsil
                 </button>
 
             </div>
