@@ -134,7 +134,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                             <table className="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>N</th>
+                                    <th>№</th>
                                     <th>ID</th>
                                     <th>Familya</th>
                                     <th>Ism</th>
@@ -157,13 +157,11 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                                         <td>{item.login}</td>
                                         <td>{item.faculty}</td>
                                         <td>{groupName}</td>
-                                        <td>test.tdtu.uz/{item.login}</td>
+                                        <td>test.tdtu.uz/Full-info/{item.login}</td>
                                         <td><img src={"data:image/jpeg;base64," + item.qrImage} width={80} height={80}
                                                  alt=""/></td>
                                     </tr>
                                 })}
-
-
                                 </tbody>
                             </table>
                         </div>

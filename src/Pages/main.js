@@ -255,7 +255,7 @@ function Main(props) {
                                         <td>{item.phone}</td>
                                         <td>
                                             <button className="btn btn-success">
-                                                <a href={`/FulInfo/${item.login}`} target="_blank">Ba'tafsil</a>
+                                                <a href={`/Full-info/${item.login}`} target="_blank">Ba'tafsil</a>
                                             </button>
                                             <button className="btn btn-danger mx-1" onClick={() => {
                                                 Delet(item.id)

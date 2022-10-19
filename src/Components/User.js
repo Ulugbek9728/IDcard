@@ -112,7 +112,7 @@ function User(props) {
                     setIsModalVisible(false);
                     setIcon(false);
                     setGuruh('');
-                    setSucsessText("Ma'lumotlar taxrirlandi")
+                    setSucsessText("Ma'lumotlar tahrirlandi")
                 }
 
             }).catch((error) => {
@@ -208,6 +208,7 @@ function User(props) {
         const worksheet = workBook.Sheets[workBook.SheetNames[0]];
         const jsonData = XLSX.utils.sheet_to_json(worksheet);
         setGroups({...groups, students: jsonData,});
+        console.log(jsonData)
     };
 
     useEffect(()=>{
@@ -503,15 +504,15 @@ function User(props) {
                             <table className="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>N</th>
+                                    <th>№</th>
                                     <th>ID</th>
                                     <th>Familya</th>
                                     <th>Ism</th>
                                     <th>Sharif</th>
                                     <th>Telefon</th>
                                     <th>Fakultet</th>
-                                    <th>img</th>
-                                    <th>img3x4</th>
+                                    <th>QR</th>
+                                    <th>Rasim </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -537,7 +538,7 @@ function User(props) {
                                             }}>Tahrirlash</button>
                                             <button className="btn btn-danger mx-1" onClick={()=>{Delet(item.id)}}>O'chirish</button>
                                             <button className="btn btn-success mx-1">
-                                                <a href={`/FulInfo/${item.login}`} target="_blank">Ba'tafsil</a></button>
+                                                <a href={`/Full-info/${item.login}`} target="_blank">Ba'tafsil</a></button>
                                         </td>
                                     </tr>
                                 })}

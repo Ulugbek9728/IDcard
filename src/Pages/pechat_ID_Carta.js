@@ -11,7 +11,7 @@ function PechatIdCarta(props) {
     return (
         <div className="p-3">
             <ComponentPrint ref={componentRef} />
-            <button onClick={handlePrint}>Print this out!</button>
+            <button className='btn btn-success' onClick={handlePrint}>Ma'lumotlarni saqlash</button>
         </div>
     );
 }

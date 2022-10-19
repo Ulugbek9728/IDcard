@@ -12,14 +12,14 @@ import Enter from "./Pages/Enter";
 function App(props) {
     return (
         <div>
-            {/**/}
+
             <Routes>
                 <Route path={"/"} element={<Enter/>}/>
                 <Route path={"/SignIn"} element={<SignIn/>}/>
                 <Route path={"/DekanPage"} element={<Main/>}/>
                 <Route path={"/TyutorPage"} element={<Tyuter/>}/>
                 <Route path={"/AdminPage/*"} element={<Admin/>}/>
-                <Route path={"/FulInfo/:id"} element={<FulInfo/>}/>
+                <Route path={"/Full-info/:id"} element={<FulInfo/>}/>
             </Routes>
         </div>
     );

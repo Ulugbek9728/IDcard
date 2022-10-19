@@ -494,7 +494,7 @@ function Tyuter(props) {
                                                             setIcon(true)
                                                         }}>Taxrirlash</button>
                                                         <button className="btn btn-success">
-                                                            <a href={`/FulInfo/${item.login}`} target="_blank">Ba'tafsil</a>
+                                                            <a href={`/Full-info/${item.login}`} target="_blank">Ba'tafsil</a>
                                                         </button>
 
                                                     </td>

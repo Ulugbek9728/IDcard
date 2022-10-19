@@ -4,6 +4,8 @@ import "../css/fontawesome/css/all.min.css"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "../Assets/SignIn.scss"
+import {Link} from "react-router-dom";
+
 import {useNavigate} from "react-router";
 import {toast, ToastContainer} from "react-toastify";
 import {ApiName} from "../APIname";
@@ -62,7 +64,10 @@ function SignIn(props) {
             if (error.response.status === 400){
                 setMessage(error.response.data)
             }
-            else {setMessage(error.response.statusText);}
+            if (error.response.status === 405){
+                setMessage(error.response.data)
+            }
+
 
         })}
 
@@ -80,7 +85,17 @@ function SignIn(props) {
 
     return (
         <div className="SignIn">
+            <Link to="/"
+
+            >
+                <img className='nazad' src="/img/undo.png" alt=""
+                     data-aos="flip-up"
+                     data-aos-duration="1000"
+                     data-aos-easing="ease-in-sine"/>
+            </Link>
+
             <div className="Signbox">
+
                 <ToastContainer/>
 
                 <img className="Logo" src="/img/LOGOWIGHT.svg " alt=""

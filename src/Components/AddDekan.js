@@ -30,7 +30,7 @@ function AddDekan(props) {
                 setedit(false);
                 setCreatDecan('');
                 setDekan('');
-                setSucsessText("Dekan ma'lumotlari taxrirlandi")
+                setSucsessText("Dekan ma'lumotlari tahrirlandi")
             }
         }).catch((error) => {
             console.log(error.response);
@@ -163,7 +163,7 @@ function AddDekan(props) {
                 <table className="table table-bordered ">
                     <thead>
                     <tr>
-                        <th>N</th>
+                        <th>№</th>
                         <th>Familya</th>
                         <th>Ism</th>
                         <th>Sharif</th>

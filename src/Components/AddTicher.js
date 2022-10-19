@@ -41,7 +41,7 @@ function AddTicher(props) {
                     setIsModalVisible(false);
                     setedit(false);
                     setCreaTyuter('');
-                    setSucsessText("Ma'lumotlar taxrirlandi")
+                    setSucsessText("Ma'lumotlar tahrirlandi")
                 }
             }).catch((error) => {
                 if (error.response.status === 400){
@@ -190,7 +190,7 @@ function AddTicher(props) {
                 <table className="table table-bordered">
                     <thead>
                     <tr>
-                        <th>N</th>
+                        <th>№</th>
                         <th>Familya</th>
                         <th>Ism</th>
                         <th>Sharif</th>

@@ -1,3 +1,3 @@
-const ApiName = 'http://10.1.21.193:8080';
+const ApiName = 'http://api.id.tdtu.uz/';
 
 export {ApiName}

@@ -22,7 +22,7 @@ function Enter(props) {
     function enterInfo() {
         axios.get(`${ApiName}/auth/public/full_info/${login}`).
         then((response)=>{
-            navigate(`/FulInfo/${login}`)
+            navigate(`/Full-info/${login}`)
         }).catch((error) => {
             if (error.response.status === 405){
                 setMessage(error.response.data)
