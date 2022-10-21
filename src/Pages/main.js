@@ -11,6 +11,7 @@ import {useNavigate} from "react-router";
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import {ApiName} from "../APIname";
+import {Link} from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -198,6 +199,11 @@ function Main(props) {
                             {localStorage.getItem("user_Info").slice(0, 2)}
                         </button>
                         <ul className="dropdown-menu">
+                            <li>
+                                <a className="dropdown-item" href="#">
+                                    {localStorage.getItem("user_Info")}
+                                </a>
+                            </li>
                             <li onClick={showModal}>
                                 <a className="dropdown-item" href="#">Parolni yangilash</a></li>
                             <li onClick={signOut}><a className="dropdown-item" href="#">Chiqish<img
@@ -255,7 +261,7 @@ function Main(props) {
                                         <td>{item.phone}</td>
                                         <td>
                                             <button className="btn btn-success">
-                                                <a href={`/Full-info/${item.login}`} target="_blank">Ba'tafsil</a>
+                                                <a href={`/Full-info/${item.login}`} target='_blank'>Batafsil</a>
                                             </button>
                                             <button className="btn btn-danger mx-1" onClick={() => {
                                                 Delet(item.id)

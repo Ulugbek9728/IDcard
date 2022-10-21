@@ -15,7 +15,7 @@ function App(props) {
 
             <Routes>
                 <Route path={"/"} element={<Enter/>}/>
-                <Route path={"/SignIn"} element={<SignIn/>}/>
+                <Route path={"/Login"} element={<SignIn/>}/>
                 <Route path={"/DekanPage"} element={<Main/>}/>
                 <Route path={"/TyutorPage"} element={<Tyuter/>}/>
                 <Route path={"/AdminPage/*"} element={<Admin/>}/>

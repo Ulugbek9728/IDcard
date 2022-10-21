@@ -17,7 +17,7 @@ function FulInfo(props) {
     function Studen() {
         axios.get(`${ApiName}/auth/public/full_info/${id}`).then((response)=>{
             setStudent(response.data);
-            console.log(response);
+
             axios.get(`${ApiName}/groups/public/full_info/${response.data.groupId}`).then((response)=>{
                 setGroupNumber(response.data.number);
                 axios.get(`${ApiName}/adm/public/teacher/full_info/${response.data.teacher_id}`).then((response)=>{
@@ -25,12 +25,11 @@ function FulInfo(props) {
                 }).catch((error)=>{
                     console.log(error.response);})
             }).catch((error)=>{
-
             })
         }).catch((error) => {
-            console.log(error.response);
         })
     }
+
     return (
         <div className="fullInfo">
             <div className="header">
@@ -174,7 +173,7 @@ function FulInfo(props) {
             <div className="tyuterBox">
                 <div className="infoBox">
                     <div className="left">
-                        <img src="/img/iconFish.png" alt=""/>
+                        <img src="/img/iconfish.png" alt=""/>
                         Tyutor
                     </div>
                     <div className="righte">{Ticher.surname} {Ticher.name} {Ticher.patronymic}</div>

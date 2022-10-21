@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/undo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Assets/SignIn.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/SignIn.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddDekan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddDekan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddTicher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTicher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/enter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/enter.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/AdMin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/AdMin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/ComponentPrint.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/ComponentPrint.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Enter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Enter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Ful_Info.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Ful_Info.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/SignIn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/pechat_ID_Carta.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/pechat_ID_Carta.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/tyuter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/tyuter.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,7 +64,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -80,6 +88,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -114,6 +123,11 @@
       <workItem from="1665985647578" duration="2840000" />
       <workItem from="1666091211062" duration="647000" />
       <workItem from="1666169735895" duration="4917000" />
+      <workItem from="1666181963967" duration="365000" />
+      <workItem from="1666253213343" duration="339000" />
+      <workItem from="1666253605412" duration="644000" />
+      <workItem from="1666277720990" duration="9032000" />
+      <workItem from="1666362870530" duration="6679000" />
     </task>
     <servers />
   </component>

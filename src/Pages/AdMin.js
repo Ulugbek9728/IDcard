@@ -29,9 +29,7 @@ function AdMin(props) {
     }
 
     return (
-        <>
-
-            <Layout className='layout admin'
+        <><Layout className='layout admin'
                     style={{minHeight: '100vh',}}>
                 <Sider className='sider' collapsible collapsed={collapsed}
                        onCollapse={(value) => setCollapsed(value)}>
@@ -43,12 +41,12 @@ function AdMin(props) {
                                 </Link>
                         </Menu.Item>
                         <Menu.Item key="3" icon={<UserAddOutlined />}>
-                                <Link to='/AdminPage/AddTicher'>
+                                <Link to='/AdminPage/AddTeacher'>
                                     O'qtuvchilar
                                 </Link>
                         </Menu.Item>
                         <Menu.Item key="4" icon={<UserAddOutlined />}>
-                            <Link to='/AdminPage/Addstudent'>
+                            <Link to='/AdminPage/AddStudent'>
                                 Talabalar
                             </Link>
                         </Menu.Item>
@@ -74,7 +72,7 @@ function AdMin(props) {
                     </div>
                     <Content>
                         <Routes>
-                            <Route path={"/AddTicher"} element={<AddTicher/>}/>
+                            <Route path={"/AddTeacher"} element={<AddTicher/>}/>
                             <Route path={"/Addstudent"} element={<User/>}/>
                             <Route path={"/IDcard"} element={<PechatIdCarta/>}/>
                             <Route path={"/"} element={<AddDekan/>}/>

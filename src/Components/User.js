@@ -8,6 +8,7 @@ import {useNavigate} from "react-router";
 
 import '../Assets/Admin.scss'
 import {ApiName} from "../APIname";
+import {Link} from "react-router-dom";
 
 
 const {Option} = Select;
@@ -538,7 +539,8 @@ function User(props) {
                                             }}>Tahrirlash</button>
                                             <button className="btn btn-danger mx-1" onClick={()=>{Delet(item.id)}}>O'chirish</button>
                                             <button className="btn btn-success mx-1">
-                                                <a href={`/Full-info/${item.login}`} target="_blank">Ba'tafsil</a></button>
+                                                <a href={`/Full-info/${item.login}`} target='_blank'>Batafsil</a>
+                                            </button>
                                         </td>
                                     </tr>
                                 })}

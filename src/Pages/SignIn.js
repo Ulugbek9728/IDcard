@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import "../css/fontawesome/css/all.min.css"
+import "../css/fontawesome/css/all.min.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "../Assets/SignIn.scss"
+import "../Assets/SignIn.scss";
 import {Link} from "react-router-dom";
-
 import {useNavigate} from "react-router";
 import {toast, ToastContainer} from "react-toastify";
 import {ApiName} from "../APIname";
@@ -24,10 +23,8 @@ function SignIn(props) {
 
 
     function Login() {
-        axios.post(`${ApiName}/auth/login`,
-            {login, password}).then((response) => {
+        axios.post(`${ApiName}/auth/login`, {login, password}).then((response) => {
             if (response.status === 200) {
-                console.log(response);
                 if (response.data.degree === 'ADMIN'){
                     localStorage.setItem("token", response.data.jwt);
                     localStorage.setItem("user_Info", response.data.name);
@@ -57,18 +54,18 @@ function SignIn(props) {
                 }
             }
         }).catch((error) => {
-            console.log(error.response);
             if (error.response.status === 502) {
                 setMessage("Serverda ulanishda xatolik")
             }
             if (error.response.status === 400){
                 setMessage(error.response.data)
             }
+            if (error.response.status === 408){
+                setMessage(error.response.data)
+            }
             if (error.response.status === 405){
                 setMessage(error.response.data)
             }
-
-
         })}
 
     useEffect(() => {
@@ -85,9 +82,7 @@ function SignIn(props) {
 
     return (
         <div className="SignIn">
-            <Link to="/"
-
-            >
+            <Link to="/">
                 <img className='nazad' src="/img/undo.png" alt=""
                      data-aos="flip-up"
                      data-aos-duration="1000"
@@ -95,9 +90,7 @@ function SignIn(props) {
             </Link>
 
             <div className="Signbox">
-
                 <ToastContainer/>
-
                 <img className="Logo" src="/img/LOGOWIGHT.svg " alt=""
                      data-aos="flip-left"
                      data-aos-duration="1000"
@@ -106,8 +99,7 @@ function SignIn(props) {
                     data-aos="zoom-in"
                     data-aos-duration="900"
                     data-aos-easing="ease-in-sine"
-                    >Log in</h3>
-
+                    >Shaxsiy kabinet</h3>
                 <input type="text" value={login} onChange={(e) => setLogin(e.target.value.toUpperCase())}
                        className="form-control" placeholder="Enter login" maxLength="9"
                        data-aos="fade-up"
@@ -123,20 +115,18 @@ function SignIn(props) {
                            className="form-control" placeholder="Enter password"
                            value={password} onChange={(e) => setPassword(e.target.value)}/>
                     {passwordBoolin ?
-                        <img onClick={() => setPasswordBoolin(!passwordBoolin)} src="./img/show(1).png" alt=""/>
+                        <img onClick={() => setPasswordBoolin(!passwordBoolin)} src="/img/show(1).png" alt=""/>
                         :
-                        <img onClick={() => setPasswordBoolin(!passwordBoolin)} src="./img/show.png" alt=""/>
+                        <img onClick={() => setPasswordBoolin(!passwordBoolin)} src="/img/show.png" alt=""/>
                     }
                 </div>
-
-                <button onClick={Login} className="form-control loginbtn"
+                <button onClick={Login} className="form-control loginbtn "
                         data-aos="fade-up"
                         data-aos-duration="900"
                         data-aos-easing="ease-in-sine"
                         data-aos-delay="200">Log in</button>
-
             </div>
-            <img className="GroupImg" src="./img/Group5.svg" alt=""/>
+            <img className="GroupImg" src="/img/Group5.svg" alt=""/>
         </div>
     );
 }

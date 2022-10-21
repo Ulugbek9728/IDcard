@@ -89,7 +89,7 @@ function Enter(props) {
                         data-aos-duration="800"
                         data-aos-easing="ease-in-sine"
                         data-aos-delay="700">
-                    <Link to="/SignIn/">Kirish</Link>
+                    <Link to="/Login/">Kirish</Link>
                 </button>
             </div>
             <img className="GroupImg" src="./img/Group5.svg" alt=""/>

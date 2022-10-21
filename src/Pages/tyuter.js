@@ -9,6 +9,7 @@ import {toast, ToastContainer} from "react-toastify";
 import image from "../img/image.png";
 import * as XLSX from "xlsx";
 import {ApiName} from "../APIname";
+import {Link} from "react-router-dom";
 
 
 const { Header, Content, Sider } = Layout;
@@ -87,7 +88,6 @@ function Tyuter(props) {
                     "Authorization": "Bearer " + localStorage.getItem("token")
                 }
             }).then((response) => {
-
                 if (response.status === 200){
                     setStudent({
                         birthdate:'',
@@ -115,7 +115,6 @@ function Tyuter(props) {
                     setSucsessText("Ma'lumotlar taxrirlandi");
                     setIsModalVisible(false);
                 }
-
             }).catch((error) => {
                 if (error.response.status === 400){
                     setMessage(error.response.data.errors)
@@ -205,7 +204,6 @@ function Tyuter(props) {
         setIsModalVisible2(true);
     };
     const handleOk2 = () => {
-
         axios.post(`${ApiName}/adm/change/password/${localStorage.getItem('id')}`,NewPassword,{
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
@@ -305,19 +303,18 @@ function Tyuter(props) {
                     :
                     <Layout className='layout'
                             style={{minHeight: '100vh',}}>
-
-
                         <Sider className='sider' collapsible collapsed={collapsed}
                                onCollapse={(value) => setCollapsed(value)}>
-                            <div className="logo"><img src="/LOGOTDTU.png" alt=""/></div>
-                            <Menu defaultSelectedKeys={['0']} theme="dark" mode="inline">
+                            <div className="logo">
+                                <img src="/LOGOTDTU.png" alt=""/>
+                            </div>
+                            <Menu defaultSelectedKeys={groupID} theme="dark" mode="inline">
                                 {guruh.map((item, index)=>{
-                                    return <Menu.Item key={index+1} icon={<TeamOutlined />} onClick={()=>{
-                                        setGroupID(item.id)
-                                    }}>
-                            <span>
-                                {item.number}
-                            </span>
+                                    return <Menu.Item key={item.id} icon={<TeamOutlined />} onClick={()=>{
+                                        setGroupID(item.id)}}>
+                                        <span>
+                                            {item.number}
+                                        </span>
                                     </Menu.Item>
                                 })}
                             </Menu>
@@ -334,6 +331,11 @@ function Tyuter(props) {
                                     {localStorage.getItem("user_Info").slice(0,2)}
                                 </button>
                                 <ul className="dropdown-menu">
+                                    <li>
+                                        <a className="dropdown-item" href="#">
+                                            {localStorage.getItem("user_Info")}
+                                        </a>
+                                    </li>
                                     <li onClick={showModal2}>
                                         <a className="dropdown-item" href="#">
                                             Parolni yangilash
@@ -461,8 +463,7 @@ function Tyuter(props) {
                                                    onChange={(e)=>{setStudent({...student, address: e.target.value,})}}/>
                                         </div>
                                     </Modal>
-                                    <div className="box mt-5">.
-
+                                    <div className="box mt-5">
                                         <table className="table table-bordered">
                                             <thead>
                                             <tr>
@@ -494,7 +495,7 @@ function Tyuter(props) {
                                                             setIcon(true)
                                                         }}>Taxrirlash</button>
                                                         <button className="btn btn-success">
-                                                            <a href={`/Full-info/${item.login}`} target="_blank">Ba'tafsil</a>
+                                                            <a href={`/Full-info/${item.login}`} target='_blank'>Batafsil</a>
                                                         </button>
 
                                                     </td>

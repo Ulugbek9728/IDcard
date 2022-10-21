@@ -157,7 +157,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                                         <td>{item.login}</td>
                                         <td>{item.faculty}</td>
                                         <td>{groupName}</td>
-                                        <td>test.tdtu.uz/Full-info/{item.login}</td>
+                                        <td>http://id.tdtu.uz/Full-info/{item.login}</td>
                                         <td><img src={"data:image/jpeg;base64," + item.qrImage} width={80} height={80}
                                                  alt=""/></td>
                                     </tr>
