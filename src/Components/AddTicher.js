@@ -160,7 +160,8 @@ function AddTicher(props) {
                         <label htmlFor='Sharif'>Sharif</label>
                         <Input id='Sharif' value={creatTyuter.patronymic} allowClear onChange={
                             (e)=>{setCreaTyuter({...creatTyuter, patronymic: e.target.value,})}}/>
-                        <Input value={creatTyuter.phone} placeholder="Telefon" allowClear maxLength="13"
+                        <label htmlFor="Telefon">Telefon</label>
+                        <Input id='Telefon' value={creatTyuter.phone} allowClear maxLength="13"
                                onChange={(e)=>{setCreaTyuter({...creatTyuter, phone: e.target.value,})}}/>
                         <label htmlFor='#'>Fakultet</label>
                         <Select showSearch value={creatTyuter.faculty} optionFilterProp="children"
