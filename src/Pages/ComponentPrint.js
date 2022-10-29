@@ -86,16 +86,16 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
     }
     return (
         <>
-            {
-                loading ?
-                    <div className="loding">
-                        <div className="ring">
-                            <img src="/LOGOTDTU.png" alt=""/>
-                            <span></span>
-                        </div>
-                    </div>
-                    :
+
                     <div>
+                        {loading ?
+                            <div className="loding">
+                            <div className="ring">
+                                <img src="/LOGOTDTU.png" alt=""/>
+                                <span></span>
+                            </div>
+                            </div>
+                        :""}
                         <label htmlFor="fakultet"><h5>Fakultet</h5></label>
                         <select id='fakultet' className='form-control my-2' style={{width: "30%"}}
                                 onChange={(e) => {
@@ -157,7 +157,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                                         <td>{item.login}</td>
                                         <td>{item.faculty}</td>
                                         <td>{groupName}</td>
-                                        <td>http://id.tdtu.uz/Full-info/{item.login}</td>
+                                        <td>http://id.tdtu.uz/Info/{item.login}</td>
                                         <td><img src={"data:image/jpeg;base64," + item.qrImage} width={80} height={80}
                                                  alt=""/></td>
                                     </tr>
@@ -166,7 +166,6 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                             </table>
                         </div>
                     </div>
-            }
         </>
     );
 });

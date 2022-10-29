@@ -1,3 +1,3 @@
-const ApiName = 'http://api.id.tdtu.uz/';
+const ApiName = 'http://api.id.tdtu.uz';
 
 export {ApiName}

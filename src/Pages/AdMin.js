@@ -1,7 +1,8 @@
 import React, {useState, useRef} from 'react';
 import {
     UserAddOutlined,
-    CreditCardOutlined
+    CreditCardOutlined,
+    ApartmentOutlined
 } from '@ant-design/icons';
 import {Layout, Menu,  Select,} from 'antd';
 import {Route, Routes, useNavigate} from "react-router";
@@ -12,6 +13,7 @@ import AddTicher from "../Components/AddTicher";
 import {Link} from "react-router-dom";
 import User from "../Components/User";
 import PechatIdCarta from "./pechat_ID_Carta";
+import Groups from "../Components/Groups";
 
 
 const { Header, Content, Sider } = Layout;
@@ -50,6 +52,11 @@ function AdMin(props) {
                                 Talabalar
                             </Link>
                         </Menu.Item>
+                        <Menu.Item key="6" icon={<ApartmentOutlined />}>
+                            <Link to='/AdminPage/Guruhlar'>
+                                Guruhlar
+                            </Link>
+                        </Menu.Item>
                         <Menu.Item key="5" icon={<CreditCardOutlined />}>
                             <Link to='/AdminPage/IDcard'>
                                 ID Card Info
@@ -75,6 +82,7 @@ function AdMin(props) {
                             <Route path={"/AddTeacher"} element={<AddTicher/>}/>
                             <Route path={"/Addstudent"} element={<User/>}/>
                             <Route path={"/IDcard"} element={<PechatIdCarta/>}/>
+                            <Route path={"/Guruhlar"} element={<Groups/>}/>
                             <Route path={"/"} element={<AddDekan/>}/>
                         </Routes>
                     </Content>

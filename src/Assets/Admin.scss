@@ -127,11 +127,11 @@
 
 .admin{
   .loding {
-    width: 116%;
+    width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: -16%;
+    left: 0;
     z-index: 10;
     background-color: #1B6B50;
     background-image: url("../img/politex_img1.svg");

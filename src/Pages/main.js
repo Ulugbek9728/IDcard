@@ -11,7 +11,6 @@ import {useNavigate} from "react-router";
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import {ApiName} from "../APIname";
-import {Link} from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -129,7 +128,6 @@ function Main(props) {
             setSucsessText("Parol yangilandi");
             setNewPassword('')
         }).catch((error) => {
-            console.log(error.response);
             if (error.response.status === 400){
                 setMessage(error.response.data.errors)
             }
@@ -261,7 +259,7 @@ function Main(props) {
                                         <td>{item.phone}</td>
                                         <td>
                                             <button className="btn btn-success">
-                                                <a href={`/Full-info/${item.login}`} target='_blank'>Batafsil</a>
+                                                <a href={`/Info/${item.login}`} target='_blank'>Batafsil</a>
                                             </button>
                                             <button className="btn btn-danger mx-1" onClick={() => {
                                                 Delet(item.id)

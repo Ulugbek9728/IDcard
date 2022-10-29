@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Groups.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/APIname.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/APIname.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/Admin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Admin.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddDekan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddDekan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTicher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTicher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/AdMin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/AdMin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/ComponentPrint.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/ComponentPrint.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Enter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Enter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/tyuter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/tyuter.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="SCSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -35,6 +48,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -76,8 +90,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -117,6 +131,12 @@
       <workItem from="1666253605412" duration="644000" />
       <workItem from="1666277720990" duration="9032000" />
       <workItem from="1666362870530" duration="7020000" />
+      <workItem from="1666792140653" duration="381000" />
+      <workItem from="1666793428128" duration="580000" />
+      <workItem from="1666881450301" duration="1052000" />
+      <workItem from="1666892346149" duration="1221000" />
+      <workItem from="1667043790123" duration="949000" />
+      <workItem from="1667053894057" duration="18181000" />
     </task>
     <servers />
   </component>

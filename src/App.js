@@ -19,7 +19,7 @@ function App(props) {
                 <Route path={"/DekanPage"} element={<Main/>}/>
                 <Route path={"/TyutorPage"} element={<Tyuter/>}/>
                 <Route path={"/AdminPage/*"} element={<Admin/>}/>
-                <Route path={"/Full-info/:id"} element={<FulInfo/>}/>
+                <Route path={"/Info/:id"} element={<FulInfo/>}/>
             </Routes>
         </div>
     );

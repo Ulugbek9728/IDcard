@@ -145,10 +145,10 @@ function AddTicher(props) {
             <ToastContainer/>
             <div style={{ margin: '16px 0' }}>
                 <button onClick={showModal} className='btn btn-success yuklash'>
-                   O'qtuvchi qo'shish
+                   O'qituvchi qo'shish
                 </button>
 
-                <Modal className='ticherModal' title={edit ? "Tahrirlash" : "O'qtuvchi qo'shish"} visible={isModalVisible}
+                <Modal className='ticherModal' title={edit ? "Tahrirlash" : "O'qituvchi qo'shish"} visible={isModalVisible}
                        onOk={handleOk} onCancel={handleCancel}>
                     <div>
                         <label htmlFor='Familya'>Familya</label>
@@ -228,5 +228,4 @@ function AddTicher(props) {
         </div>
     );
 }
-
 export default AddTicher;

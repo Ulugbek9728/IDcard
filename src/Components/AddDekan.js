@@ -83,6 +83,7 @@ function AddDekan(props) {
             headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
         }).then((response) => {
             setDekan(response.data);
+            console.log(response.data)
         }).catch((error) => {
             if (error.response.status === 502){
                 setMessage2('Server bilan ulanishda xatolik')

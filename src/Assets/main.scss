@@ -63,11 +63,6 @@
       top: 164px;
       right: 50px;
     }
-    .deletGroup{
-      position: absolute;
-      top: 625px;
-      right: 50px;
-    }
     .table{
       margin-top: 40px;
       border: 1px solid black;
@@ -81,7 +76,7 @@
   .loding {
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
