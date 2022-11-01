@@ -219,6 +219,10 @@ function Tyuter(props) {
             if (error.response.status === 406){
                 setMessage2(error.response.data)
             }
+            if (error.response.status === 408){
+                setMessage2(error.response.data)
+            }
+
             if (error.response.status === 502){
                 setMessage2('Server bilan ulanishda xatolik')
             }
@@ -475,7 +479,7 @@ function Tyuter(props) {
                                         <th>Sharif</th>
                                         <th>Tug'ilgan yil</th>
                                         <th>Yashash manzil</th>
-                                        <th>tel:</th>
+                                        <th>Telefon raqam</th>
                                         <th>ID</th>
                                     </tr>
                                     </thead>

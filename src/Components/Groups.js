@@ -97,7 +97,6 @@ function Groups(props) {
             if (error.response.status === 502){
                 setMessage2('Server bilan ulanishda xatolik')
             }
-            console.log(error.response);
         })
     };
     const handleCancel = () => {

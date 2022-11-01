@@ -139,11 +139,11 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                                     <th>Familya</th>
                                     <th>Ism</th>
                                     <th>Sharif</th>
-                                    <th>Passport seriya</th>
+                                    <th>Pasport seriya</th>
                                     <th>Fakultet</th>
                                     <th>Guruh</th>
                                     <th>Link</th>
-                                    <th>QR img</th>
+                                    <th>QR</th>
                                 </tr>
                                 </thead>
                                 <tbody>
