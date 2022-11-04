@@ -498,10 +498,13 @@ function Tyuter(props) {
                                                     showModal();
                                                     setStudent(item);
                                                     setedit(true);
-                                                    setIcon(true)
-                                                }}>Taxrirlash</button>
+                                                    setIcon(true)}}>
+                                                    <img className='iconEdit' src="/img/editing.png" alt=""/>
+                                                </button>
                                                 <button className="btn btn-success">
-                                                    <a href={`/Info/${item.login}`} target='_blank'>Batafsil</a>
+                                                    <a href={`/Info/${item.login}`} target='_blank'>
+                                                        <img className='iconEdit' src="/img/view.png" alt=""/>
+                                                    </a>
                                                 </button>
 
                                             </td>

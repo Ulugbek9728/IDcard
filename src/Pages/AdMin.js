@@ -44,7 +44,7 @@ function AdMin(props) {
                         </Menu.Item>
                         <Menu.Item key="3" icon={<UserAddOutlined />}>
                                 <Link to='/AdminPage/AddTeacher'>
-                                    O'qtuvchilar
+                                    O'qituvchilar
                                 </Link>
                         </Menu.Item>
                         <Menu.Item key="4" icon={<UserAddOutlined />}>

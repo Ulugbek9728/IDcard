@@ -28,6 +28,7 @@ function User(props) {
     const [tyuterID, setTyuterID] = useState('');
     const [groupID, setGroupID] = useState('');
     const [groupName, setGroupName] = useState('');
+    const [studentId, setStudentId] = useState('');
 
     const [tyuter, setTyuter] = useState([]);
     const [guruh, setGuruh] = useState([]);
@@ -280,13 +281,14 @@ function User(props) {
             console.log(error.response)
         })
     }
-    function Delet(id) {
-        axios.delete(`${ApiName}/auth/adm/delete/student/${id}`, {
+    function Delet() {
+        axios.delete(`${ApiName}/auth/adm/delete/student/${studentId}`, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }
         }).then((response) => {
-            setSucsessText("Ma'lumotlar o'chirildi")
+            setSucsessText("Ma'lumotlar o'chirildi");
+            setStudentId('')
         }).catch((error) => {});
     }
     function baseImage (event) {
@@ -520,11 +522,18 @@ function User(props) {
                                         showModal();
                                         setStudent(item);
                                         setedit(true);
-                                        setIcon(true)
-                                    }}>Tahrirlash</button>
-                                    <button className="btn btn-danger mx-1" onClick={()=>{Delet(item.id)}}>O'chirish</button>
+                                        setIcon(true)}}>
+                                        <img className='iconEdit' src="/img/editing.png" alt=""/>
+                                    </button>
+                                    <button className="btn btn-danger mx-1"
+                                            data-bs-toggle="modal" data-bs-target="#myModal"
+                                    onClick={()=>{setStudentId(item.id)}}>
+                                        <img className='iconEdit' src="/img/delete.png" alt=""/>
+                                    </button>
                                     <button className="btn btn-success mx-1">
-                                        <a href={`/Info/${item.login}`} target='_blank'>Batafsil</a>
+                                        <a href={`/Info/${item.login}`} target='_blank'>
+                                            <img className='iconEdit' src="/img/view.png" alt=""/>
+                                        </a>
                                     </button>
                                 </td>
                             </tr>
@@ -533,6 +542,29 @@ function User(props) {
 
                         </tbody>
                     </table>
+
+                    <div className="modal" id="myModal">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h4 className="modal-title">Tasdiqlash oynasi </h4>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <div className="modal-body">
+                                    <b>Talaba</b> ma'lumotlarini o'chirmoqchimisiz
+                                </div>
+
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
+                                            onClick={Delet}>
+                                        <img className='iconEdit' src="/img/delete.png" alt=""/>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

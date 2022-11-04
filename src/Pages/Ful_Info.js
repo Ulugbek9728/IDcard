@@ -3,12 +3,15 @@ import "../Assets/full_info.scss"
 import axios from "axios";
 import {useParams} from "react-router";
 import {ApiName} from "../APIname";
+import {toast, ToastContainer} from "react-toastify";
 
 function FulInfo(props) {
     const {id} = useParams();
     const [student, setStudent] = useState({});
     const [Ticher, setTicher] = useState({});
     const [groupNumber, setGroupNumber] = useState('');
+    const [message, setMessage] = useState('');
+
 
     useEffect(() => {
         Studen();
@@ -17,7 +20,6 @@ function FulInfo(props) {
     function Studen() {
         axios.get(`${ApiName}/auth/public/full_info/${id}`).then((response)=>{
             setStudent(response.data);
-
             axios.get(`${ApiName}/groups/public/full_info/${response.data.groupId}`).then((response)=>{
                 setGroupNumber(response.data.number);
                 axios.get(`${ApiName}/adm/public/teacher/full_info/${response.data.teacher_id}`).then((response)=>{
@@ -27,11 +29,27 @@ function FulInfo(props) {
             }).catch((error)=>{
             })
         }).catch((error) => {
+            console.log(error.response);
+            if (error.response.status === 405){
+                setMessage(error.response.data)
+            }
         })
+    }
+
+    useEffect(() => {
+        notify();
+        setMessage('')
+    },[message]);
+
+    function notify() {
+        if (message.trim().length > 0 ){
+            toast.error(message)
+        }
     }
 
     return (
         <div className="fullInfo">
+            <ToastContainer/>
             <div className="header">
                <div className="title">
                    ISLOM KARIMOV NOMIDAGI <br/>

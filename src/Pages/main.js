@@ -18,7 +18,6 @@ const { Header, Content, Footer, Sider } = Layout;
 function Main(props) {
     const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
-    const [loading, setLoading] = useState(false);
     const [sucsessText, setSucsessText] = useState('');
     const [message, setMessage] = useState([]);
     const [message2, setMessage2] = useState('');
@@ -33,6 +32,8 @@ function Main(props) {
     const [allstudent, setAllStudent] = useState([]);
     const [NewPassword, setNewPassword] = useState({});
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [studentId, setStudentId] = useState('');
+
 
     function signOut() {
         localStorage.removeItem("token");
@@ -89,24 +90,23 @@ function Main(props) {
     },[groupID, sucsessText]);
 
     function GetGroup() {
-        setLoading(true);
+
         axios.post(`${ApiName}/auth/show/dekan/group/list/${groupID}`, '',{
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }
         }).then((response) => {
-            setLoading(false);
+
             setAllStudent(response.data)
         }).catch((error) => {
-            setLoading(false);
             if (error.response.status === 502) {
                 setMessage("Serverda ulanishda xatolik")
             }
             else {setMessage(error.response.statusText);}
         })
     }
-    function Delet(id) {
-        axios.delete(`${ApiName}/auth/dekan/delete/student/${id}`, {
+    function Delet() {
+        axios.delete(`${ApiName}/auth/dekan/delete/student/${studentId}`, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }
@@ -259,11 +259,13 @@ function Main(props) {
                                         <td>{item.phone}</td>
                                         <td>
                                             <button className="btn btn-success">
-                                                <a href={`/Info/${item.login}`} target='_blank'>Batafsil</a>
+                                                <a href={`/Info/${item.login}`} target='_blank'>
+                                                    <img className='iconEdit' src="/img/view.png" alt=""/>
+                                                </a>
                                             </button>
-                                            <button className="btn btn-danger mx-1" onClick={() => {
-                                                Delet(item.id)
-                                            }}>O'chirish
+                                            <button className="btn btn-danger mx-1" data-bs-toggle="modal"
+                                                    data-bs-target="#myModal" onClick={()=>{setStudentId(item.id)}}>
+                                                <img className='iconEdit' src="/img/delete.png" alt=""/>
                                             </button>
 
                                         </td>
@@ -273,6 +275,29 @@ function Main(props) {
 
                                 </tbody>
                             </table>
+
+                            <div className="modal" id="myModal">
+                                <div className="modal-dialog">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <h4 className="modal-title">Tasdiqlash oynasi </h4>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div className="modal-body">
+                                            <b>Talaba</b> ma'lumotlarini o'chirmoqchimisiz
+                                        </div>
+
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
+                                                    onClick={Delet}>
+                                                <img className='iconEdit' src="/img/delete.png" alt=""/>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </Content>
                     <Footer>

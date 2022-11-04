@@ -20,11 +20,14 @@ function SignIn(props) {
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState('');
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
 
     function Login() {
+        setLoading(true);
         axios.post(`${ApiName}/auth/login`, {login, password}).then((response) => {
             if (response.status === 200) {
+                setLoading(false);
                 if (response.data.degree === 'ADMIN'){
                     localStorage.setItem("token", response.data.jwt);
                     localStorage.setItem("user_Info", response.data.name);
@@ -54,6 +57,7 @@ function SignIn(props) {
                 }
             }
         }).catch((error) => {
+            setLoading(false);
             if (error.response.status === 502) {
                 setMessage("Serverda ulanishda xatolik")
             }
@@ -82,6 +86,14 @@ function SignIn(props) {
 
     return (
         <div className="SignIn">
+            {loading ?
+                <div className="loding">
+                    <div className="ring">
+                        <img src="/LOGOTDTU.png" alt=""/>
+                        <span></span>
+                    </div>
+                </div>
+                :""}
             <Link to="/">
                 <img className='nazad' src="/img/undo.png" alt=""
                      data-aos="flip-up"

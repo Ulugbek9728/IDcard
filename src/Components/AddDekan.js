@@ -14,6 +14,7 @@ function AddDekan(props) {
     const [Dekan, setDekan] = useState([]);
     const [message, setMessage] = useState([]);
     const [message2, setMessage2] = useState('');
+    const [dekanId, setDekanId] = useState('');
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -83,7 +84,6 @@ function AddDekan(props) {
             headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
         }).then((response) => {
             setDekan(response.data);
-            console.log(response.data)
         }).catch((error) => {
             if (error.response.status === 502){
                 setMessage2('Server bilan ulanishda xatolik')
@@ -91,8 +91,8 @@ function AddDekan(props) {
         })
     }
     
-    function Delet(id) {
-        axios.delete(`${ApiName}/dekan/adm/delete/${id}`, {
+    function Delet() {
+        axios.delete(`${ApiName}/dekan/adm/delete/${dekanId}`, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }
@@ -188,8 +188,13 @@ function AddDekan(props) {
                                     showModal();
                                     setCreatDecan(item);
                                     setedit(true)
-                                }} className="btn btn-warning mx-1">Tahrirlash</button>
-                                <button onClick={()=>{Delet(item.id)}} className="btn btn-danger mx-1">O'chirish</button>
+                                }} className="btn btn-warning mx-1">
+                                    <img className='iconEdit' src="/img/editing.png" alt=""/>
+                                </button>
+                                <button onClick={()=>{setDekanId(item.id)}} className="btn btn-danger mx-1"
+                                        data-bs-toggle="modal" data-bs-target="#myModal">
+                                    <img className='iconEdit' src="/img/delete.png" alt=""/>
+                                </button>
                             </td>
                         </tr>
                     })}
@@ -197,6 +202,29 @@ function AddDekan(props) {
 
                     </tbody>
                 </table>
+
+                <div className="modal" id="myModal">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h4 className="modal-title">Tasdiqlash oynasi </h4>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <div className="modal-body">
+                                <b>Dekan</b> ma'lumotlarini o'chirmoqchimisiz
+                            </div>
+
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
+                                        onClick={Delet}>
+                                    <img className='iconEdit' src="/img/delete.png" alt=""/>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

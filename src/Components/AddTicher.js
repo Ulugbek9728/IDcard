@@ -19,6 +19,7 @@ function AddTicher(props) {
     const [creatTyuter, setCreaTyuter] = useState({});
     const [message, setMessage] = useState([]);
     const [message2, setMessage2] = useState('');
+    const [tyuterId, setTyuterId] = useState('');
 
     useEffect(()=>{
         fakulty();
@@ -115,14 +116,15 @@ function AddTicher(props) {
         }).catch((error) => {})
     }
 
-    function Delet(id) {
-        axios.delete(`${ApiName}/adm/delete/teacher/${id}`,{
+    function Delet() {
+        axios.delete(`${ApiName}/adm/delete/teacher/${tyuterId}`,{
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }
         }).then((response) => {
             if (response.status === 200){
                 setSucsessText("Ma'lumotlar o'chirildi");
+                setTyuterId('')
             }
         }).catch((error) => {});
     }
@@ -217,13 +219,41 @@ function AddTicher(props) {
                                     showModal();
                                     setCreaTyuter(item);
                                     setedit(true)
-                                }} className="btn btn-warning mx-1">Tahrirlash</button>
-                                <button onClick={()=>{Delet(item.id)}} className="btn btn-danger mx-1">O'chirish</button>
+                                }} className="btn btn-warning mx-1">
+                                    <img className='iconEdit' src="/img/editing.png" alt=""/>
+                                </button>
+                                <button className="btn btn-danger mx-1" onClick={()=>{setTyuterId(item.id)}}
+                                        data-bs-toggle="modal" data-bs-target="#myModal">
+                                    <img className='iconEdit' src="/img/delete.png" alt=""/>
+                                </button>
                             </td>
                         </tr>
                     })}
                     </tbody>
                 </table>
+
+                <div className="modal" id="myModal">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h4 className="modal-title">Tasdiqlash oynasi </h4>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <div className="modal-body">
+                                <b>O'qituvchi</b> ma'lumotlarini o'chirmoqchimisiz
+                            </div>
+
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
+                                        onClick={Delet}>
+                                    <img className='iconEdit' src="/img/delete.png" alt=""/>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

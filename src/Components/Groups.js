@@ -234,14 +234,13 @@ function Groups(props) {
                                         onClick={()=>{
                                             showModal();
                                             setGuruhName(item.number);
-                                            setGuruhID(item.id)
-                                        }}>
-                                    Tahrirlash
+                                            setGuruhID(item.id)}}>
+                                    <img className='iconEdit' src="/img/editing.png" alt=""/>
                                 </button>
                                 <button type="button" className="btn btn-danger mx-1"
                                         data-bs-toggle="modal" data-bs-target="#myModal"
                                         onClick={()=>{setGuruhName(item.number);setGuruhID(item.id)}}>
-                                    O'chirish
+                                    <img className='iconEdit' src="/img/delete.png" alt=""/>
                                 </button>
                             </td>
                         </tr>
@@ -262,8 +261,10 @@ function Groups(props) {
                             </div>
 
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-success" data-bs-dismiss="modal"
-                                onClick={deletGroup}>Ha</button>
+                                <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
+                                onClick={deletGroup}>
+                                    <img className='iconEdit' src="/img/delete.png" alt=""/>
+                                </button>
                             </div>
 
                         </div>
