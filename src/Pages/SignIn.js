@@ -113,7 +113,7 @@ function SignIn(props) {
                     data-aos-easing="ease-in-sine"
                     >Shaxsiy kabinet</h3>
                 <input type="text" value={login} onChange={(e) => setLogin(e.target.value.toUpperCase())}
-                       className="form-control" placeholder="Enter login" maxLength="9"
+                       className="form-control" placeholder="Login kiriting" maxLength="9"
                        data-aos="fade-up"
                        data-aos-duration="900"
                        data-aos-easing="ease-in-sine"
@@ -124,7 +124,7 @@ function SignIn(props) {
                      data-aos-easing="ease-in-sine"
                      data-aos-delay="700">
                     <input type={passwordBoolin ? "password" : "text"}
-                           className="form-control" placeholder="Enter password"
+                           className="form-control" placeholder="Parol kiriting"
                            value={password} onChange={(e) => setPassword(e.target.value)}/>
                     {passwordBoolin ?
                         <img onClick={() => setPasswordBoolin(!passwordBoolin)} src="/img/show(1).png" alt=""/>
@@ -136,7 +136,7 @@ function SignIn(props) {
                         data-aos="fade-up"
                         data-aos-duration="900"
                         data-aos-easing="ease-in-sine"
-                        data-aos-delay="200">Log in</button>
+                        data-aos-delay="200">Kirish</button>
             </div>
             <img className="GroupImg" src="/img/Group5.svg" alt=""/>
         </div>

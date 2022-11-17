@@ -27,6 +27,7 @@ function AdMin(props) {
     function signOut() {
         localStorage.removeItem("token");
         localStorage.removeItem("user_Info");
+        localStorage.removeItem("id");
         navigate("/")
     }
 

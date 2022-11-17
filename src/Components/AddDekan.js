@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Modal,Input, Select,} from 'antd';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
+import * as XLSX from "xlsx";
 import {ApiName} from "../APIname";
 
 const { Option } = Select;
@@ -12,6 +13,7 @@ function AddDekan(props) {
     const [sucsessText, setSucsessText] = useState('');
     const [creatDecan, setCreatDecan] = useState({});
     const [Dekan, setDekan] = useState([]);
+
     const [message, setMessage] = useState([]);
     const [message2, setMessage2] = useState('');
     const [dekanId, setDekanId] = useState('');
@@ -75,10 +77,30 @@ function AddDekan(props) {
         setedit(false);
     };
 
+    const testExcel = () =>{
+        let sortDekan=[];
+        Dekan && Dekan.map((item)=>{
+           let sortDekan1 = {
+                Ism:item.name,
+                Familya:item.surname,
+                Sharif:item.patronymic,
+                Fakultet:item.faculty,
+                Login:item.login,
+                Parol:item.password
+            };
+           let test = sortDekan.push(sortDekan1)
+
+        });
+        const wb = XLSX.utils.book_new(),
+            ws = XLSX.utils.json_to_sheet(sortDekan);
+        XLSX.utils.book_append_sheet(wb,ws, "My File");
+        XLSX.writeFile(wb, "Dekanlar.xlsx");
+
+    };
+
     useEffect(() => {
         DekanInfo()
     },[sucsessText]);
-
     function DekanInfo() {
         axios.post(`${ApiName}/dekan/adm/dekan_list`, '',{
             headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
@@ -90,7 +112,6 @@ function AddDekan(props) {
             }
         })
     }
-    
     function Delet() {
         axios.delete(`${ApiName}/dekan/adm/delete/${dekanId}`, {
             headers: {
@@ -107,14 +128,12 @@ function AddDekan(props) {
             }
         });
     }
-
     useEffect(() => {
         notify();
         setMessage('');
         setMessage2('');
         setSucsessText('')
     },[message, sucsessText, message2]);
-
     function notify() {
         if (message != ''){message && message.map((item) => (toast.error(item)))}
         if (sucsessText != ''){toast.success(sucsessText)}
@@ -161,6 +180,7 @@ function AddDekan(props) {
                 </Modal>
             </div>
             <div className="box mt-5 pt-1">
+
                 <table className="table table-bordered ">
                     <thead>
                     <tr>
@@ -202,7 +222,7 @@ function AddDekan(props) {
 
                     </tbody>
                 </table>
-
+                <button className="btn btn-success" onClick={testExcel}>Ma'lumotlarni yuklash</button>
                 <div className="modal" id="myModal">
                     <div className="modal-dialog">
                         <div className="modal-content">

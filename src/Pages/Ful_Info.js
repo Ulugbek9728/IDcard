@@ -14,7 +14,7 @@ function FulInfo(props) {
 
 
     useEffect(() => {
-        Studen();
+        Studen()
     },[]);
 
     function Studen() {
@@ -59,8 +59,7 @@ function FulInfo(props) {
             </div>
 
             <div className="UserNameBox">
-                {
-                  student.image != '' && student.image != null  ?
+                {student.image !== '' && student.image != null  ?
                       <img className='user' src={student.image} alt=""/>
                       :
                       <img className='user' src="/img/user.png" alt=""/>

@@ -114,7 +114,6 @@ function Main(props) {
             setSucsessText("Ma'lumotlar o'chirildi")
         }).catch((error) => {});
     }
-
     const showModal = () => {
         setIsModalVisible(true);
     };

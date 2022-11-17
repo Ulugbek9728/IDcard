@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/editing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/view.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assets/Admin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Admin.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assets/SignIn.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/SignIn.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/full_info.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/full_info.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AddDekan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddDekan.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AddTicher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTicher.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Groups.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Groups.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/AdMin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/AdMin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Ful_Info.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Ful_Info.js" afterDir="false" />
@@ -139,7 +134,14 @@
       <workItem from="1667043790123" duration="949000" />
       <workItem from="1667053894057" duration="20705000" />
       <workItem from="1667313386938" duration="921000" />
-      <workItem from="1667557579338" duration="4938000" />
+      <workItem from="1667557579338" duration="5743000" />
+      <workItem from="1667570953219" duration="2452000" />
+      <workItem from="1668419465313" duration="976000" />
+      <workItem from="1668420485561" duration="217000" />
+      <workItem from="1668491034112" duration="5651000" />
+      <workItem from="1668577788852" duration="635000" />
+      <workItem from="1668579410358" duration="6637000" />
+      <workItem from="1668660302905" duration="3768000" />
     </task>
     <servers />
   </component>

@@ -360,56 +360,57 @@ function User(props) {
                                            {...student,
                                                bookNumber: e.target.value,
                                            })}}/>
-                            <label htmlFor='date'>Tug'ilgan sana</label>
+
+                            <label htmlFor='Familya'>Familya <span style={{color:"red"}}> |*</span></label>
+                            <Input id='Familya' allowClear value={student.surname}
+                                   onChange={(e)=>{setStudent({...student, surname: e.target.value,})}}/>
+                            <label htmlFor='Ism'>Ism <span style={{color:"red"}}> |*</span></label>
+                            <Input id='Ism' allowClear value={student.name}
+                                   onChange={(e)=>{setStudent({...student, name: e.target.value,})}}/>
+                            <label htmlFor='Sharif'>Sharif <span style={{color:"red"}}> |*</span></label>
+                            <Input id='Sharif' allowClear value={student.patronymic}
+                                   onChange={(e)=>{setStudent({...student, patronymic: e.target.value,})}}/>
+                            <label htmlFor='date'>Tug'ilgan sana <span style={{color:"red"}}> |*</span></label>
                             <input type="date" id='date' className='form-control' value={student.birthdate}
                                    onChange={(e)=>{setStudent(
                                        {...student,
                                            birthdate: e.target.value})}}/>
-                            <label htmlFor='Familya'>Familya</label>
-                            <Input id='Familya' allowClear value={student.surname}
-                                   onChange={(e)=>{setStudent({...student, surname: e.target.value,})}}/>
-                            <label htmlFor='Ism'>Ism</label>
-                            <Input id='Ism' allowClear value={student.name}
-                                   onChange={(e)=>{setStudent({...student, name: e.target.value,})}}/>
-                            <label htmlFor='Sharif'>Sharif</label>
-                            <Input id='Sharif' allowClear value={student.patronymic}
-                                   onChange={(e)=>{setStudent({...student, patronymic: e.target.value,})}}/>
-                            <label htmlFor='Passport'>Passport seriya raqami</label>
+                            <label htmlFor='Passport'>Passport seriya raqami <span style={{color:"red"}}> |*</span></label>
                             <Input id='Passport' allowClear value={student.login}
                                    onChange={(e)=>{setStudent({...student, login: e.target.value.toUpperCase()})}}
                                    maxLength="9"/>
-                            <label htmlFor='Telefon'>Telefon raqam</label>
+                            <label htmlFor='Telefon'>Telefon raqam <span style={{color:"red"}}> |*</span></label>
                             <Input id='Telefon' allowClear value={student.phone} maxLength="13"
                                    onChange={(e)=>{setStudent({...student, phone: e.target.value,})}}/>
                         </div>
                         <div className="box px-2" style={{marginTop:"140px"}}>
-                            <label htmlFor='#'>Fakultet</label>
+                            <label htmlFor='#'>Fakultet <span style={{color:"red"}}> |*</span></label>
                             <Select  placeholder="Fakultet" value={student.faculty}
                                      onChange={FacultySelect}>
                                 {items.map((item,index) => (
                                     <Option value={item.faculty} key={item.id}>{item.faculty}</Option>))}
                             </Select>
-                            <label htmlFor='yonalish'>Yo'nalish</label>
+                            <label htmlFor='yonalish'>Yo'nalish <span style={{color:"red"}}> |*</span></label>
                             <Input id='yonalish' allowClear value={student.direction}
                                    onChange={(e)=>{setStudent({...student, direction: e.target.value,})}}/>
-                            <label htmlFor="#">Tyutor</label>
+                            <label htmlFor="#">Tyutor <span style={{color:"red"}}> |*</span></label>
                             <Select placeholder={'Tyutor'} onChange={TyuterSelect}>
                                 {tyuter&&tyuter.map((item,index) => (
                                     <Option key={item.id}>{item.surname} {item.name} {item.patronymic}</Option>
                                 ))}
                             </Select>
-                            <label htmlFor="Guruh">Guruh</label>
+                            <label htmlFor="Guruh">Guruh <span style={{color:"red"}}> |*</span></label>
                             <Select placeholder={'Guruh'} onChange={GuruhSelect}>
                                 {guruh && guruh.map((item) => (
                                     <Option  key={item.id}>{item.number}</Option>))}
                             </Select>
-                            <label htmlFor="Viloyati">Viloyati / Shaxar</label>
+                            <label htmlFor="Viloyati">Viloyati / Shaxar <span style={{color:"red"}}> |*</span></label>
                             <Input id='Viloyati' allowClear value={student.address_region}
                                    onChange={(e)=>{setStudent({...student, address_region: e.target.value,})}}/>
-                            <label htmlFor="Tuman">Tuman</label>
+                            <label htmlFor="Tuman">Tuman <span style={{color:"red"}}> |*</span></label>
                             <Input id='Tuman' allowClear value={student.address_district}
                                    onChange={(e)=>{setStudent({...student, address_district: e.target.value,})}}/>
-                            <label htmlFor="Manzil">Manzil</label>
+                            <label htmlFor="Manzil">Manzil <span style={{color:"red"}}> |*</span></label>
                             <Input id='Manzil' allowClear value={student.address}
                                    onChange={(e)=>{setStudent({...student, address: e.target.value,})}}/>
                         </div>
@@ -500,7 +501,7 @@ function User(props) {
                             <th>Telefon</th>
                             <th>Fakultet</th>
                             <th>QR</th>
-                            <th>Rasim </th>
+                            <th>Rasm </th>
                         </tr>
                         </thead>
                         <tbody>

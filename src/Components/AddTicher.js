@@ -4,9 +4,10 @@ import {Modal,Input, Select,} from 'antd';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import {ApiName} from "../APIname";
+import * as XLSX from "xlsx";
+
 
 const { Option } = Select;
-
 
 function AddTicher(props) {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -84,7 +85,6 @@ function AddTicher(props) {
         setCreaTyuter('');
         setedit(false)
     };
-
     function fakulty() {
         axios.post(`${ApiName}/dekan/adm/dekan_list`, '',{
             headers: {
@@ -98,14 +98,12 @@ function AddTicher(props) {
             }
         })
     }
-
     function FacultySelect(value,key) {
         setCreaTyuter({...creatTyuter,
             faculty: value,
             dekanId: key.key
         })
     }
-
     function Tyuter() {
         axios.post(`${ApiName}/adm/show/teacher/${DekanID}`, '',{
             headers: {
@@ -115,7 +113,6 @@ function AddTicher(props) {
             setTyuter(response.data);
         }).catch((error) => {})
     }
-
     function Delet() {
         axios.delete(`${ApiName}/adm/delete/teacher/${tyuterId}`,{
             headers: {
@@ -128,14 +125,35 @@ function AddTicher(props) {
             }
         }).catch((error) => {});
     }
-
     useEffect(() => {
         notify();
         setMessage('');
         setSucsessText('');
         setMessage2('')
     },[message, sucsessText, message2]);
+    const testExcel = () =>{
+        let sortTyuter=[];
+        let facultet = '';
+        tyuter && tyuter.map((item)=>{
+            let sortTyuter1 = {
+                Ism:item.name,
+                Familya:item.surname,
+                Sharif:item.patronymic,
+                Telefon:item.phone,
+                Fakultet:item.faculty,
+                Login:item.login,
+                Parol:item.password
+            };
+            facultet = item.faculty;
+            let test = sortTyuter.push(sortTyuter1)
 
+        });
+        const wb = XLSX.utils.book_new(),
+            ws = XLSX.utils.json_to_sheet(sortTyuter);
+        XLSX.utils.book_append_sheet(wb,ws, "My File");
+        XLSX.writeFile(wb, `${facultet}.xlsx`);
+
+    };
     function notify() {
         if (message != ''){message && message.map((item) => (toast.error(item)))}
         if (sucsessText != ''){toast.success(sucsessText)}
@@ -189,7 +207,6 @@ function AddTicher(props) {
                         <option value={item.id} key={index}>{item.faculty}</option>
                     ))}
                 </select>
-
                 <table className="table table-bordered">
                     <thead>
                     <tr>
@@ -231,6 +248,8 @@ function AddTicher(props) {
                     })}
                     </tbody>
                 </table>
+
+                <button className="btn btn-success" onClick={testExcel}>Ma'lumotlarni yuklash</button>
 
                 <div className="modal" id="myModal">
                     <div className="modal-dialog">
