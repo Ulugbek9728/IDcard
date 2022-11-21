@@ -274,7 +274,7 @@ function User(props) {
         axios.post(`${ApiName}/auth/placeOrder`,{groups}).
         then((response) => {
             if (response.status === 200){
-                setGroups('');
+                setGroups({...groups, student:''});
                 setSucsessText("Guruh qo'shildi")
             }
         }).catch((error) => {
@@ -311,7 +311,6 @@ function User(props) {
         setSucsessText('');
         setMessage2('')
     },[message, sucsessText, message2]);
-
     function notify() {
         if (message != ''){message && message.map((item) => (toast.error(item)))}
         if (sucsessText != ''){toast.success(sucsessText)}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Routes, Route} from "react-router-dom";
 import Main from "./Pages/main";
 import SignIn from "./Pages/SignIn";
@@ -10,8 +10,17 @@ import FulInfo from "./Pages/Ful_Info";
 import Enter from "./Pages/Enter";
 
 function App(props) {
+
+    useEffect(()=>{
+        window.addEventListener("contextmenu", e => e.preventDefault());
+        // const noRightClick = document.getElementId("myElement");
+        const noRightClick = document.getElementById("myElement");
+        noRightClick.addEventListener("contextmenu", e => e.preventDefault());
+    });
+
+    window.addEventListener("contextmenu", e => e.preventDefault());
     return (
-        <div>
+        <div id='myElement'>
 
             <Routes>
                 <Route path={"/"} element={<Enter/>}/>
