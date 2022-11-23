@@ -11,16 +11,9 @@ import Enter from "./Pages/Enter";
 
 function App(props) {
 
-    useEffect(()=>{
-        window.addEventListener("contextmenu", e => e.preventDefault());
-        // const noRightClick = document.getElementId("myElement");
-        const noRightClick = document.getElementById("myElement");
-        noRightClick.addEventListener("contextmenu", e => e.preventDefault());
-    });
 
-    window.addEventListener("contextmenu", e => e.preventDefault());
     return (
-        <div id='myElement'>
+        <div >
 
             <Routes>
                 <Route path={"/"} element={<Enter/>}/>

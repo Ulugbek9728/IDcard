@@ -4,6 +4,7 @@ import axios from "axios";
 import {useParams} from "react-router";
 import {ApiName} from "../APIname";
 import {toast, ToastContainer} from "react-toastify";
+import AOS from "aos";
 
 function FulInfo(props) {
     const {id} = useParams();
@@ -47,11 +48,18 @@ function FulInfo(props) {
         }
     }
 
-
-
+    useEffect(() => {
+        window.addEventListener("contextmenu", e => e.preventDefault());
+        // const noRightClick = document.getElementId("myElement");
+        const noRightClick = document.getElementById("myElement");
+        noRightClick.addEventListener("contextmenu", e => e.preventDefault());
+        AOS.init()
+    });
+    window.addEventListener("contextmenu", e => e.preventDefault());
+    console.log(student)
 
     return (
-        <div className="fullInfo" >
+        <div className="fullInfo" id='myElement'>
             <ToastContainer/>
             <div className="header">
                <div className="title">

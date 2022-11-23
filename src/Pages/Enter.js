@@ -11,7 +11,6 @@ import "../Assets/enter.scss"
 
 
 function Enter(props) {
-
     useEffect(() => {
         AOS.init()
     });
