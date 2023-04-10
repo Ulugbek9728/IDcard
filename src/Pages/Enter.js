@@ -93,6 +93,7 @@ function Enter(props) {
             </div>
             <img className="GroupImg" src="./img/Group5.svg" alt=""/>
 
+
         </div>
     );
 }

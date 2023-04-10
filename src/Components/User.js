@@ -61,7 +61,9 @@ function User(props) {
         motherphone:'',
 
     });
+
     function FacultySelect(value,key) {
+
         setStudent({...student,
             faculty: value,
         });
@@ -384,11 +386,14 @@ function User(props) {
                         </div>
                         <div className="box px-2" style={{marginTop:"140px"}}>
                             <label htmlFor='#'>Fakultet <span style={{color:"red"}}> |*</span></label>
+
                             <Select  placeholder="Fakultet" value={student.faculty}
                                      onChange={FacultySelect}>
                                 {items.map((item,index) => (
                                     <Option value={item.faculty} key={item.id}>{item.faculty}</Option>))}
+
                             </Select>
+
                             <label htmlFor='yonalish'>Yo'nalish <span style={{color:"red"}}> |*</span></label>
                             <Input id='yonalish' allowClear value={student.direction}
                                    onChange={(e)=>{setStudent({...student, direction: e.target.value,})}}/>

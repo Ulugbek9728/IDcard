@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import "../Assets/full_info.scss"
 import axios from "axios";
 import {useParams} from "react-router";
+import {useNavigate} from "react-router";
 import {ApiName} from "../APIname";
 import {toast, ToastContainer} from "react-toastify";
 import AOS from "aos";
 
 function FulInfo(props) {
+    const navigate = useNavigate();
     const {id} = useParams();
     const [student, setStudent] = useState({});
     const [Ticher, setTicher] = useState({});
@@ -31,6 +33,7 @@ function FulInfo(props) {
             })
         }).catch((error) => {
             console.log(error.response);
+            navigate("/");
             if (error.response.status === 405){
                 setMessage(error.response.data)
             }
@@ -56,7 +59,6 @@ function FulInfo(props) {
         AOS.init()
     });
     window.addEventListener("contextmenu", e => e.preventDefault());
-    console.log(student)
 
     return (
         <div className="fullInfo" id='myElement'>
@@ -84,7 +86,9 @@ function FulInfo(props) {
 
             <div className="ButtonBox">
                 <button className="btn">Shaxsiy ma’lumotlar</button>
-                <button className="btn">Natijalar</button>
+                <button className="btn">
+                    <a href="https://student.tdtu.uz/dashboard/login" target="_blank">HEMIS</a>
+                </button>
             </div>
 
             <div className="container-fluid">

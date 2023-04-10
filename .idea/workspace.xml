@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/APIname.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/APIname.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddDekan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddDekan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/AdMin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/AdMin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Enter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Enter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Ful_Info.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Ful_Info.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/SignIn.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +44,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -138,7 +144,46 @@
       <workItem from="1668660302905" duration="4044000" />
       <workItem from="1668678982514" duration="746000" />
       <workItem from="1669004561927" duration="12684000" />
-      <workItem from="1669200531093" duration="1107000" />
+      <workItem from="1669200531093" duration="1426000" />
+      <workItem from="1669280705864" duration="342000" />
+      <workItem from="1669378429430" duration="96000" />
+      <workItem from="1669698944200" duration="537000" />
+      <workItem from="1669787156697" duration="324000" />
+      <workItem from="1669790764173" duration="16000" />
+      <workItem from="1671014982287" duration="731000" />
+      <workItem from="1671017290246" duration="804000" />
+      <workItem from="1671338860943" duration="331000" />
+      <workItem from="1671791196578" duration="623000" />
+      <workItem from="1672911143425" duration="2185000" />
+      <workItem from="1673090569443" duration="996000" />
+      <workItem from="1674817220577" duration="1732000" />
+      <workItem from="1675137871528" duration="31000" />
+      <workItem from="1675140438272" duration="1044000" />
+      <workItem from="1675229952688" duration="624000" />
+      <workItem from="1675925520748" duration="1395000" />
+      <workItem from="1676350535082" duration="3480000" />
+      <workItem from="1676450769095" duration="1173000" />
+      <workItem from="1676962373750" duration="160000" />
+      <workItem from="1676969094199" duration="1172000" />
+      <workItem from="1677143605074" duration="472000" />
+      <workItem from="1677148148547" duration="1389000" />
+      <workItem from="1677153762266" duration="639000" />
+      <workItem from="1677233044407" duration="504000" />
+      <workItem from="1677238839126" duration="631000" />
+      <workItem from="1678092476465" duration="1134000" />
+      <workItem from="1678165399804" duration="5000" />
+      <workItem from="1678165877773" duration="2437000" />
+      <workItem from="1678339487021" duration="11000" />
+      <workItem from="1678342319203" duration="628000" />
+      <workItem from="1678356097289" duration="1206000" />
+      <workItem from="1678771287072" duration="2040000" />
+      <workItem from="1678959913065" duration="1303000" />
+      <workItem from="1679550299723" duration="6762000" />
+      <workItem from="1679652128609" duration="202000" />
+      <workItem from="1679652554102" duration="3147000" />
+      <workItem from="1680772138469" duration="5919000" />
+      <workItem from="1680954324667" duration="1527000" />
+      <workItem from="1681101630538" duration="234000" />
     </task>
     <servers />
   </component>

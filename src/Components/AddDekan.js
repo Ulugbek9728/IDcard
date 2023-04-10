@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Modal,Input, Select,} from 'antd';
 import axios from "axios";
+
 import {toast, ToastContainer} from "react-toastify";
 import * as XLSX from "xlsx";
 import {ApiName} from "../APIname";
@@ -101,6 +102,7 @@ function AddDekan(props) {
     useEffect(() => {
         DekanInfo()
     },[sucsessText]);
+
     function DekanInfo() {
         axios.post(`${ApiName}/dekan/adm/dekan_list`, '',{
             headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
@@ -112,6 +114,7 @@ function AddDekan(props) {
             }
         })
     }
+
     function Delet() {
         axios.delete(`${ApiName}/dekan/adm/delete/${dekanId}`, {
             headers: {
@@ -128,6 +131,7 @@ function AddDekan(props) {
             }
         });
     }
+
     useEffect(() => {
         notify();
         setMessage('');
@@ -147,7 +151,8 @@ function AddDekan(props) {
                 <button onClick={showModal} className='btn btn-success yuklash'>
                     Dekan qo'shish
                 </button>
-                <Modal className='ticherModal' title={edit ? "Tahrirlash" : "Dekan qo'shish"} visible={isModalVisible}
+                <Modal className='ticherModal' title={edit ? "Tahrirlash" : "Dekan qo'shish"}
+                       visible={isModalVisible}
                        onOk={handleOk} onCancel={handleCancel}>
                     <div>
                         <label htmlFor='Familya'>Familya</label>

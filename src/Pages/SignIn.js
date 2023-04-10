@@ -139,6 +139,7 @@ function SignIn(props) {
                         data-aos-delay="200">Kirish</button>
             </div>
             <img className="GroupImg" src="/img/Group5.svg" alt=""/>
+
         </div>
     );
 }

@@ -34,6 +34,7 @@ function AdMin(props) {
     return (
         <><Layout className='layout admin'
                     style={{minHeight: '100vh',}}>
+
                 <Sider className='sider' collapsible collapsed={collapsed}
                        onCollapse={(value) => setCollapsed(value)}>
                     <div className="logo"><img src="/LOGOTDTU.png" alt=""/></div>
