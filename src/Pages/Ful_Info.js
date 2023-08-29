@@ -11,8 +11,6 @@ function FulInfo(props) {
     const navigate = useNavigate();
     const {id} = useParams();
     const [student, setStudent] = useState({});
-    const [Ticher, setTicher] = useState({});
-    const [groupNumber, setGroupNumber] = useState('');
     const [message, setMessage] = useState('');
 
 
@@ -21,16 +19,11 @@ function FulInfo(props) {
     },[]);
 
     function Studen() {
-        axios.get(`${ApiName}/auth/public/full_info/${id}`).then((response)=>{
+        axios.get(`${ApiName}/auth/student/${id}`)
+            .then((response)=>{
             setStudent(response.data);
-            axios.get(`${ApiName}/groups/public/full_info/${response.data.groupId}`).then((response)=>{
-                setGroupNumber(response.data.number);
-                axios.get(`${ApiName}/adm/public/teacher/full_info/${response.data.teacher_id}`).then((response)=>{
-                    setTicher(response.data);
-                }).catch((error)=>{
-                    console.log(error.response);})
-            }).catch((error)=>{
-            })
+                console.log(response.data);
+
         }).catch((error) => {
             console.log(error.response);
             navigate("/");
@@ -79,8 +72,8 @@ function FulInfo(props) {
                 }
 
                 <div className="NameInfo">
-                    <span> {student.surname} {student.name} {student.patronymic}</span>
-                    <p>{student.bookNumber}</p>
+                    <span> {student.fullName}</span>
+                    <p>{student.studentIdNumber}</p>
                 </div>
             </div>
 
@@ -93,24 +86,36 @@ function FulInfo(props) {
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-lg-6 col-md-12 col-sm-12 col-12 FISHbox">
+                    <div className="col-12 FISHbox">
                         <div className="FISH">
                             <div className="infoBox">
                                 <div className="left">
-                                    <img src="/img/fullname.png" alt=""/>
-                                    F.I.Sh
+                                    <img src="/img/fakulty.png" alt=""/>
+                                    Fakultet
                                 </div>
-                                <div className="righte"> {student.surname} {student.name} {student.patronymic}</div>
+                                <div className="righte">{student?.department?.name}</div>
                             </div>
-
                             <div className="infoBox">
                                 <div className="left">
-                                    <img src="/img/idcard.png" alt=""/>
-                                    Pasport seriya
+                                    <img src="/img/direction.png" alt=""/>
+                                    Yo'nalish
                                 </div>
-                                <div className="righte">{student.login}</div>
+                                <div className="righte">{student?.specialty?.name}</div>
                             </div>
-
+                            <div className="infoBox">
+                                <div className="left">
+                                    <img src="/img/fakulty.png" alt=""/>
+                                    Kurs
+                                </div>
+                                <div className="righte">{student?.level?.name}</div>
+                            </div>
+                            <div className="infoBox">
+                                <div className="left">
+                                    <img src="/img/group.png" alt=""/>
+                                    Guruh
+                                </div>
+                                <div className="righte">{student?.group?.name}</div>
+                            </div>
                             <div className="infoBox">
                                 <div className="left">
                                     <img src="/img/number.png" alt=""/>
@@ -118,104 +123,41 @@ function FulInfo(props) {
                                 </div>
                                 <div className="righte">{student.phone}</div>
                             </div>
-
                             <div className="infoBox">
                                 <div className="left">
                                     <img src="/img/data.png" alt=""/>
                                     Tug’ilgan yil
                                 </div>
-                                <div className="righte">{student.birthdate}</div>
+                                <div className="righte">{student.birthDate}</div>
                             </div>
-
-                            <div className="infoBox">
-                                <div className="left">
-                                    <img src="/img/fakulty.png" alt=""/>
-                                    Fakultet
-                                </div>
-                                <div className="righte">{student.faculty}</div>
-                            </div>
-                            <div className="infoBox">
-                                <div className="left">
-                                    <img src="/img/direction.png" alt=""/>
-                                    Yo'nalish
-                                </div>
-                                <div className="righte">{student.direction}</div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className="col-lg-6 col-md-12 col-sm-12 col-12 FISHbox">
-                        <div className="FISH">
-                            <div className="infoBox">
-                                <div className="left">
-                                    <img src="/img/group.png" alt=""/>
-                                    Guruh
-                                </div>
-                                <div className="righte">{groupNumber}</div>
-                            </div>
-
-                            <div className="infoBox">
-                                <div className="left">
-                                    <img src="/img/father.png" alt=""/>
-                                    Otasi
-                                </div>
-                                <div className="righte">{student.fathersurname} {student.fathername} {student.fatherpatronymic}</div>
-                            </div>
-
-                            <div className="infoBox">
-                                <div className="left">
-                                    <img src="/img/number.png" alt=""/>
-                                    Tel raqam
-                                </div>
-                                <div className="righte">{student.fatherphone}</div>
-                            </div>
-
-                            <div className="infoBox">
-                                <div className="left">
-                                    <img src="/img/mother.png" alt=""/>
-                                   Onasi
-                                </div>
-                                <div className="righte">
-                                    {student.mothersurname} {student.mothername} {student.motherpatronymic}
-                                </div>
-                            </div>
-
-                            <div className="infoBox">
-                                <div className="left">
-                                    <img src="/img/number.png" alt=""/>
-                                    Tel raqam
-                                </div>
-                                <div className="righte">{student.motherphone}</div>
-                            </div>
-
                             <div className="infoBox">
                                 <div className="left">
                                     <img src="/img/location.png" alt=""/>
                                     Manzil
                                 </div>
-                                <div className="righte">{student.address_region} {student.address_district} {student.address}</div>
+                                <div className="righte">{student?.country?.name} {student?.province?.name} {student?.district?.name}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div className="container-fluid mt-4">
+                <div className="row">
+                    <div className="col-12 FISHbox">
+                        <div className="FISH">
+                            <div className="infoBox">
+                                <div className="left">
+                                    <img src="/img/iconfish.png" alt=""/>
+                                    Tyutor
+                                </div>
+                                <div className="righte">{student?.tutor?.fullName} </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="tyuterBox">
-                <div className="infoBox">
-                    <div className="left">
-                        <img src="/img/iconfish.png" alt=""/>
-                        Tyutor
-                    </div>
-                    <div className="righte">{Ticher.surname} {Ticher.name} {Ticher.patronymic}</div>
-                </div>
-
-                <div className="infoBox">
-                    <div className="left">
-                        <img src="/img/number.png" alt=""/>
-                        Tel raqam
-                    </div>
-                    <div className="righte">{Ticher.phone}</div>
-                </div>
             </div>
         </div>
     );

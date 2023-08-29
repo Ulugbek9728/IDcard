@@ -119,53 +119,12 @@ $mainColor: #24743c;
       padding: 5px;
       display: flex;
       align-items: center;
-      &:nth-of-type(6){
+      &:nth-of-type(7){
         border-bottom: none;
       }
       .left{
         padding: 5px 0;
         width: 35%;
-        border-right: 1px solid #E9E9E9;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 22px;
-        color: #484848;
-        img{
-          width: 45px;
-          height: auto;
-          margin-right: 15px;
-        }
-      }
-      .righte{
-        padding: 5px 15px;
-        width: 65%;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 22px;
-        color: #484848;
-      }
-    }
-  }
-  .tyuterBox{
-    padding: 5px 30px;
-    box-shadow: 0 4px 30px 5px rgba(18, 16, 16, 0.05);
-    border-radius: 15px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .infoBox{
-      padding: 5px 30px 5px 5px;
-      display: flex;
-      align-items: center;
-      width: 50%;
-      height: auto;
-      &:nth-of-type(2){
-        padding: 5px 0 5px 50px;
-      }
-      .left{
-        padding: 5px 0;
-        width: 34.5%;
         border-right: 1px solid #E9E9E9;
         font-weight: 400;
         font-size: 18px;
@@ -277,37 +236,6 @@ $mainColor: #24743c;
         }
       }
     }
-    .tyuterBox{
-      padding: 5px 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-      display: block;
-      .infoBox{
-        width: 100%;
-        padding: 5px 0;
-
-        &:nth-of-type(2){
-          padding: 5px 0;
-          border-top: 1px solid #E9E9E9;
-        }
-        .left{
-          padding: 5px 0;
-          width: 45%;
-          font-size: 16px;
-          line-height: 22px;
-          img{
-            width: 30px;
-            margin-right: 8px;
-          }
-        }
-        .righte{
-          padding: 5px 0 0 10px;
-          width: 55%;
-          font-size: 16px;
-          line-height: 22px;
-        }
-      }
-    }
   }
 }
 @media (min-width: 576px) and (max-width: 768px){
@@ -378,37 +306,6 @@ $mainColor: #24743c;
           img{
             width: 40px;
             margin-right: 10px;
-          }
-        }
-        .righte{
-          padding: 5px 0 0 10px;
-          width: 60%;
-          font-size: 17px;
-          line-height: 22px;
-        }
-      }
-    }
-    .tyuterBox{
-      padding: 5px 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-      display: block;
-      .infoBox{
-        width: 100%;
-        padding: 5px 0;
-
-        &:nth-of-type(2){
-          padding: 5px 0;
-          border-top: 1px solid #E9E9E9;
-        }
-        .left{
-          padding: 5px 0;
-          width: 40%;
-          font-size: 17px;
-          line-height: 22px;
-          img{
-            width: 40px;
-            margin-right: 8px;
           }
         }
         .righte{
@@ -499,37 +396,6 @@ $mainColor: #24743c;
         }
       }
     }
-    .tyuterBox{
-      padding: 5px 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-      display: block;
-      .infoBox{
-        width: 100%;
-        padding: 5px 0;
-
-        &:nth-of-type(2){
-          padding: 5px 0;
-          border-top: 1px solid #E9E9E9;
-        }
-        .left{
-          padding: 5px 0;
-          width: 40%;
-          font-size: 17px;
-          line-height: 22px;
-          img{
-            width: 40px;
-            margin-right: 8px;
-          }
-        }
-        .righte{
-          padding: 5px 0 0 10px;
-          width: 60%;
-          font-size: 17px;
-          line-height: 22px;
-        }
-      }
-    }
   }
 }
 @media (min-width: 992px) and (max-width: 1200px){
@@ -605,34 +471,6 @@ $mainColor: #24743c;
         }
       }
     }
-    .tyuterBox{
-      padding: 5px 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-      .infoBox{
-        padding: 5px 20px 5px 5px;
-        width: 50%;
-        &:nth-of-type(2){
-          padding: 5px 0 5px 35px;
-        }
-        .left{
-          padding: 5px 0;
-          width: 39%;
-          font-size: 17px;
-          line-height: 22px;
-          img{
-            width: 40px;
-            margin-right: 8px;
-          }
-        }
-        .righte{
-          padding: 5px 0 0 10px;
-          width: 61%;
-          font-size: 17px;
-          line-height: 22px;
-        }
-      }
-    }
   }
 }
 @media (min-width: 1200px) and (max-width: 1400px){
@@ -690,34 +528,6 @@ $mainColor: #24743c;
         .left{
           padding: 5px 0;
           width: 37%;
-          font-size: 18px;
-          line-height: 22px;
-          img{
-            width: 45px;
-            margin-right: 15px;
-          }
-        }
-        .righte{
-          padding: 5px 15px;
-          width: 63%;
-          font-size: 18px;
-          line-height: 22px;
-        }
-      }
-    }
-    .tyuterBox{
-      padding: 5px 20px;
-      border-radius: 15px;
-      margin-top: 20px;
-      .infoBox{
-        padding: 5px 20px 5px 5px;
-        width: 50%;
-        &:nth-of-type(2){
-          padding: 5px 0 5px 40px;
-        }
-        .left{
-          padding: 5px 0;
-          width: 36%;
           font-size: 18px;
           line-height: 22px;
           img{

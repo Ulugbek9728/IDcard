@@ -37,24 +37,6 @@ function SignIn(props) {
                     setPassword('');
                     navigate("/AdminPage");
                 }
-                if  (response.data.degree === 'USTOZ'){
-                    localStorage.setItem("token", response.data.jwt);
-                    localStorage.setItem("user_Info", response.data.name);
-                    localStorage.setItem("id", response.data.id);
-                    localStorage.setItem("faculty", response.data.faculty);
-                    setLogin('');
-                    setPassword('');
-                    navigate("/TyutorPage");
-                }
-                if  (response.data.degree === 'DEKAN'){
-                    localStorage.setItem("token", response.data.jwt);
-                    localStorage.setItem("user_Info", response.data.name);
-                    localStorage.setItem("id", response.data.id);
-                    localStorage.setItem("faculty", response.data.faculty);
-                    setLogin('');
-                    setPassword('');
-                    navigate("/DekanPage");
-                }
             }
         }).catch((error) => {
             setLoading(false);

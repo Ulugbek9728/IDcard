@@ -8,18 +8,15 @@ import "aos/dist/aos.css";
 
 import "../Assets/enter.scss"
 
-
-
 function Enter(props) {
     useEffect(() => {
         AOS.init()
     });
-
     const [login, setLogin] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     function enterInfo() {
-        axios.get(`${ApiName}/auth/public/full_info/${login}`).
+        axios.get(`${ApiName}/auth/student/${login}`).
         then((response)=>{
             navigate(`/Info/${login}`)
         }).catch((error) => {

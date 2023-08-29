@@ -23,11 +23,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
             Tyuter();
         }
     },[DekanID]);
-    useEffect(()=>{
-        if (tyuterID!=''){
-            Group();
-        }
-    },[tyuterID]);
+
     useEffect(()=>{
         if (groupID!=''){
             GetGroup();
@@ -35,54 +31,49 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
     },[groupID]);
 
     function fakulty() {
-        axios.post(`${ApiName}/dekan/adm/dekan_list`, '',{
+        axios.get(`${ApiName}/api/department`, '',{
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }
         }).then((response) => {
             setItems(response.data);
-        }).catch((error) => {
-
-        })
+        }).catch((error) => {});
+        setTyuterID('')
     }
     function Tyuter() {
-        axios.post(`${ApiName}/adm/show/teacher/${DekanID}`, '',{
+        axios.get(`${ApiName}/api/employee`, {
+
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            params:{
+                department:DekanID
             }
         }).then((response) => {
             setTyuter(response.data);
         }).catch((error) => {
-
+            console.log(error)
         })
     }
-    function Group() {
-        axios.post(`${ApiName}/groups/adm/show/teacher/${tyuterID}`, '',{
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            }
-        }).then((response) => {
-            setGuruh(response.data);
-        }).catch((error) => {
 
-        })
-    }
     function GetGroup() {
         setLoading(true);
-        axios.post(`${ApiName}/auth/show/group/list/${groupID}`, '',{
+        axios.get(`${ApiName}/auth`, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            params:{
+                department:DekanID,
+                group:groupID
             }
         }).then((response) => {
+            setGetGuruh(response.data.content);
+            console.log(response.data.content);
             setLoading(false);
-            setGetGuruh(response.data)
+
         }).catch((error) => {
-            setLoading(false)
+            setLoading(false);
         })
-    }
-    function GuruhSelect(value,key) {
-        setGroupID(value);
-        setGroupName(key.key)
     }
     return (
         <>
@@ -97,69 +88,69 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                             </div>
                         :""}
                         <label htmlFor="fakultet"><h5>Fakultet</h5></label>
-                        <select id='fakultet' className='form-control my-2' style={{width: "30%"}}
-                                onChange={(e) => {
+                        <select id='fakultet' className='form-control my-2' style={{width:"30%"}}
+                                onChange={(e)=>{
                                     setDekanID(e.target.value);
-                                    setTyuterID('');
                                     setTyuter('');
                                     setGuruh('');
-                                    setGroupID('')
-                                }}>
+                                    setGroupID('')}} >
                             <option>Fakultet</option>
-                            {items.map((item, index) => (
-                                <option value={item.id} key={index}>{item.faculty}</option>
+                            {items.map((item,index) => (
+                                <option value={item.id} key={index}>{item.name}</option>
                             ))}
                         </select>
                         <label htmlFor="tyuter"><h5>Tyutor</h5></label>
-                        <select id='tyuter' className='form-control my-2' style={{width: "30%"}}
-                                onChange={(e) => {
-                                    setTyuterID(e.target.value);
-                                    setGuruh('');
+                        <select id='tyuter' className='form-control my-2' style={{width:"30%"}}
+                                onChange={(e)=>{
                                     setGroupID('');
+                                    setTyuterID(e.target.value)
                                 }}>
-                            <option>Tyutor</option>
-                            {tyuter && tyuter.map((item, index) => (
-                                <option value={item.id}
-                                        key={index}>{item.surname} {item.name} {item.patronymic}</option>
+                            <option value={''}>Tyutor</option>
+                            {tyuter && tyuter.map((item,index) => (
+                                <option value={item.id} key={index}>{item.fullName}</option>
                             ))}
                         </select>
-                        <label htmlFor="Guruh"><h5>Guruh</h5></label><br/>
-                        <Select id='Guruh' placeholder='Guruh' className='form-control my-2' style={{width: "30%"}}
-                                onChange={GuruhSelect}>
-                            {guruh && guruh.map((item, index) => (
-                                <Option value={item.id} key={item.number}>{item.number}</Option>
-                            ))}
-                        </Select>
+
+                        <label htmlFor="Guruh"><h5>Guruh</h5></label>
+                        <select id='Guruh' className='form-control my-2' style={{width: "30%"}}
+                                onChange={(e)=>{
+                                    setGroupID(e.target.value);
+                                }}>
+                            <option>Guruh</option>
+                            {tyuterID && tyuter?.filter(item=>{return item.id===tyuterID})[0].tutorGroups?.map((item,index)=>{
+                                return <option value={item.id} key={index}>{item.name}</option>
+                            })}
+                        </select>
                         <div ref={ref}>
                             <table className="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th>№</th>
                                     <th>ID</th>
-                                    <th>Familya</th>
-                                    <th>Ism</th>
-                                    <th>Sharif</th>
-                                    <th>Pasport seriya</th>
-                                    <th>Fakultet</th>
-                                    <th>Guruh</th>
+                                    <th>F.I.SH</th>
+                                    <th>kurs</th>
+                                    <th>Yo'nalish</th>
                                     <th>Link</th>
-                                    <th>QR</th>
+                                    <th>Rasm </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {GetGuruh.map((item, index) => {
                                     return <tr key={index}>
                                         <td>{index + 1}</td>
-                                        <td>{item.bookNumber}</td>
-                                        <td>{item.surname}</td>
-                                        <td>{item.name}</td>
-                                        <td>{item.patronymic}</td>
-                                        <td>{item.login}</td>
-                                        <td>{item.faculty}</td>
-                                        <td>{groupName}</td>
-                                        <td>http://id.tdtu.uz/Info/{item.login}</td>
-                                        <td><img src={"data:image/jpeg;base64," + item.qrImage} width={80} height={80}
-                                                 alt=""/></td>
+                                        <td>{item.studentIdNumber}</td>
+                                        <td>{item.fullName}</td>
+                                        <td>{item?.level?.name}</td>
+                                        <td>{item?.specialty?.name}</td>
+                                        <td>
+                                            <a href={`http://id.tdtu.uz/Info/${item.studentIdNumber}`}
+                                            target={"_blank"}
+                                               className={"text-primary"}
+                                            >http://id.tdtu.uz/Info/{item.studentIdNumber}</a>
+                                        </td>
+                                        <td>
+                                            <img src={item.image} width={100} height={100} alt=""/>
+                                        </td>
                                     </tr>
                                 })}
                                 </tbody>

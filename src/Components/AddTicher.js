@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import {Modal,Input, Select,} from 'antd';
+import {Modal,Input, Select, Form} from 'antd';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import {ApiName} from "../APIname";
@@ -9,7 +9,10 @@ import * as XLSX from "xlsx";
 
 const { Option } = Select;
 
-function AddTicher(props) {
+function AddTicher() {
+
+    const [form] = Form.useForm();
+
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [edit, setedit] = useState(false);
     const [sucsessText, setSucsessText] = useState('');
@@ -24,7 +27,7 @@ function AddTicher(props) {
 
     useEffect(()=>{
         fakulty();
-        if (DekanID!=''){
+        if (DekanID!==''){
             Tyuter()
         }
     },[DekanID, sucsessText]);
@@ -44,6 +47,7 @@ function AddTicher(props) {
                     setedit(false);
                     setCreaTyuter('');
                     setSucsessText("Ma'lumotlar tahrirlandi")
+                    form.resetFields();
                 }
             }).catch((error) => {
                 if (error.response.status === 400){
@@ -66,6 +70,7 @@ function AddTicher(props) {
                     setIsModalVisible(false);
                     setCreaTyuter('');
                     setSucsessText("Ma'lumotlar qo'shildi")
+                    form.resetFields();
                 }
             }).catch((error) => {
                 if (error.response.status === 400){
@@ -86,22 +91,17 @@ function AddTicher(props) {
         setedit(false)
     };
     function fakulty() {
-        axios.post(`${ApiName}/dekan/adm/dekan_list`, '',{
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            }
-        }).then((response) => {
-            setItems(response.data);
-        }).catch((error) => {
-            if (error.response.status === 502){
-                setMessage2('Server bilan ulanishda xatolik')
-            }
+        axios.get(`${ApiName}/api/department`, {
+            headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
+        }).then((res)=>{
+            setItems(res.data)
+        }).catch((error)=>{
+            console.log(error)
         })
     }
     function FacultySelect(value,key) {
         setCreaTyuter({...creatTyuter,
-            faculty: value,
-            dekanId: key.key
+            departmentId: key.key,
         })
     }
     function Tyuter() {
@@ -111,7 +111,10 @@ function AddTicher(props) {
             }
         }).then((response) => {
             setTyuter(response.data);
-        }).catch((error) => {})
+            console.log(response)
+        }).catch((error) => {
+            console.log(error)
+        })
     }
     function Delet() {
         axios.delete(`${ApiName}/adm/delete/teacher/${tyuterId}`,{
@@ -155,9 +158,9 @@ function AddTicher(props) {
 
     };
     function notify() {
-        if (message != ''){message && message.map((item) => (toast.error(item)))}
-        if (sucsessText != ''){toast.success(sucsessText)}
-        if (message2 != ''){toast.error(message2)}
+        if (message !== ''){message && message.map((item) => (toast.error(item)))}
+        if (sucsessText !== ''){toast.success(sucsessText)}
+        if (message2 !== ''){toast.error(message2)}
     }
 
     return (
@@ -171,31 +174,37 @@ function AddTicher(props) {
                 <Modal className='ticherModal' title={edit ? "Tahrirlash" : "O'qituvchi qo'shish"} visible={isModalVisible}
                        onOk={handleOk} onCancel={handleCancel}>
                     <div>
-                        <label htmlFor='Familya'>Familya</label>
-                        <Input id='Familya' value={creatTyuter.surname} allowClear onChange={
-                            (e)=> {setCreaTyuter({...creatTyuter, surname: e.target.value,})}}/>
-                        <label htmlFor='Ism'>Ism</label>
-                        <Input id='Ism' value={creatTyuter.name} allowClear onChange={
-                            (e)=>{setCreaTyuter({...creatTyuter, name: e.target.value,})}}/>
-                        <label htmlFor='Sharif'>Sharif</label>
-                        <Input id='Sharif' value={creatTyuter.patronymic} allowClear onChange={
-                            (e)=>{setCreaTyuter({...creatTyuter, patronymic: e.target.value,})}}/>
-                        <label htmlFor="Telefon">Telefon</label>
-                        <Input id='Telefon' value={creatTyuter.phone} allowClear maxLength="13"
-                               onChange={(e)=>{setCreaTyuter({...creatTyuter, phone: e.target.value,})}}/>
-                        <label htmlFor='#'>Fakultet</label>
-                        <Select showSearch value={creatTyuter.faculty} optionFilterProp="children"
-                                onChange={FacultySelect}>
-                            {items.map((item) => {
-                                return <Option value={item.faculty} key={item.id}/>})}
-                        </Select>
-                        <label htmlFor="Login">Login</label>
-                        <Input id='Login' value={creatTyuter.login} allowClear maxLength="9"
-                               onChange={(e)=>{setCreaTyuter(
-                                   {...creatTyuter, login: e.target.value.toUpperCase(),})}}/>
-                        <label htmlFor="Parol">Parol</label>
-                        <Input id='Parol' value={creatTyuter.password} allowClear
-                               onChange={(e)=>{setCreaTyuter({...creatTyuter, password: e.target.value,})}}/>
+                        <Form form={form} layout="vertical" style={{width:"100%",}}>
+                            <label htmlFor='Familya'>Familya</label>
+                            <Input id='Familya' value={creatTyuter.surname} allowClear onChange={
+                                (e)=> {setCreaTyuter({...creatTyuter, surname: e.target.value,})}}/>
+                            <label htmlFor='Ism'>Ism</label>
+                            <Input id='Ism' value={creatTyuter.name} allowClear onChange={
+                                (e)=>{setCreaTyuter({...creatTyuter, name: e.target.value,})}}/>
+                            <label htmlFor='Sharif'>Sharif</label>
+                            <Input id='Sharif' value={creatTyuter.patronymic} allowClear onChange={
+                                (e)=>{setCreaTyuter({...creatTyuter, patronymic: e.target.value,})}}/>
+                            <label htmlFor="Telefon">Telefon</label>
+                            <Input id='Telefon' value={creatTyuter.phone} allowClear maxLength="13"
+                                   onChange={(e)=>{setCreaTyuter({...creatTyuter, phone: e.target.value,})}}/>
+
+                            <Form.Item name="Fakultet" label="Fakultet">
+                                <Select optionFilterProp="children"
+                                        onChange={FacultySelect} >
+                                    {items.map((item) => {
+                                        return <Option value={item.name} key={item.id}>{item.name}</Option>})}
+                                </Select>
+                            </Form.Item>
+                            <label htmlFor="Login">Login</label>
+                            <Input id='Login' value={creatTyuter.login} allowClear maxLength="9"
+                                   onChange={(e)=>{setCreaTyuter(
+                                       {...creatTyuter, login: e.target.value.toUpperCase(),})}}/>
+                            <label htmlFor="Parol">Parol</label>
+                            <Input id='Parol' value={creatTyuter.password} allowClear
+                                   onChange={(e)=>{setCreaTyuter({...creatTyuter, password: e.target.value,})}}/>
+                        </Form>
+
+
                     </div>
                 </Modal>
             </div>
@@ -204,7 +213,7 @@ function AddTicher(props) {
                 <select id='fakultet' onChange={(e)=>setDekanID(e.target.value)} style={{width:'400px'}}>
                     <option>Fakultet</option>
                     {items.map((item,index) => (
-                        <option value={item.id} key={index}>{item.faculty}</option>
+                        <option value={item.id} key={index}>{item.name}</option>
                     ))}
                 </select>
                 <table className="table table-bordered">
@@ -228,7 +237,7 @@ function AddTicher(props) {
                             <td>{item.name}</td>
                             <td>{item.patronymic}</td>
                             <td>{item.phone}</td>
-                            <td>{item.faculty}</td>
+                            <td>{item?.department?.name}</td>
                             <td>{item.login}</td>
                             <td>{item.password}</td>
                             <td>

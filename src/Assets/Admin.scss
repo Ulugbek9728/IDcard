@@ -10,9 +10,6 @@
 .modalUser{
   width: 70%!important;
 }
-.ticherModal{
-  width: 40%!important;
-}
 
 .ant-modal{
   .ant-modal-content{
@@ -108,19 +105,6 @@
       margin: 10px 0;
       border: 1px solid green;
       border-radius: 0!important;
-    }
-  }
-}
-
-.AddTicher{
-  select{
-    height: 40px;
-    border: none;
-    border-radius: 5px;
-    padding: 0 10px;
-    &:focus {
-      border: none;
-      outline: none;
     }
   }
 }

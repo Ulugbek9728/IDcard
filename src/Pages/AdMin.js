@@ -1,19 +1,16 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import {
     UserAddOutlined,
-    CreditCardOutlined,
-    ApartmentOutlined
+    CreditCardOutlined
 } from '@ant-design/icons';
-import {Layout, Menu,  Select,} from 'antd';
+import {Layout, Menu,} from 'antd';
 import {Route, Routes, useNavigate} from "react-router";
 import "antd/dist/antd.css"
-import AddDekan from "../Components/AddDekan";
 import "../Assets/Admin.scss"
-import AddTicher from "../Components/AddTicher";
+import "../Assets/main.scss"
 import {Link} from "react-router-dom";
 import User from "../Components/User";
 import PechatIdCarta from "./pechat_ID_Carta";
-import Groups from "../Components/Groups";
 
 
 const { Header, Content, Sider } = Layout;
@@ -39,24 +36,10 @@ function AdMin(props) {
                        onCollapse={(value) => setCollapsed(value)}>
                     <div className="logo"><img src="/LOGOTDTU.png" alt=""/></div>
                     <Menu defaultSelectedKeys={['1']} theme="dark" mode="inline">
-                        <Menu.Item key="2" icon={<UserAddOutlined/>}>
-                                <Link to='/AdminPage/'>
-                                    Dekanlar
-                                </Link>
-                        </Menu.Item>
-                        <Menu.Item key="3" icon={<UserAddOutlined />}>
-                                <Link to='/AdminPage/AddTeacher'>
-                                    O'qituvchilar
-                                </Link>
-                        </Menu.Item>
-                        <Menu.Item key="4" icon={<UserAddOutlined />}>
-                            <Link to='/AdminPage/AddStudent'>
+
+                        <Menu.Item key="1" icon={<UserAddOutlined />}>
+                            <Link to='/AdminPage/'>
                                 Talabalar
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key="6" icon={<ApartmentOutlined />}>
-                            <Link to='/AdminPage/Guruhlar'>
-                                Guruhlar
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="5" icon={<CreditCardOutlined />}>
@@ -81,11 +64,10 @@ function AdMin(props) {
                     </div>
                     <Content>
                         <Routes>
-                            <Route path={"/AddTeacher"} element={<AddTicher/>}/>
-                            <Route path={"/Addstudent"} element={<User/>}/>
+
+
                             <Route path={"/IDcard"} element={<PechatIdCarta/>}/>
-                            <Route path={"/Guruhlar"} element={<Groups/>}/>
-                            <Route path={"/"} element={<AddDekan/>}/>
+                            <Route path={"/"} element={<User/>}/>
                         </Routes>
                     </Content>
                 </Layout>
