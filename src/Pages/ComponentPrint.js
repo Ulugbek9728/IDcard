@@ -91,7 +91,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                         <select id='fakultet' className='form-control my-2' style={{width:"30%"}}
                                 onChange={(e)=>{
                                     setDekanID(e.target.value);
-                                    setTyuter('');
+                                    setTyuter(null);
                                     setGuruh('');
                                     setGroupID('')}} >
                             <option>Fakultet</option>

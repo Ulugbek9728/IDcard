@@ -119,7 +119,7 @@ function User(props) {
                     <select id='fakultet' className='form-control my-2' style={{width:"30%"}}
                             onChange={(e)=>{
                                 setDekanID(e.target.value);
-                                setTyuter('');
+                                setTyuter(null);
                                 setGuruh('');
                                 setGroupID('')}} >
                         <option>Fakultet</option>
@@ -155,9 +155,11 @@ function User(props) {
                             <th>№</th>
                             <th>ID</th>
                             <th>F.I.SH</th>
-                            <th>Telefon</th>
                             <th>kurs</th>
                             <th>Yo'nalish</th>
+                            <th>Ta'lim shakli</th>
+                            <th>Ta'lim turi</th>
+                            <th>Ta'lim holati</th>
                             <th>Rasm </th>
                         </tr>
                         </thead>
@@ -167,11 +169,17 @@ function User(props) {
                                 <td>{index+1}</td>
                                 <td>{item.studentIdNumber}</td>
                                 <td>{item.fullName}</td>
-                                <td>{item.phone}</td>
-                                <td>{item.level.name}</td>
-                                <td>{item.specialty.name}</td>
+                                <td>{item?.level?.name}</td>
+                                <td>{item?.specialty?.name}</td>
+                                <td>{item?.educationForm?.name}</td>
+                                <td>{item?.educationType?.name}</td>
+                                <td>{item?.studentStatus?.name}</td>
                                 <td>
-                                    <img src={item.image} width={100} height={100} alt=""/>
+                                    {item.image !== '' && item.image != null  ?
+                                        <img style={{width:'150px'}}  src={item.image} alt=""/>
+                                        :
+                                        <img style={{width:'150px'}} src="/img/user.png" alt=""/>
+                                    }
                                 </td>
                                 <td>
                                     <button className="btn btn-success mx-1">
