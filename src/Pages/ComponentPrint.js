@@ -7,22 +7,19 @@ const {Option} = Select;
 
 export const ComponentPrint = React.forwardRef((props, ref) => {
     const [loading, setLoading] = useState(false);
-
-    const [DekanID, setDekanID] = useState('');
+    const [FakultyID, setfakultyID] = useState('');
     const [tyuterID, setTyuterID] = useState('');
     const [groupID, setGroupID] = useState('');
-    const [groupName, setGroupName] = useState('');
     const [items, setItems] = useState([]);
     const [tyuter, setTyuter] = useState([]);
-    const [guruh, setGuruh] = useState([]);
     const [GetGuruh, setGetGuruh] = useState([]);
 
     useEffect(()=>{
         fakulty();
-        if (DekanID!=''){
+        if (FakultyID!=''){
             Tyuter();
         }
-    },[DekanID]);
+    },[FakultyID]);
 
     useEffect(()=>{
         if (groupID!=''){
@@ -47,7 +44,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             },
             params:{
-                department:DekanID
+                department:FakultyID
             }
         }).then((response) => {
             setTyuter(response.data);
@@ -63,7 +60,7 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             },
             params:{
-                department:DekanID,
+                department:FakultyID,
                 group:groupID
             }
         }).then((response) => {
@@ -90,9 +87,8 @@ export const ComponentPrint = React.forwardRef((props, ref) => {
                         <label htmlFor="fakultet"><h5>Fakultet</h5></label>
                         <select id='fakultet' className='form-control my-2' style={{width:"30%"}}
                                 onChange={(e)=>{
-                                    setDekanID(e.target.value);
+                                    setfakultyID(e.target.value);
                                     setTyuter(null);
-                                    setGuruh('');
                                     setGroupID('')}} >
                             <option>Fakultet</option>
                             {items.map((item,index) => (

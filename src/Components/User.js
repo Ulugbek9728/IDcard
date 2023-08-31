@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {Select} from 'antd';
+import {Select,Pagination,  Segmented, Space } from 'antd';
 import axios from "axios";
-import * as XLSX from 'xlsx';
 import {toast, ToastContainer} from "react-toastify";
 
 import '../Assets/Admin.scss'
@@ -18,20 +17,28 @@ function User(props) {
     const [message2, setMessage2] = useState('');
     const [sucsessText, setSucsessText] = useState('');
 
-    const [DekanID, setDekanID] = useState('');
+    const [FakultyID, setfakultyID] = useState('');
     const [tyuterID, setTyuterID] = useState('');
     const [groupID, setGroupID] = useState('');
 
     const [tyuter, setTyuter] = useState([]);
-    const [guruh, setGuruh] = useState([]);
     const [GetGuruh, setGetGuruh] = useState([]);
+
+    const [bakalavr, setBakalavr] = useState( '');
+    const [eduForm, seteduForm] = useState( '');
+
+
+    const [page, setPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(0);
+    const [pageSizes, setPageSize] = useState(50);
 
     useEffect(()=>{
         fakulty();
-        if (DekanID!==''){
+        GetGroup()
+        if (FakultyID!==''){
             Tyuter();
         }
-    },[DekanID]);
+    },[FakultyID,page,pageSizes,bakalavr,eduForm]);
 
     useEffect(()=>{
         if (groupID!==''){
@@ -56,7 +63,7 @@ function User(props) {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             },
             params:{
-                department:DekanID
+                department:FakultyID
             }
         }).then((response) => {
             setTyuter(response.data);
@@ -72,12 +79,16 @@ function User(props) {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             },
             params:{
-                department:DekanID,
-                group:groupID
+                department:FakultyID,
+                group:groupID,
+                education_type:bakalavr,
+                education_form:eduForm,
+                page: (page - 1), size: pageSizes
             }
         }).then((response) => {
             setGetGuruh(response.data.content);
-            console.log(response.data.content);
+            console.log(response.data);
+            setTotalPage(response.data.totalElements);
             setLoading(false);
 
         }).catch((error) => {
@@ -98,6 +109,16 @@ function User(props) {
         if (message2 != ''){toast.error(message2)}
     }
 
+    const pageShow =(curent, pageSize)=>{
+        setPageSize(pageSize)
+    }
+
+function test(key) {
+    setBakalavr(key)
+}
+    function test2(key) {
+        seteduForm(key)
+    }
     return (
         <>
             {
@@ -115,40 +136,87 @@ function User(props) {
             <div className="content site-layout-background" style={{padding: 24, minHeight: 360,}}>
                 <ToastContainer/>
                 <div className="box mt-5">
-                    <label htmlFor="fakultet"><h5>Fakultet</h5></label>
-                    <select id='fakultet' className='form-control my-2' style={{width:"30%"}}
-                            onChange={(e)=>{
-                                setDekanID(e.target.value);
-                                setTyuter(null);
-                                setGuruh('');
-                                setGroupID('')}} >
-                        <option>Fakultet</option>
-                        {items.map((item,index) => (
-                            <option value={item.id} key={index}>{item.name}</option>
-                        ))}
-                    </select>
-                    <label htmlFor="tyuter"><h5>Tyutor</h5></label>
-                    <select id='tyuter' className='form-control my-2' style={{width:"30%"}}
-                            onChange={(e)=>{
-                                setGroupID('');
-                                setTyuterID(e.target.value)
-                            }}>
-                        <option value={''}>Tyutor</option>
-                        {tyuter && tyuter.map((item,index) => (
-                            <option value={item.id} key={index}>{item.fullName}</option>
-                        ))}
-                    </select>
+                    <div className="d-flex">
+                        <div className="w-25">
+                            <label htmlFor="fakultet"><h5>Fakultet</h5></label>
+                            <select id='fakultet' className='form-control my-2'
+                                    onChange={(e)=>{
+                                        setfakultyID(e.target.value);
+                                        setTyuter(null);
+                                        setGroupID('')}} >
+                                <option>Fakultet</option>
+                                {items.map((item,index) => (
+                                    <option value={item.id} key={index}>{item.name}</option>
+                                ))}
+                            </select>
+                            <label htmlFor="tyuter"><h5>Tyutor</h5></label>
+                            <select id='tyuter' className='form-control my-2'
+                                    onChange={(e)=>{
+                                        setGroupID('');
+                                        setTyuterID(e.target.value)
+                                    }}>
+                                <option value={''}>Tyutor</option>
+                                {tyuter && tyuter.map((item,index) => (
+                                    <option value={item.id} key={index}>{item.fullName}</option>
+                                ))}
+                            </select>
 
-                    <label htmlFor="Guruh"><h5>Guruh</h5></label>
-                    <select id='Guruh' className='form-control my-2' style={{width: "30%"}}
-                            onChange={(e)=>{
-                                setGroupID(e.target.value);
-                            }}>
-                        <option>Guruh</option>
-                        {tyuterID && tyuter?.filter(item=>{return item.id===tyuterID})[0].tutorGroups?.map((item,index)=>{
-                            return <option value={item.id} key={index}>{item.name}</option>
-                        })}
-                    </select>
+                            <label htmlFor="Guruh"><h5>Guruh</h5></label>
+                            <select id='Guruh' className='form-control my-2'
+                                    onChange={(e)=>{
+                                        setGroupID(e.target.value);
+                                    }}>
+                                <option>Guruh</option>
+                                {tyuterID && tyuter?.filter(item=>{return item.id===tyuterID})[0].tutorGroups?.map((item,index)=>{
+                                    return <option value={item.id} key={index}>{item.name}</option>
+                                })}
+                            </select>
+                        </div>
+                        <div className="w-25 mx-5">
+                            <label className='mb-2' htmlFor="fakultet"><h5>Ta'lim turi</h5></label><br />
+                                <Space direction="vertical" >
+                                <Segmented
+                                    size={'large'}
+                                    onChange={test}
+                                    options={[
+                                        {
+                                            label: 'Bakalavr',
+                                            value: '11',
+                                        },
+                                        {
+                                            label: 'Magistr',
+                                            value: '12',
+                                        },
+
+                                    ]}
+                                />
+                            </Space>
+                            <label className='my-2' htmlFor="fakultet"><h5>Ta'lim shakli</h5></label><br/>
+                            <Space direction="vertical" >
+                                <Segmented
+                                    size={'large'}
+                                    onChange={test2}
+                                    options={[
+                                        {
+                                            label: 'Kunduzgi',
+                                            value: '11',
+                                        },
+                                        {
+                                            label: 'Kechki',
+                                            value: '12',
+                                        },
+                                        {
+                                            label: 'Sirtqi',
+                                            value: '13',
+                                        },
+
+                                    ]}
+                                />
+                            </Space>
+                        </div>
+                    </div>
+
+
                     <table className="table table-bordered">
                         <thead>
                         <tr>
@@ -156,6 +224,7 @@ function User(props) {
                             <th>ID</th>
                             <th>F.I.SH</th>
                             <th>kurs</th>
+                            <th>Fakultet</th>
                             <th>Yo'nalish</th>
                             <th>Ta'lim shakli</th>
                             <th>Ta'lim turi</th>
@@ -170,6 +239,7 @@ function User(props) {
                                 <td>{item.studentIdNumber}</td>
                                 <td>{item.fullName}</td>
                                 <td>{item?.level?.name}</td>
+                                <td>{item?.department?.name}</td>
                                 <td>{item?.specialty?.name}</td>
                                 <td>{item?.educationForm?.name}</td>
                                 <td>{item?.educationType?.name}</td>
@@ -194,6 +264,15 @@ function User(props) {
 
                         </tbody>
                     </table>
+                    <Pagination
+                        current={page} total={totalPage} pageSize={pageSizes}
+                        onChange={(e) => {
+                            setPage(e)
+                        }}
+                        showQuickJumper
+                        showSizeChanger
+                        onShowSizeChange={pageShow}
+                    />
                 </div>
             </div>
 
