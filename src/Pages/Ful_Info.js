@@ -52,7 +52,6 @@ function FulInfo(props) {
         AOS.init()
     });
     window.addEventListener("contextmenu", e => e.preventDefault());
-
     return (
         <div className="fullInfo" id='myElement'>
             <ToastContainer/>

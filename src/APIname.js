@@ -1,3 +1,3 @@
-const ApiName = 'https://tdtucard.jprq.live';
+const ApiName = 'https://id-tdtu.jprq.live';
 
 export {ApiName}
