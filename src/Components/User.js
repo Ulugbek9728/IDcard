@@ -32,6 +32,7 @@ function User(props) {
     useEffect(() => {
         fakulty();
         GetGroup()
+        window.scroll(0, 0)
         if (FakultyID !== '') {
             Tyuter();
             if (eduForm !== '11'){
@@ -150,13 +151,15 @@ function User(props) {
 
     function test(key) {
         setBakalavr(key)
+        setPage(1)
     }
 
     function test2(key) {
         seteduForm(key)
+        setPage(1)
     }
 
-    console.log(GetGuruh)
+
     return (
         <>
             {loading ? <div className="loding">
@@ -177,6 +180,7 @@ function User(props) {
                                         setfakultyID(e.target.value);
                                         setTyuter(null);
                                         setGroupID('')
+                                        setPage(1)
                                     }}>
                                 <option>Fakultet</option>
                                 {items.map((item, index) => (
@@ -190,7 +194,7 @@ function User(props) {
                                             onChange={(e) => {
                                                 setGroupID('');
                                                 setGroupList('')
-
+                                                setPage(1)
                                                 setTotalPage(0)
                                                 setTyuterID(e.target.value)
                                             }}>
@@ -206,6 +210,7 @@ function User(props) {
                             <select id='Guruh' className='form-control my-2'
                                     onChange={(e) => {
                                         setGroupID(e.target.value);
+                                        setPage(1)
                                     }}>
                                 <option>Guruh</option>
                                 {groupList && groupList.map((item, index) => {
