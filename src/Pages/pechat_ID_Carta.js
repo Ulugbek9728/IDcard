@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import { useReactToPrint } from 'react-to-print';
 
-import { ComponentPrint } from './ComponentPrint';
+import {User} from '../Components/User'
 
 function PechatIdCarta(props) {
 
@@ -10,7 +10,7 @@ function PechatIdCarta(props) {
 
     return (
         <div className="p-3">
-            <ComponentPrint ref={componentRef} />
+            <User ref={componentRef} />
             <button className='btn btn-success' onClick={handlePrint}>Ma'lumotlarni yuklash</button>
         </div>
     );

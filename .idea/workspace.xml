@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/APIname.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/APIname.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/Admin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Admin.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/AdMin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/AdMin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/ComponentPrint.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/pechat_ID_Carta.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/pechat_ID_Carta.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,22 +42,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/tdtu projeckts/TTJ&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/tdtu projeckts/TTJ",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\tex Universitet\qrcode\public\img" />
@@ -195,7 +202,10 @@
       <workItem from="1693818501762" duration="2781000" />
       <workItem from="1693887466445" duration="6078000" />
       <workItem from="1693895091966" duration="7748000" />
-      <workItem from="1693974028302" duration="4408000" />
+      <workItem from="1693974028302" duration="4443000" />
+      <workItem from="1694061485411" duration="315000" />
+      <workItem from="1694405326055" duration="442000" />
+      <workItem from="1694493634510" duration="16173000" />
     </task>
     <task id="LOCAL-00001" summary="updet all">
       <option name="closed" value="true" />
@@ -229,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693910047577</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updet pagination 1">
+      <option name="closed" value="true" />
+      <created>1693997528423</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693997528423</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +269,7 @@
     <MESSAGE value="updet all 1" />
     <MESSAGE value="updet edu form and type" />
     <MESSAGE value="updet pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="updet pagination" />
+    <MESSAGE value="updet pagination 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="updet pagination 1" />
   </component>
 </project>

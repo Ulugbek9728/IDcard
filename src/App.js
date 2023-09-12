@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FulInfo from "./Pages/Ful_Info";
 import Enter from "./Pages/Enter";
 
+
 function App(props) {
 
 

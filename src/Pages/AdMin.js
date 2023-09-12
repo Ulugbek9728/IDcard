@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {
     UserAddOutlined,
-    CreditCardOutlined
 } from '@ant-design/icons';
 import {Layout, Menu,} from 'antd';
 import {Route, Routes, useNavigate} from "react-router";
@@ -9,7 +8,6 @@ import "antd/dist/antd.css"
 import "../Assets/Admin.scss"
 import "../Assets/main.scss"
 import {Link} from "react-router-dom";
-import User from "../Components/User";
 import PechatIdCarta from "./pechat_ID_Carta";
 
 
@@ -29,8 +27,8 @@ function AdMin(props) {
     }
 
     return (
-        <><Layout className='layout admin'
-                    style={{minHeight: '100vh',}}>
+        <>
+            <Layout className='layout admin' style={{minHeight: '100vh',}}>
 
                 <Sider className='sider' collapsible collapsed={collapsed}
                        onCollapse={(value) => setCollapsed(value)}>
@@ -40,11 +38,6 @@ function AdMin(props) {
                         <Menu.Item key="1" icon={<UserAddOutlined />}>
                             <Link to='/AdminPage/'>
                                 Talabalar
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key="5" icon={<CreditCardOutlined />}>
-                            <Link to='/AdminPage/IDcard'>
-                                ID Card Info
                             </Link>
                         </Menu.Item>
                     </Menu>
@@ -65,9 +58,7 @@ function AdMin(props) {
                     <Content>
                         <Routes>
 
-
-                            <Route path={"/IDcard"} element={<PechatIdCarta/>}/>
-                            <Route path={"/"} element={<User/>}/>
+                            <Route path={"/"} element={<PechatIdCarta/>}/>
                         </Routes>
                     </Content>
                 </Layout>
