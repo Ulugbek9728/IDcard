@@ -57,7 +57,7 @@ function Enter(props) {
                     data-aos-delay="100">Universitet talabalari haqida ma'lumot</h3>
 
                 <input type="text" value={login} onChange={(e) => setLogin(e.target.value.toUpperCase())}
-                       className="form-control" placeholder="Pasport seriya va raqam" maxLength="9"
+                       className="form-control" placeholder="HEMIS Talaba ID"
                        data-aos="fade-up"
                        data-aos-duration="900"
                        data-aos-easing="ease-in-sine"
