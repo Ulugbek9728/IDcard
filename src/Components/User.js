@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Select, Pagination, Segmented, Space, Input, Modal} from 'antd';
 import "antd/dist/antd.css"
-import {AudioOutlined} from '@ant-design/icons';
+import {ArrowUpOutlined} from '@ant-design/icons';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import '../Assets/Admin.scss'
@@ -32,7 +32,7 @@ export const User = React.forwardRef((props, ref) => {
         const [Allkurses, setAllKurses] = useState([]);
         const [page, setPage] = useState(1);
         const [totalPage, setTotalPage] = useState(0);
-        const [pageSizes, setPageSize] = useState(30);
+        const [pageSizes, setPageSize] = useState(40);
         const [isModalOpen, setIsModalOpen] = useState(false);
         const [confirmLoading, setConfirmLoading] = useState(false);
         const [allStudent, setallStudent] = useState(false);
@@ -48,55 +48,60 @@ export const User = React.forwardRef((props, ref) => {
             setIsModalOpen(true);
         };
         const handleOk = () => {
-            setConfirmLoading(true);
-            if (allStudent === false) {
-                axios.post(`${ApiName}/id/history`, {reason: sabab, studentId: studentID}, {
-                    headers: {
-                        "Authorization": "Bearer " + localStorage.getItem("token")
-                    }
-                }).then((res) => {
-                    setTimeout(() => {
-                        setSabab('')
-                        setStudentID('')
-                        setIsModalOpen(false);
-                        setConfirmLoading(false);
-                        setSucsessText("Talaba ma'lumoti yangilandi")
-                    }, 2000)
-                }).catch((error) => {
-                    console.log(error)
-                    setTimeout(() => {
-                        setConfirmLoading(false);
-                        setMessage(error.response.data.errors)
-                    })
-                })
+            if (sabab.trim().length >0){
+                setConfirmLoading(true);
 
-            } else {
-                axios.post(`${ApiName}/id/history/list`, {reason: sabab, studentIds: Selected}, {
-                    headers: {
-                        "Authorization": "Bearer " + localStorage.getItem("token")
-                    }
-                }).then((res) => {
-                    setTimeout(() => {
-                        setSabab('')
-                        setIsModalOpen(false);
-                        setConfirmLoading(false);
-                        setSucsessText("Talaba ma'lumoti yangilandi");
-                        for (let i = 0; i < GetGuruh?.length; i++) {
-                            let elementById = document.getElementById(i);
-                            if (elementById.checked) {
-                                elementById.checked = false;
-                            }
+                if (allStudent === false) {
+                    axios.post(`${ApiName}/id/history`, {reason: sabab, studentId: studentID}, {
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token")
                         }
-                    }, 2000)
-                }).catch((error) => {
-                    console.log(error)
-                    setTimeout(() => {
-                        setConfirmLoading(false);
-                        setMessage(error.response.data.errors)
+                    }).then((res) => {
+                        setTimeout(() => {
+                            setSabab('')
+                            setStudentID('')
+                            setIsModalOpen(false);
+                            setConfirmLoading(false);
+                            setSucsessText("Talaba ma'lumoti yangilandi")
+                        }, 2000)
+                    }).catch((error) => {
+                        console.log(error)
+                        setTimeout(() => {
+                            setConfirmLoading(false);
+                            setMessage(error.response.data.errors)
+                        })
                     })
-                })
 
+                }
+                else {
+                    axios.post(`${ApiName}/id/history/list`, {reason: sabab, studentIds: Selected}, {
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token")
+                        }
+                    }).then((res) => {
+                        setTimeout(() => {
+                            setSabab('')
+                            setIsModalOpen(false);
+                            setConfirmLoading(false);
+                            setSucsessText("Talaba ma'lumoti yangilandi");
+                            for (let i = 0; i < GetGuruh?.length; i++) {
+                                let elementById = document.getElementById(i);
+                                if (elementById.checked) {
+                                    elementById.checked = false;
+                                }
+                            }
+                        }, 2000)
+                    }).catch((error) => {
+                        console.log(error)
+                        setTimeout(() => {
+                            setConfirmLoading(false);
+                            setMessage(error.response.data.errors)
+                        })
+                    })
+
+                }
             }
+
         }
 
         const handleCancel = () => {
@@ -146,7 +151,8 @@ export const User = React.forwardRef((props, ref) => {
                     groupAll()
                 }
             }
-        }, [FakultyID, page, pageSizes, bakalavr, eduForm, groupID, src, sucsessText,kurs]);
+        }, [FakultyID, page, pageSizes, bakalavr, eduForm, groupID, src, sucsessText, kurs]);
+
         useEffect(() => {
             if (tyuterID !== '') {
                 groupTyutor();
@@ -235,6 +241,7 @@ export const User = React.forwardRef((props, ref) => {
 
                 }
             }).then((response) => {
+                console.log(response.data.content)
                 setGetGuruh(response.data.content);
                 setTotalPage(response.data.totalElements);
                 setLoading(false);
@@ -305,7 +312,7 @@ export const User = React.forwardRef((props, ref) => {
                     <ToastContainer/>
                     <Modal title="Pechat qilish sababini yozing" visible={isModalOpen} onOk={handleOk}
                            confirmLoading={confirmLoading} onCancel={handleCancel}>
-                        <TextArea placeholder="Sabab" autoSize value={sabab}
+                        <TextArea placeholder="Sabab yoki buyruq raqami" autoSize value={sabab}
                                   onChange={(e) => setSabab(e.target.value)}/>
                     </Modal>
                     <Modal title="Malumot" visible={isModalOpen1} onOk={handleOk1} confirmLoading={confirmLoading1}
@@ -333,49 +340,63 @@ export const User = React.forwardRef((props, ref) => {
                     <div className="box mt-5">
                         <div className="d-flex">
                             <div className="w-25">
-                                <label htmlFor="fakultet"><h5>Fakultet</h5></label>
-                                <select id='fakultet' className='form-control my-2'
-                                        onChange={(e) => {
-                                            setfakultyID(e.target.value);
-                                            setTyuter(null);
-                                            setGroupID('')
-                                            setPage(1)
-                                        }}>
-                                    <option>Fakultet</option>
-                                    {items.map((item, index) => (
-                                        <option value={item.id} key={index}>{item.name}</option>
-                                    ))}
-                                </select>
+                                <label className='mt-3' htmlFor="fakultet"><h5>Fakultet</h5></label>
+                                <Select
+                                    showSearch className="form-control"
+                                    onChange={(e) => {
+                                        setfakultyID(e);
+                                        setTyuter(null);
+                                        setGroupID('')
+                                        setPage(1)
+                                    }}
+                                    placeholder="Fakultet"
+                                    optionFilterProp="children"
+                                    filterOption={(input, option) => (option?.label?.toLowerCase() ?? '').startsWith(input.toLowerCase())}
+                                    filterSort={(optionA, optionB) =>
+                                        (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                    }
+                                    options={items && items.map((item, index) =>({value:item.id, label:item.name}))}
+                                />
                                 {
                                     eduForm === "11" && bakalavr === '11' ? <div>
-                                        <label htmlFor="tyuter"><h5>Tyutor</h5></label>
-                                        <select id='tyuter' className='form-control my-2'
-                                                onChange={(e) => {
-                                                    setGroupID('');
-                                                    setGroupList('')
-                                                    setPage(1)
-                                                    setTotalPage(0)
-                                                    setTyuterID(e.target.value)
-                                                }}>
-                                            <option value={''}>Tyutor</option>
-                                            {tyuter && tyuter.map((item, index) => (
-                                                <option value={item.id} key={index}>{item.fullName}</option>
-                                            ))}
-                                        </select>
+                                        <label className='mt-3' htmlFor="tyuter"><h5>Tyutor</h5></label>
+                                        <Select
+                                            showSearch className="form-control"
+                                            onChange={(e) => {
+                                                setGroupID('');
+                                                setGroupList('')
+                                                setPage(1)
+                                                setTotalPage(0)
+                                                setTyuterID(e)
+                                            }}
+                                            placeholder="Tyutor"
+                                            optionFilterProp="children"
+                                            filterOption={(input, option) => (option?.label?.toLowerCase() ?? '').startsWith(input.toLowerCase())}
+                                            filterSort={(optionA, optionB) =>
+                                                (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                            }
+                                            options={tyuter && tyuter.map((item, index) =>(
+                                                {value:item.id, label:item?.fullName}))}
+                                        />
                                     </div> : ''
                                 }
 
-                                <label htmlFor="Guruh"><h5>Guruh</h5></label>
-                                <select id='Guruh' className='form-control my-2'
-                                        onChange={(e) => {
-                                            setGroupID(e.target.value);
-                                            setPage(1)
-                                        }}>
-                                    <option>Guruh</option>
-                                    {groupList && groupList.map((item, index) => {
-                                        return <option value={item.id} key={index}>{item.name}</option>
-                                    })}
-                                </select>
+                                <label className='mt-3' htmlFor="Guruh"><h5>Guruh</h5></label>
+                                <Select
+                                    showSearch className="form-control"
+                                    onChange={(e) => {
+                                        setGroupID(e);
+                                        setPage(1)
+                                    }}
+                                    placeholder="Guruh"
+                                    optionFilterProp="children"
+                                    filterOption={(input, option) => (option?.label?.toLowerCase() ?? '').startsWith(input.toLowerCase())}
+                                    filterSort={(optionA, optionB) =>
+                                        (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                    }
+                                    options={groupList && groupList.map((item, index) =>(
+                                        {value:item.id, label:item?.name}))}
+                                />
                             </div>
                             <div className="w-25 mx-5">
                                 <label className='mb-2' htmlFor="fakultet"><h5>Ta'lim turi</h5></label><br/>
@@ -425,24 +446,28 @@ export const User = React.forwardRef((props, ref) => {
                                         }
                                     />
                                 </Space> <br/>
-                                <label htmlFor="kurs"><h5>Kurs</h5></label>
-                                <select id='kurs' className='form-control my-2'
-                                        onChange={(e) => {
-                                            setKurs(e.target.value);
-                                            setPage(1)
-                                        }}>
-                                    <option>Kurs</option>
-                                    {bakalavr === '11' ?
-                                        Allkurses && Allkurses.slice(0, 4).map((item, index) => (
-                                            <option value={item.code} key={index}>{item.name}</option>
-                                        ))
-                                        :
-                                        Allkurses && Allkurses.slice(-2).map((item, index) => (
-                                            <option value={item.code} key={index}>{`${index+1}-kurs`}</option>
-                                        ))
+                                <label className='mt-2' htmlFor="kurs"><h5>Kurs</h5></label>
+                                <Select
+                                    showSearch className="form-control"
+                                    onChange={(e) => {
+                                        setKurs(e);
+                                        setPage(1)
+                                    }}
+                                    placeholder="Kurs"
+                                    optionFilterProp="children"
+                                    filterOption={(input, option) => (option?.label?.toLowerCase() ?? '').startsWith(input.toLowerCase())}
+                                    filterSort={(optionA, optionB) =>
+                                        (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
                                     }
-
-                                </select>
+                                    options={
+                                        bakalavr === '11' ?
+                                    Allkurses && Allkurses.slice(0, 4).map((item, index) =>(
+                                        {value:item.code, label:item?.name}))
+                                            :
+                                            Allkurses && Allkurses.slice(-2).map((item, index) =>(
+                                                {value:item.code, label:`${index+1}-kurs`}))
+                                }
+                                />
                             </div>
 
                         </div>
@@ -462,6 +487,7 @@ export const User = React.forwardRef((props, ref) => {
                                 <tr>
                                     <th>№</th>
                                     <th></th>
+                                    <th>Buyruq raqami</th>
                                     <th>Rasm</th>
                                     <th>F.I.SH</th>
                                     <th>kurs</th>
@@ -486,6 +512,7 @@ export const User = React.forwardRef((props, ref) => {
                                                        handelChange(e, index)
                                                    }}/>
                                         </td>
+                                        <td>{item.reason}</td>
                                         <td>
                                             {item.image !== '' && item.image != null ?
                                                 <img style={{width: '150px'}} src={item.image} alt=""/>
@@ -543,6 +570,8 @@ export const User = React.forwardRef((props, ref) => {
                             onShowSizeChange={pageShow}
                         />
                     </div>
+
+                    <button className='btn btn-danger top' onClick={()=>{window.scroll(0, 0)}}><ArrowUpOutlined /></button>
                 </div>
 
 

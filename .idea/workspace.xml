@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="updet api domen">
+    <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="updet enter page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/APIname.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/APIname.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/Admin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Admin.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/User.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +83,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -202,6 +204,10 @@
       <workItem from="1694493634510" duration="16222000" />
       <workItem from="1694580689436" duration="10195000" />
       <workItem from="1694664890369" duration="2179000" />
+      <workItem from="1694684543924" duration="1147000" />
+      <workItem from="1695032639214" duration="13000" />
+      <workItem from="1695293367228" duration="6444000" />
+      <workItem from="1695299886804" duration="3399000" />
     </task>
     <task id="LOCAL-00001" summary="updet all">
       <option name="closed" value="true" />
@@ -259,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694603221193</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updet enter page">
+      <option name="closed" value="true" />
+      <created>1694684780574</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1694684780574</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,6 +298,8 @@
     <MESSAGE value="updet pagination 1" />
     <MESSAGE value="updet status" />
     <MESSAGE value="updet level" />
-    <option name="LAST_COMMIT_MESSAGE" value="updet level" />
+    <MESSAGE value="updet api domen" />
+    <MESSAGE value="updet enter page" />
+    <option name="LAST_COMMIT_MESSAGE" value="updet enter page" />
   </component>
 </project>
