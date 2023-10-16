@@ -43,6 +43,7 @@ export const User = React.forwardRef((props, ref) => {
         const [studentID, setStudentID] = useState('');
         const [StatusMessega, setStatusMessega] = useState([]);
         const [Selected, setSelected] = useState([]);
+        const [BookN, setBookN] = useState(null);
 
         const showModal = () => {
             setIsModalOpen(true);
@@ -118,7 +119,6 @@ export const User = React.forwardRef((props, ref) => {
                     student_id: e
                 }
             }).then((res) => {
-                console.log(res.data.content)
                 setStatusMessega(res.data.content)
 
             }).catch((error) => {
@@ -126,15 +126,28 @@ export const User = React.forwardRef((props, ref) => {
             })
         };
         const handleOk1 = () => {
-
             setConfirmLoading1(true);
-            setTimeout(() => {
-                setSabab('')
-                setStudentID('')
-                setIsModalOpen1(false);
+            axios.put(`${ApiName}/id/history/${BookN.id}`,{studentId:BookN.studentId, reason:BookN.reason},
+                {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token")
+                    }
+                }).then((res)=>{
+                console.log(res)
+                setTimeout(() => {
+                    setSabab('')
+                    setStudentID('')
+                    setIsModalOpen1(false);
+                    setConfirmLoading1(false);
+                    setSucsessText("Ma'lumot yangilandi")
+                    setBookN(null)
+                }, 2000);
+            }).catch((error)=>{
+                console.log(error)
                 setConfirmLoading1(false);
-            }, 2000);
+            })
         };
+
         const handleCancel1 = () => {
             setIsModalOpen1(false);
             setStudentID('')
@@ -241,7 +254,6 @@ export const User = React.forwardRef((props, ref) => {
 
                 }
             }).then((response) => {
-                console.log(response.data.content)
                 setGetGuruh(response.data.content);
                 setTotalPage(response.data.totalElements);
                 setLoading(false);
@@ -259,13 +271,13 @@ export const User = React.forwardRef((props, ref) => {
         }, [message, sucsessText, message2]);
 
         function notify() {
-            if (message != '') {
+            if (message !== '') {
                 message && message.map((item) => (toast.error(item)))
             }
-            if (sucsessText != '') {
+            if (sucsessText !== '') {
                 toast.success(sucsessText)
             }
-            if (message2 != '') {
+            if (message2 !== '') {
                 toast.error(message2)
             }
         }
@@ -284,7 +296,8 @@ export const User = React.forwardRef((props, ref) => {
             setPage(1)
         }
 
-        const onSearch = (value) => {
+        const
+            onSearch = (value) => {
             setSrc(value)
             setPage(1)
         };
@@ -298,6 +311,8 @@ export const User = React.forwardRef((props, ref) => {
             }
 
         }
+
+
 
         return (
             <>
@@ -317,6 +332,12 @@ export const User = React.forwardRef((props, ref) => {
                     </Modal>
                     <Modal title="Malumot" visible={isModalOpen1} onOk={handleOk1} confirmLoading={confirmLoading1}
                            onCancel={handleCancel1}>
+                        <Input type="text" value={BookN?.reason} className='mb-3'
+                               onChange={(e)=>{
+                                   setBookN({
+                                       ...BookN,
+                                       reason:e.target.value})
+                               }}/>
                         <table className="table table-bordered">
                             <thead>
                             <tr>
@@ -327,10 +348,19 @@ export const User = React.forwardRef((props, ref) => {
                             </thead>
                             <tbody>
                             {StatusMessega && StatusMessega.map((item, index) => {
-                                return <tr>
+                                return <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>{item.createdDate}</td>
                                     <td>{item.reason}</td>
+                                    <td>
+                                        <button className="btn btn-warning" type="primary"
+                                                onClick={() => {
+                                                   setBookN(item)
+                                                }}>
+                                            <img className='iconEdit' src="/img/editing.png" alt=""/>
+                                        </button>
+
+                                    </td>
                                 </tr>
                             })}
                             </tbody>
@@ -469,7 +499,6 @@ export const User = React.forwardRef((props, ref) => {
                                 }
                                 />
                             </div>
-
                         </div>
                         <Space direction="vertical" className='w-50 mt-4'>
                             <Search placeholder="Qidiruv" size="large" onSearch={onSearch} enterButton/>
