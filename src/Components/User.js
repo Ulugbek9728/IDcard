@@ -44,7 +44,6 @@ export const User = React.forwardRef((props, ref) => {
         const [StatusMessega, setStatusMessega] = useState([]);
         const [Selected, setSelected] = useState([]);
         const [BookN, setBookN] = useState(null);
-
         const showModal = () => {
             setIsModalOpen(true);
         };
@@ -494,7 +493,7 @@ export const User = React.forwardRef((props, ref) => {
                                     Allkurses && Allkurses.slice(0, 4).map((item, index) =>(
                                         {value:item.code, label:item?.name}))
                                             :
-                                            Allkurses && Allkurses.slice(-2).map((item, index) =>(
+                                            Allkurses && Allkurses.slice(0,2).map((item, index) =>(
                                                 {value:item.code, label:`${index+1}-kurs`}))
                                 }
                                 />
