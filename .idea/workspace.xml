@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/APIname.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/APIname.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/enter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/enter.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/SignIn.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +59,7 @@
       <recent name="D:\tex Universitet\qrcode\public\img" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -82,8 +82,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +216,15 @@
       <workItem from="1695986990854" duration="748000" />
       <workItem from="1697434099708" duration="7674000" />
       <workItem from="1697520536170" duration="4000" />
-      <workItem from="1697602832215" duration="677000" />
+      <workItem from="1697602832215" duration="1007000" />
+      <workItem from="1697620134783" duration="5000" />
+      <workItem from="1698054603420" duration="619000" />
+      <workItem from="1698210267625" duration="3581000" />
+      <workItem from="1698404441446" duration="733000" />
+      <workItem from="1698732221908" duration="871000" />
+      <workItem from="1699331456033" duration="82000" />
+      <workItem from="1699334916478" duration="987000" />
+      <workItem from="1699353782147" duration="595000" />
     </task>
     <task id="LOCAL-00001" summary="updet all">
       <option name="closed" value="true" />
@@ -298,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697447099144</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updet magistr kurs">
+      <option name="closed" value="true" />
+      <created>1697603801892</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697603801892</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,6 +343,7 @@
     <MESSAGE value="updet enter page" />
     <MESSAGE value="updet select" />
     <MESSAGE value="updet bookN booton" />
-    <option name="LAST_COMMIT_MESSAGE" value="updet bookN booton" />
+    <MESSAGE value="updet magistr kurs" />
+    <option name="LAST_COMMIT_MESSAGE" value="updet magistr kurs" />
   </component>
 </project>
