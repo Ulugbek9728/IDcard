@@ -72,7 +72,7 @@ function Enter(props) {
                 </button>
 
             </div>
-            <div className="footer">
+            <div className="footer ">
                 <button className='form-control'
                         data-aos="fade-right"
                         data-aos-duration="800"

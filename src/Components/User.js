@@ -172,7 +172,7 @@ export const User = React.forwardRef((props, ref) => {
         }, [tyuterID]);
 
         function fakulty() {
-            axios.get(`${ApiName}/api/department`, '', {
+            axios.get(`${ApiName}/api/department`,{
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
                 }
@@ -184,7 +184,7 @@ export const User = React.forwardRef((props, ref) => {
         }
 
         function Allkurs() {
-            axios.get(`${ApiName}/api/course`, '', {
+            axios.get(`${ApiName}/api/course`, {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
                 }
@@ -254,6 +254,7 @@ export const User = React.forwardRef((props, ref) => {
                 }
             }).then((response) => {
                 setGetGuruh(response.data.content);
+                console.log(response.data.content);
                 setTotalPage(response.data.totalElements);
                 setLoading(false);
 

@@ -81,6 +81,9 @@ function FulInfo(props) {
                 <button className="btn">
                     <a href="https://student.tdtu.uz/dashboard/login" target="_blank">HEMIS</a>
                 </button>
+                <button className="btn">
+                    <a href="https://ttj.tdtu.uz/" target="_blank">TTJ</a>
+                </button>
             </div>
 
             <div className="container-fluid">
