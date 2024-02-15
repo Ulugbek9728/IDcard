@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2f07b99a-f762-473e-b3fe-c8078471e099" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/APIname.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/APIname.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assets/enter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/enter.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Enter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Enter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Ful_Info.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Ful_Info.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +239,22 @@
       <workItem from="1700656013621" duration="1416000" />
       <workItem from="1700717921787" duration="53000" />
       <workItem from="1701067660660" duration="12000" />
-      <workItem from="1704428116950" duration="784000" />
+      <workItem from="1704428116950" duration="1476000" />
+      <workItem from="1704687532723" duration="9000" />
+      <workItem from="1704690251711" duration="1952000" />
+      <workItem from="1704776022485" duration="298000" />
+      <workItem from="1704870319108" duration="2237000" />
+      <workItem from="1705054513288" duration="6000" />
+      <workItem from="1705902502506" duration="1909000" />
+      <workItem from="1705985163100" duration="594000" />
+      <workItem from="1706094420657" duration="595000" />
+      <workItem from="1706157743092" duration="8000" />
+      <workItem from="1706525553138" duration="1222000" />
+      <workItem from="1706675427354" duration="146000" />
+      <workItem from="1706694800406" duration="1017000" />
+      <workItem from="1706762476954" duration="598000" />
+      <workItem from="1707129646679" duration="2316000" />
+      <workItem from="1707974467621" duration="956000" />
     </task>
     <task id="LOCAL-00001" summary="updet all">
       <option name="closed" value="true" />
@@ -340,7 +352,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699354399202</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ttj button">
+      <option name="closed" value="true" />
+      <created>1704429365254</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1704429365254</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,6 +391,7 @@
     <MESSAGE value="updet bookN booton" />
     <MESSAGE value="updet magistr kurs" />
     <MESSAGE value="edit home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit home page" />
+    <MESSAGE value="ttj button" />
+    <option name="LAST_COMMIT_MESSAGE" value="ttj button" />
   </component>
 </project>

@@ -56,6 +56,7 @@ function Enter(props) {
                     data-aos-easing="ease-in-sine"
                     data-aos-delay="100">Universitet talabalari haqida ma'lumot</h3>
 
+                <label htmlFor="" className='text-light mb-1 mx-3'>HEMIS dagi ID raqamingizni kiriting !!!</label>
                 <input type="text" value={login} onChange={(e) => setLogin(e.target.value.toUpperCase())}
                        className="form-control" placeholder="HEMIS Talaba ID"
                        data-aos="fade-up"

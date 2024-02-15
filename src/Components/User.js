@@ -173,9 +173,7 @@ export const User = React.forwardRef((props, ref) => {
 
         function fakulty() {
             axios.get(`${ApiName}/api/department`,{
-                headers: {
-                    "Authorization": "Bearer " + localStorage.getItem("token")
-                }
+                headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
             }).then((response) => {
                 setItems(response.data);
             }).catch((error) => {
